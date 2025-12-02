@@ -1,10 +1,7 @@
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
 import { motion } from 'framer-motion';
 import amandaPhoto from "@/assets/amanda-photo.jpg";
 import { Button } from "@/components/ui/button";
-import { Scene3DContent } from './Scene3D';
-import { ParticleField } from './ParticleField';
+import { Hero3DBackground } from './Hero3DBackground';
 
 const Hero = () => {
   const scrollToProjects = () => {
@@ -17,14 +14,8 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-6 py-20 overflow-hidden">
-      {/* 3D Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/95 to-primary/90">
-        <Canvas camera={{ position: [0, 0, 10], fov: 50 }}>
-          <Scene3DContent />
-          <ParticleField />
-          <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.5} />
-        </Canvas>
-      </div>
+      {/* 3D Background with fallback */}
+      <Hero3DBackground />
 
       {/* Content */}
       <div className="relative z-10 max-w-6xl w-full grid md:grid-cols-2 gap-12 items-center">
