@@ -106,13 +106,13 @@ const Hero = () => {
             repeat: Infinity,
             ease: "easeInOut"
           }} />
-            <motion.img src={amandaPhoto} alt="Amanda Mongrain" className="relative rounded-2xl shadow-2xl w-full max-w-md object-cover aspect-[3/4] border-4 border-primary-foreground/10 group-hover:border-accent/50 transition-all duration-500" whileHover={{
+            <motion.img alt="Amanda Mongrain" className="relative rounded-2xl shadow-2xl w-full max-w-md object-cover aspect-[3/4] border-4 border-primary-foreground/10 group-hover:border-accent/50 transition-all duration-500" whileHover={{
             scale: 1.05,
             rotateY: 5
           }} transition={{
             type: "spring",
             stiffness: 300
-          }} />
+          }} src="/lovable-uploads/7021278e-973d-4000-9250-907a352662b0.jpg" />
           </div>
         </motion.div>
       </div>
