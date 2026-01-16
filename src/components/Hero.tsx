@@ -79,7 +79,7 @@ const Hero = () => {
             <Button onClick={scrollToProjects} size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground font-medium shadow-lg hover:shadow-xl transition-all hover:scale-105">
               View Projects
             </Button>
-            <Button onClick={scrollToContact} size="lg" variant="outline" className="border-2 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 font-medium backdrop-blur-sm hover:scale-105 transition-all">
+            <Button onClick={scrollToContact} size="lg" variant="outline" className="border-2 border-primary-foreground/30 text-primary-foreground font-medium backdrop-blur-sm hover:scale-105 transition-all bg-accent">
               Get in Touch
             </Button>
           </motion.div>

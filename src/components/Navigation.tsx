@@ -46,9 +46,7 @@ const Navigation = () => {
             }} transition={{
               duration: 3,
               repeat: Infinity
-            }}>
-                AM
-              </motion.span>
+            }}></motion.span>
               <motion.div className="absolute -inset-2 bg-accent/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity -z-10" />
             </motion.button>
             
