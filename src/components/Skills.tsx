@@ -19,7 +19,7 @@ const Skills = () => {
                     What I Bring
                 </motion.h2>
 
-                <div className="flex flex-wrap justify-center gap-8 md:gap-12">
+                <div className="flex flex-wrap justify-center gap-6 md:gap-12">
                     {qualities.map((q, index) => (
                         <motion.div
                             key={index}
@@ -32,9 +32,9 @@ const Skills = () => {
                                 delay: q.delay
                             }}
                             whileHover={{ scale: 1.1 }}
-                            className="w-48 h-48 md:w-64 md:h-64 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 border-2 border-primary/30 flex items-center justify-center backdrop-blur-sm hover:border-primary hover:bg-primary/30 transition-colors cursor-default"
+                            className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 border-2 border-primary/30 flex items-center justify-center backdrop-blur-sm hover:border-primary hover:bg-primary/30 transition-colors cursor-default"
                         >
-                            <span className="text-xl md:text-2xl font-semibold text-center text-foreground px-4">
+                            <span className="text-sm md:text-lg font-semibold text-center text-foreground px-2 leading-tight">
                                 {q.title}
                             </span>
                         </motion.div>

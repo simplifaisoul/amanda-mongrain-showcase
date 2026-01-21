@@ -33,7 +33,11 @@ const Certifications = () => {
                             <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                             {cert.icon}
                             <h3 className="text-xl font-bold text-center text-foreground z-10">{cert.title}</h3>
-                            <div className="w-16 h-1 bg-gradient-to-r from-primary to-secondary mt-4 rounded-full"></div>
+                            <div className="w-16 h-1 bg-gradient-to-r from-primary to-secondary mt-4 mb-6 rounded-full"></div>
+
+                            <button className="z-20 px-4 py-2 text-xs font-bold uppercase tracking-wider border border-primary/30 rounded-full hover:bg-primary hover:text-white transition-all text-primary">
+                                View Certificate
+                            </button>
                         </motion.div>
                     ))}
                 </div>

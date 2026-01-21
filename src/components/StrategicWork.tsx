@@ -6,6 +6,7 @@ interface ProjectCardProps {
     title: string;
     problem: string;
     solution: string;
+    keyPoints: string[];
 }
 
 const FlipCard = ({ project }: { project: ProjectCardProps }) => {
@@ -13,39 +14,66 @@ const FlipCard = ({ project }: { project: ProjectCardProps }) => {
 
     return (
         <div
-            className="relative w-full h-[400px] perspective-1000 cursor-pointer group"
+            className="relative w-full h-[500px] perspective-1000 cursor-pointer group"
             onClick={() => setIsFlipped(!isFlipped)}
         >
             <motion.div
-                className="relative w-full h-full transition-all duration-500 preserve-3d"
+                className="relative w-full h-full transition-all duration-700 preserve-3d"
                 animate={{ rotateY: isFlipped ? 180 : 0 }}
             >
                 {/* Front */}
-                <div className="absolute inset-0 backface-hidden bg-card border border-white/10 p-8 rounded-2xl flex flex-col justify-between shadow-xl group-hover:border-primary/50 transition-colors">
-                    <div>
-                        <span className="text-primary font-mono text-sm tracking-wider">PROJECT {project.id}</span>
-                        <h3 className="text-3xl font-bold mt-4 mb-4 text-foreground">{project.title}</h3>
-                        <p className="text-muted-foreground">Click to reveal the strategic solution.</p>
+                <div className="absolute inset-0 backface-hidden bg-card border border-white/10 p-8 rounded-2xl flex flex-col shadow-xl group-hover:border-primary/50 transition-colors">
+                    {/* Visual Flip Indicator (Corner Fold effect) */}
+                    <div className="absolute top-0 right-0 w-0 h-0 border-t-[30px] border-r-[30px] border-t-background border-r-primary/50 shadow-md transform rotate-90 rounded-bl-lg"></div>
+                    <div className="absolute top-2 right-2 text-[10px] text-white font-bold tracking-wider z-10 rotate-45">FLIP</div>
+
+                    <div className="flex-1">
+                        <span className="text-primary font-mono text-sm tracking-wider uppercase">Project {project.id}</span>
+                        <h3 className="text-3xl font-bold mt-4 mb-6 text-foreground leading-tight">{project.title}</h3>
+
+                        <div className="space-y-3">
+                            <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">Key Highlights:</p>
+                            <ul className="space-y-2">
+                                {project.keyPoints.map((point, i) => (
+                                    <li key={i} className="flex items-start text-foreground/80 text-sm">
+                                        <span className="mr-2 text-primary">•</span>
+                                        {point}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     </div>
-                    <div className="w-12 h-12 rounded-full border border-primary/30 flex items-center justify-center self-end">
-                        <span className="text-2xl text-primary">→</span>
+
+                    <div className="mt-6 flex items-center justify-between border-t border-white/5 pt-4">
+                        <p className="text-xs text-muted-foreground">Click card (or corner) to view detailed case study.</p>
+                        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                            →
+                        </div>
                     </div>
                 </div>
 
                 {/* Back */}
                 <div
-                    className="absolute inset-0 backface-hidden p-8 rounded-2xl bg-gradient-to-br from-secondary to-primary text-white shadow-2xl flex flex-col justify-center rotate-y-180"
+                    className="absolute inset-0 backface-hidden p-0 rounded-2xl bg-card border border-primary/20 shadow-2xl overflow-hidden rotate-y-180 flex flex-col"
                     style={{ transform: "rotateY(180deg)" }}
                 >
-                    <div className="space-y-6">
-                        <div>
-                            <h4 className="text-sm font-bold opacity-70 uppercase tracking-widest mb-2">Problem</h4>
-                            <p className="text-lg leading-relaxed">{project.problem}</p>
+                    {/* Image Placeholder Section */}
+                    <div className="h-1/3 bg-muted relative group-hover:saturate-150 transition-all">
+                        <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent"></div>
+                        <div className="absolute inset-0 flex items-center justify-center">
+                            <span className="text-muted-foreground/50 font-bold tracking-widest">[ PROJECT VISUAL ]</span>
                         </div>
-                        <div className="w-full h-px bg-white/20"></div>
-                        <div>
-                            <h4 className="text-sm font-bold opacity-70 uppercase tracking-widest mb-2">Solution</h4>
-                            <p className="text-lg leading-relaxed">{project.solution}</p>
+                    </div>
+
+                    <div className="p-6 flex-1 flex flex-col gap-4 overflow-y-auto">
+                        <div className="bg-primary/5 p-4 rounded-lg border border-primary/10">
+                            <h4 className="text-xs font-bold text-primary uppercase tracking-widest mb-1">The Problem</h4>
+                            <p className="text-sm leading-relaxed text-foreground/90">{project.problem}</p>
+                        </div>
+
+                        <div className="bg-secondary/5 p-4 rounded-lg border border-secondary/10">
+                            <h4 className="text-xs font-bold text-secondary uppercase tracking-widest mb-1">The Solution</h4>
+                            <p className="text-sm leading-relaxed text-foreground/90">{project.solution}</p>
                         </div>
                     </div>
                 </div>
@@ -60,25 +88,29 @@ const StrategicWork = () => {
             id: 1,
             title: "Market Expansion",
             problem: "Client struggled to penetrate Q4 saturated market with legacy messaging.",
-            solution: "Developed 'Quiet Luxury' campaign focusing on exclusivity, resulting in 40% lead increase."
+            solution: "Developed 'Quiet Luxury' campaign focusing on exclusivity, resulting in 40% lead increase. Leveraged A/B testing on social channels to refine audience targeting.",
+            keyPoints: ["40% Lead Increase", "New Market Penetration", "Cross-channel Strategy"]
         },
         {
             id: 2,
             title: "Brand Re-alignment",
             problem: "Disconnect between Gen Z audience values and corporate identity.",
-            solution: "Implemented authentic influencer strategy and sustainability-first messaging overhaul."
+            solution: "Implemented authentic influencer strategy and sustainability-first messaging overhaul. Partnered with 5 distinct micro-influencers to drive organic conversation.",
+            keyPoints: ["Gen Z Focus", "Influencer Partnerships", "Sustainability Messaging"]
         },
         {
             id: 3,
             title: "Digital Acquisition",
             problem: "High CPA across paid social channels effectively draining budget.",
-            solution: "Restructured ad account with UGC-focused creatives and lookalike audience modeling."
+            solution: "Restructured ad account with UGC-focused creatives and lookalike audience modeling. Reduced CPA by 35% within the first 60 days.",
+            keyPoints: ["35% Lower CPA", "UGC Creative", "Audience Modeling"]
         },
         {
             id: 4,
             title: "Product Launch",
             problem: "New SaaS product lacked differentiation in crowded landscape.",
-            solution: "Crafted challenge-based narrative positioning the tool as the 'Anti-Complexity' hero."
+            solution: "Crafted challenge-based narrative positioning the tool as the 'Anti-Complexity' hero. Achieved 200% of signup goal in launch week.",
+            keyPoints: ["Product Positioning", "200% Signup Goal", "Narrative Design"]
         }
     ];
 
