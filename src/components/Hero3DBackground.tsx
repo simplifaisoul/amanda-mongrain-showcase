@@ -29,7 +29,7 @@ export const Hero3DBackground = () => {
         </div>
       </div>;
   }
-  return <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/95 to-primary/90">
+  return <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-secondary/20 via-background to-background">
       <Suspense fallback={<div className="absolute inset-0 opacity-30">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-pulse" />
         </div>}>

@@ -1,39 +1,36 @@
 import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
-import Projects from "@/components/Projects";
-import About from "@/components/About";
+import Skills from "@/components/Skills";
+import StrategicWork from "@/components/StrategicWork";
+import Certifications from "@/components/Certifications";
+import CreativeExplorations from "@/components/CreativeExplorations";
 import Contact from "@/components/Contact";
 
 const Index = () => {
   return (
-    <div className="min-h-screen overflow-x-hidden">
+    <div className="min-h-screen overflow-x-hidden bg-background text-foreground selection:bg-primary selection:text-white">
       <Navigation />
-      <Hero />
-      <Projects />
-      <About />
-      <Contact />
-      
-      <motion.footer 
-        className="py-8 px-6 bg-primary text-center relative overflow-hidden"
+
+      <main>
+        <Hero />
+        <Skills />
+        <StrategicWork />
+        <Certifications />
+        <CreativeExplorations />
+        <Contact />
+      </main>
+
+      <motion.footer
+        className="py-12 px-6 bg-card text-center relative overflow-hidden border-t border-white/5"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        <motion.div
-          className="absolute inset-0 opacity-10"
-          animate={{
-            backgroundPosition: ["0% 0%", "100% 100%"],
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          style={{
-            backgroundImage: "linear-gradient(45deg, hsl(var(--accent)) 25%, transparent 25%, transparent 75%, hsl(var(--accent)) 75%, hsl(var(--accent)))",
-            backgroundSize: "20px 20px",
-          }}
-        />
-        <p className="text-primary-foreground/70 relative z-10">
-          © 2024 Amanda Mongrain. All rights reserved.
+        <div className="absolute inset-0 bg-background/50 backdrop-blur-3xl z-0"></div>
+        <p className="text-muted-foreground relative z-10 text-sm tracking-widest uppercase">
+          © 2024 Amanda Mongrain. Crafted with Strategic Precision.
         </p>
       </motion.footer>
     </div>

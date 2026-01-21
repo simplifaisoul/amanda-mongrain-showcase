@@ -1,144 +1,89 @@
-import { motion } from 'framer-motion';
-import amandaPhoto from "@/assets/amanda-photo.jpg";
-import { Button } from "@/components/ui/button";
-import { Hero3DBackground } from './Hero3DBackground';
+import { motion } from "framer-motion";
+import { Hero3DBackground } from "./Hero3DBackground";
+
 const Hero = () => {
-  const scrollToProjects = () => {
-    document.getElementById("projects")?.scrollIntoView({
-      behavior: "smooth"
-    });
-  };
-  const scrollToContact = () => {
-    document.getElementById("contact")?.scrollIntoView({
-      behavior: "smooth"
-    });
-  };
-  return <section className="relative min-h-screen flex items-center justify-center px-6 py-20 overflow-hidden">
-      {/* 3D Background with fallback */}
+  return (
+    <section className="relative min-h-screen flex items-center justify-center px-6 py-20 overflow-hidden bg-background/50">
+      {/* 3D Background */}
       <Hero3DBackground />
 
-      {/* Content */}
-      <div className="relative z-10 max-w-6xl w-full grid md:grid-cols-2 gap-12 items-center">
-        <motion.div className="space-y-6" initial={{
-        opacity: 0,
-        x: -50
-      }} animate={{
-        opacity: 1,
-        x: 0
-      }} transition={{
-        duration: 0.8,
-        ease: "easeOut"
-      }}>
-          <motion.h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-primary-foreground leading-tight" initial={{
-          opacity: 0,
-          y: 20
-        }} animate={{
-          opacity: 1,
-          y: 0
-        }} transition={{
-          duration: 0.8,
-          delay: 0.2
-        }}>
-            ​Amanda Mongrain 
-          </motion.h1>
-          <motion.p className="text-xl md:text-2xl text-primary-foreground/90 font-light" initial={{
-          opacity: 0,
-          y: 20
-        }} animate={{
-          opacity: 1,
-          y: 0
-        }} transition={{
-          duration: 0.8,
-          delay: 0.4
-        }}>
-            Marketing Strategist & Digital Storyteller
-          </motion.p>
-          <motion.p className="text-lg text-primary-foreground/80 leading-relaxed max-w-lg" initial={{
-          opacity: 0,
-          y: 20
-        }} animate={{
-          opacity: 1,
-          y: 0
-        }} transition={{
-          duration: 0.8,
-          delay: 0.6
-        }}>
-            Transforming brands through strategic marketing campaigns and innovative digital solutions. 
-            Specialized in IMC planning and client acquisition.
-          </motion.p>
-          <motion.div className="flex flex-wrap gap-4 pt-4" initial={{
-          opacity: 0,
-          y: 20
-        }} animate={{
-          opacity: 1,
-          y: 0
-        }} transition={{
-          duration: 0.8,
-          delay: 0.8
-        }}>
-            <Button onClick={scrollToProjects} size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground font-medium shadow-lg hover:shadow-xl transition-all hover:scale-105">
-              View Projects
-            </Button>
-            <Button onClick={scrollToContact} size="lg" variant="outline" className="border-2 border-primary-foreground/30 text-primary-foreground font-medium backdrop-blur-sm hover:scale-105 transition-all bg-accent">
-              Get in Touch
-            </Button>
-          </motion.div>
-        </motion.div>
-        
-        <motion.div className="flex justify-center" initial={{
-        opacity: 0,
-        scale: 0.8,
-        rotateY: -30
-      }} animate={{
-        opacity: 1,
-        scale: 1,
-        rotateY: 0
-      }} transition={{
-        duration: 1,
-        ease: "easeOut"
-      }}>
-          <div className="relative group">
-            <motion.div className="absolute -inset-6 bg-gradient-to-r from-accent/40 to-accent/20 rounded-3xl blur-3xl" animate={{
-            scale: [1, 1.1, 1],
-            opacity: [0.5, 0.7, 0.5]
-          }} transition={{
-            duration: 3,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }} />
-            <motion.img alt="Amanda Mongrain" className="relative rounded-2xl shadow-2xl w-full max-w-md object-cover aspect-[3/4] border-4 border-primary-foreground/10 group-hover:border-accent/50 transition-all duration-500" whileHover={{
-            scale: 1.05,
-            rotateY: 5
-          }} transition={{
-            type: "spring",
-            stiffness: 300
-          }} src="/lovable-uploads/7021278e-973d-4000-9250-907a352662b0.jpg" />
+      <div className="relative z-10 max-w-7xl w-full grid md:grid-cols-2 gap-12 items-center">
+        {/* Left Column: Name & Subtitle */}
+        <motion.div
+          className="space-y-6"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="relative">
+            <motion.span
+              className="absolute -top-8 -left-8 text-6xl opacity-20 text-primary rotate-[-10deg] font-script"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.2 }}
+              transition={{ delay: 1 }}
+            >
+              hello
+            </motion.span>
+            <h1 className="text-6xl md:text-8xl font-black text-foreground tracking-tighter leading-none">
+              AMANDA
+              <br />
+              <span className="text-primary">MONGRAIN</span>
+            </h1>
           </div>
-        </motion.div>
-      </div>
 
-      {/* Scroll Indicator */}
-      <motion.div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10" initial={{
-      opacity: 0,
-      y: -20
-    }} animate={{
-      opacity: 1,
-      y: 0
-    }} transition={{
-      duration: 1,
-      delay: 1.2,
-      repeat: Infinity,
-      repeatType: "reverse"
-    }}>
-        <div className="w-6 h-10 border-2 border-primary-foreground/30 rounded-full flex items-start justify-center p-2">
-          <motion.div className="w-1.5 h-1.5 bg-primary-foreground rounded-full" animate={{
-          y: [0, 12, 0]
-        }} transition={{
-          duration: 1.5,
-          repeat: Infinity
-        }} />
+          <h2 className="text-2xl md:text-3xl font-light text-muted-foreground uppercase tracking-widest border-l-4 border-primary pl-4">
+            Marketing Strategist
+          </h2>
+        </motion.div>
+
+        {/* Right Column: Quotes & Image */}
+        <div className="flex flex-col gap-8">
+          {/* Quotes Section */}
+          <motion.div
+            className="space-y-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+          >
+            <figure className="bg-card/50 backdrop-blur-sm p-4 rounded-r-2xl border-l-4 border-secondary border-y border-r border-white/5">
+              <blockquote className="text-lg italic text-foreground/80">
+                "One of the most strategic minds I've worked with."
+              </blockquote>
+              <figcaption className="text-sm text-primary mt-2 font-bold uppercase">
+                - Prof, Algonquin
+              </figcaption>
+            </figure>
+            <figure className="bg-card/50 backdrop-blur-sm p-4 rounded-r-2xl border-l-4 border-secondary border-y border-r border-white/5">
+              <blockquote className="text-lg italic text-foreground/80">
+                "Consistently delivers high-quality creative solutions."
+              </blockquote>
+              <figcaption className="text-sm text-primary mt-2 font-bold uppercase">
+                - Prof, Algonquin
+              </figcaption>
+            </figure>
+          </motion.div>
+
+          {/* Image Section */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.6 }}
+            className="relative"
+          >
+            <div className="absolute inset-0 bg-gradient-to-tr from-primary to-secondary rounded-2xl blur-xl opacity-30"></div>
+            <img
+              src="/lovable-uploads/7021278e-973d-4000-9250-907a352662b0.jpg"
+              alt="Amanda Mongrain"
+              className="relative w-full h-80 object-cover rounded-2xl border-2 border-white/10 shadow-2xl grayscale hover:grayscale-0 transition-all duration-500"
+            />
+            <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-background border border-white/10 rounded-full flex items-center justify-center shadow-xl animate-bounce-slow">
+              <span className="text-xs font-bold text-center text-primary leading-tight">MY<br />PORTFOLIO</span>
+            </div>
+          </motion.div>
         </div>
-      </motion.div>
-    </section>;
+      </div>
+    </section>
+  );
 };
+
 export default Hero;
