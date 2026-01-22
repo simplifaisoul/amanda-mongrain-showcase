@@ -4,7 +4,7 @@ const Skills = () => {
     const qualities = [
         { title: "Creative Problem Solving", delay: 0 },
         { title: "IMC Planning", delay: 0.2 },
-        { title: "Data Driven", delay: 0.4 },
+        { title: "Interpersonal Skills", delay: 0.4 },
     ];
 
     return (
