@@ -5,6 +5,12 @@ const Skills = () => {
         { title: "Creative Problem Solving", delay: 0 },
         { title: "IMC Planning", delay: 0.2 },
         { title: "Interpersonal Skills", delay: 0.4 },
+        { title: "Social Media Marketing", delay: 0.6 },
+        { title: "Content Strategy", delay: 0.8 },
+        { title: "Brand Management", delay: 1.0 },
+        { title: "Analytics", delay: 1.2 },
+        { title: "Adobe Creative Suite", delay: 1.4 },
+        { title: "Project Management", delay: 1.6 },
     ];
 
     return (
