@@ -1,4 +1,6 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { X } from "lucide-react";
 
 import nikeAd from "@/assets/creatives/nike-ad.jpg";
 import selfPortrait from "@/assets/creatives/self-portrait.jpg";
@@ -23,6 +25,8 @@ const creatives = [
 ];
 
 const CreativeExplorations = () => {
+    const [selectedCreative, setSelectedCreative] = useState<number | null>(null);
+
     return (
         <section className="py-24 px-6 bg-background relative">
             <div className="max-w-7xl mx-auto">
@@ -46,6 +50,7 @@ const CreativeExplorations = () => {
                             whileInView={{ opacity: 1 }}
                             viewport={{ once: true }}
                             transition={{ delay: idx * 0.2 }}
+                            onClick={() => setSelectedCreative(idx)}
                         >
                             <img
                                 src={creative.image}
@@ -60,6 +65,44 @@ const CreativeExplorations = () => {
                     ))}
                 </div>
             </div>
+
+            {/* Lightbox Modal */}
+            <AnimatePresence>
+                {selectedCreative !== null && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+                        onClick={() => setSelectedCreative(null)}
+                    >
+                        <motion.div
+                            initial={{ scale: 0.9, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.9, opacity: 0 }}
+                            transition={{ type: "spring", damping: 25 }}
+                            className="relative max-w-5xl w-full"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <button
+                                onClick={() => setSelectedCreative(null)}
+                                className="absolute -top-12 right-0 z-10 p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors"
+                            >
+                                <X className="w-6 h-6 text-white" />
+                            </button>
+                            <img
+                                src={creatives[selectedCreative].image}
+                                alt={creatives[selectedCreative].title}
+                                className="w-full h-auto max-h-[85vh] object-contain rounded-lg"
+                            />
+                            <div className="text-center mt-4">
+                                <h3 className="text-2xl font-bold text-white">{creatives[selectedCreative].title}</h3>
+                                <p className="text-gray-400">{creatives[selectedCreative].subtitle}</p>
+                            </div>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </section>
     );
 };
