@@ -43,7 +43,7 @@ const Contact = () => {
             </Button>
           </a>
 
-          <a href="https://www.linkedin.com/in/amandamongrain" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.linkedin.com/in/amanda-mongrain-059a3529a/" target="_blank" rel="noopener noreferrer">
             <Button variant="outline" size="lg" className="h-16 px-8 text-lg border-2 border-secondary/50 text-foreground hover:bg-secondary hover:text-white transition-all w-64 justify-start group">
               <Linkedin className="mr-4 w-6 h-6 group-hover:scale-110 transition-transform" />
               LinkedIn
