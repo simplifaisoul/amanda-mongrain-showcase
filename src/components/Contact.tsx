@@ -36,15 +36,19 @@ const Contact = () => {
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
-          <Button variant="outline" size="lg" className="h-16 px-8 text-lg border-2 border-primary/50 text-foreground hover:bg-primary hover:text-white transition-all w-64 justify-start group">
-            <Mail className="mr-4 w-6 h-6 group-hover:scale-110 transition-transform" />
-            Email Me
-          </Button>
+          <a href="mailto:amandamongrain7@gmail.com">
+            <Button variant="outline" size="lg" className="h-16 px-8 text-lg border-2 border-primary/50 text-foreground hover:bg-primary hover:text-white transition-all w-64 justify-start group">
+              <Mail className="mr-4 w-6 h-6 group-hover:scale-110 transition-transform" />
+              Email Me
+            </Button>
+          </a>
 
-          <Button variant="outline" size="lg" className="h-16 px-8 text-lg border-2 border-secondary/50 text-foreground hover:bg-secondary hover:text-white transition-all w-64 justify-start group">
-            <Linkedin className="mr-4 w-6 h-6 group-hover:scale-110 transition-transform" />
-            LinkedIn
-          </Button>
+          <a href="https://www.linkedin.com/in/amanda-mongrain" target="_blank" rel="noopener noreferrer">
+            <Button variant="outline" size="lg" className="h-16 px-8 text-lg border-2 border-secondary/50 text-foreground hover:bg-secondary hover:text-white transition-all w-64 justify-start group">
+              <Linkedin className="mr-4 w-6 h-6 group-hover:scale-110 transition-transform" />
+              LinkedIn
+            </Button>
+          </a>
 
           <Button variant="outline" size="lg" className="h-16 px-8 text-lg border-2 border-white/20 text-foreground hover:bg-white hover:text-black transition-all w-64 justify-start group">
             <FileText className="mr-4 w-6 h-6 group-hover:scale-110 transition-transform" />
