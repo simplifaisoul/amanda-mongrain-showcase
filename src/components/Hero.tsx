@@ -33,7 +33,7 @@ const Hero = () => {
             </h1>
           </div>
 
-          <h2 className="text-2xl md:text-3xl font-light uppercase tracking-widest border-l-4 border-primary pl-4 text-muted">
+          <h2 className="text-2xl md:text-3xl font-light uppercase tracking-widest border-l-4 border-[#d680b8] pl-4 text-muted">
             Marketing Strategist
           </h2>
         </motion.div>
