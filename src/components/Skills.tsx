@@ -3,14 +3,11 @@ import { motion } from "framer-motion";
 const Skills = () => {
     const qualities = [
         { title: "Creative Problem Solving", delay: 0 },
-        { title: "IMC Planning", delay: 0.2 },
-        { title: "Interpersonal Skills", delay: 0.4 },
-        { title: "Social Media Marketing", delay: 0.6 },
-        { title: "Content Strategy", delay: 0.8 },
-        { title: "Brand Management", delay: 1.0 },
-        { title: "Analytics", delay: 1.2 },
-        { title: "Adobe Creative Suite", delay: 1.4 },
-        { title: "Project Management", delay: 1.6 },
+        { title: "IMC Planning", delay: 0.1 },
+        { title: "Interpersonal Skills", delay: 0.2 },
+        { title: "Social Media Marketing", delay: 0.3 },
+        { title: "Content Strategy", delay: 0.4 },
+        { title: "Brand Management", delay: 0.5 },
     ];
 
     return (
