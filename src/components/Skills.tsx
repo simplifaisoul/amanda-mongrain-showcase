@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const Skills = () => {
     const qualities = [
-        { title: "Strategic Vision", delay: 0 },
+        { title: "Creative Problem Solving", delay: 0 },
         { title: "Creative Execution", delay: 0.2 },
         { title: "Data Driven", delay: 0.4 },
     ];
