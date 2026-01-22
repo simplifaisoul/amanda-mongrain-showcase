@@ -26,7 +26,7 @@ const Contact = () => {
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
         >
-          I'm always excited to discuss new projects and opportunities. Whether you need a strategic marketing plan or want to explore collaboration, let's connect.
+          I'm actively seeking an internship opportunity where I can apply my marketing skills and continue growing as a professional. If you're looking for a passionate and driven team member, let's connect!
         </motion.p>
 
         <motion.div
