@@ -14,12 +14,15 @@ const FlipCard = ({ project }: { project: ProjectCardProps }) => {
 
     return (
         <div
-            className="relative w-full h-[500px] perspective-1000 cursor-pointer group"
+            className="relative w-full h-[500px] cursor-pointer group"
+            style={{ perspective: '1000px' }}
             onClick={() => setIsFlipped(!isFlipped)}
         >
             <motion.div
-                className="relative w-full h-full transition-all duration-700 preserve-3d"
+                className="relative w-full h-full"
+                style={{ transformStyle: 'preserve-3d' }}
                 animate={{ rotateY: isFlipped ? 180 : 0 }}
+                transition={{ duration: 0.7, ease: 'easeInOut' }}
             >
                 {/* Front */}
                 <div className="absolute inset-0 backface-hidden bg-background border border-white/10 p-8 rounded-2xl flex flex-col shadow-xl group-hover:border-primary/50 transition-colors" style={{ backfaceVisibility: 'hidden', backgroundColor: 'hsl(var(--background))' }}>
