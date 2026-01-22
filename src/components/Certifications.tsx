@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Award, BarChart3, X } from "lucide-react";
+import { Award, BarChart3, Share2, MessageCircle, X } from "lucide-react";
 
 import projectManagementCert from "@/assets/certifications/project-management-cert.jpg";
 import googleAnalyticsCert from "@/assets/certifications/google-analytics-cert.jpg";
+import hubspotCert from "@/assets/certifications/hubspot-social-media-cert.png";
+import hootsuiteCert from "@/assets/certifications/hootsuite-cert.jpg";
 
 const Certifications = () => {
     const [selectedCert, setSelectedCert] = useState<number | null>(null);
@@ -24,6 +26,23 @@ const Certifications = () => {
             expiryDate: "October 20, 2026",
             certificateId: "163711700"
         },
+        { 
+            title: "Social Media Marketing", 
+            icon: <Share2 className="w-10 h-10 mb-4 text-primary" />,
+            image: hubspotCert,
+            issuer: "HubSpot Academy",
+            issueDate: "December 3, 2025",
+            expiryDate: "January 2, 2028",
+            certificateId: "8f8a5c7d640d4f62a3184b585908e87d"
+        },
+        { 
+            title: "Hootsuite Platform", 
+            icon: <MessageCircle className="w-10 h-10 mb-4 text-secondary" />,
+            image: hootsuiteCert,
+            issuer: "Hootsuite Academy",
+            issueDate: "February 19, 2025",
+            certificateId: "134199095"
+        },
     ];
 
     return (
@@ -38,7 +57,7 @@ const Certifications = () => {
                     My Certifications
                 </motion.h2>
 
-                <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
                     {certs.map((cert, idx) => (
                         <motion.div
                             key={idx}
