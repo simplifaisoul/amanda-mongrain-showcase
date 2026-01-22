@@ -22,7 +22,7 @@ const FlipCard = ({ project }: { project: ProjectCardProps }) => {
                 animate={{ rotateY: isFlipped ? 180 : 0 }}
             >
                 {/* Front */}
-                <div className="absolute inset-0 backface-hidden bg-card border border-white/10 p-8 rounded-2xl flex flex-col shadow-xl group-hover:border-primary/50 transition-colors">
+                <div className="absolute inset-0 backface-hidden bg-background border border-white/10 p-8 rounded-2xl flex flex-col shadow-xl group-hover:border-primary/50 transition-colors" style={{ backfaceVisibility: 'hidden', backgroundColor: 'hsl(var(--background))' }}>
                     {/* Visual Flip Indicator (Corner Fold effect) */}
                     <div className="absolute top-0 right-0 w-0 h-0 border-t-[30px] border-r-[30px] border-t-background border-r-primary/50 shadow-md transform rotate-90 rounded-bl-lg"></div>
                     <div className="absolute top-2 right-2 text-[10px] text-white font-bold tracking-wider z-10 rotate-45">FLIP</div>
@@ -54,8 +54,8 @@ const FlipCard = ({ project }: { project: ProjectCardProps }) => {
 
                 {/* Back */}
                 <div
-                    className="absolute inset-0 backface-hidden p-0 rounded-2xl bg-card border border-primary/20 shadow-2xl overflow-hidden rotate-y-180 flex flex-col"
-                    style={{ transform: "rotateY(180deg)" }}
+                    className="absolute inset-0 backface-hidden p-0 rounded-2xl border border-primary/20 shadow-2xl overflow-hidden rotate-y-180 flex flex-col"
+                    style={{ transform: "rotateY(180deg)", backfaceVisibility: 'hidden', backgroundColor: 'hsl(var(--background))' }}
                 >
                     {/* Image Placeholder Section */}
                     <div className="h-1/3 bg-muted relative group-hover:saturate-150 transition-all">
