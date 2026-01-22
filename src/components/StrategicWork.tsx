@@ -89,31 +89,31 @@ const StrategicWork = () => {
     const projects = [
         {
             id: 1,
-            title: "Ottawa 67's IMC Plan",
-            problem: "Client struggled to penetrate Q4 saturated market with legacy messaging.",
-            solution: "Developed 'Quiet Luxury' campaign focusing on exclusivity, resulting in 40% lead increase. Leveraged A/B testing on social channels to refine audience targeting.",
-            keyPoints: ["40% Lead Increase", "New Market Penetration", "Cross-channel Strategy"]
+            title: "Mighty Maestro – DIG Project",
+            problem: "Low class attendance (5–10 people per session) at an inclusive Ottawa fitness studio, with Gen Z audiences experiencing gym anxiety and lack of belonging.",
+            solution: "Created 'Step. Sweat. Smile. Repeat.' campaign using community-driven storytelling and digital executions to reduce gym anxiety and emphasize inclusivity.",
+            keyPoints: ["Target: 30% Awareness Increase", "Boost to 20–25 Attendees", "Gen Z Social Strategy"]
         },
         {
             id: 2,
-            title: "Brand Re-alignment",
-            problem: "Disconnect between Gen Z audience values and corporate identity.",
-            solution: "Implemented authentic influencer strategy and sustainability-first messaging overhaul. Partnered with 5 distinct micro-influencers to drive organic conversation.",
-            keyPoints: ["Gen Z Focus", "Influencer Partnerships", "Sustainability Messaging"]
+            title: "Retail Project",
+            problem: "Retail brand facing increased competition and shifting consumer behaviour during high-pressure seasonal periods.",
+            solution: "Repositioned brand around convenience, emotional relief, and experiential value through integrated digital and in-store approach to drive foot traffic and sales.",
+            keyPoints: ["Brand Repositioning", "Omnichannel Strategy", "Seasonal Campaign"]
         },
         {
             id: 3,
-            title: "Digital Acquisition",
-            problem: "High CPA across paid social channels effectively draining budget.",
-            solution: "Restructured ad account with UGC-focused creatives and lookalike audience modeling. Reduced CPA by 35% within the first 60 days.",
-            keyPoints: ["35% Lower CPA", "UGC Creative", "Audience Modeling"]
+            title: "DAVIDsTEA – Brand Proposal",
+            problem: "Rebuilding relevance and loyalty among Gen Z and Millennials following store closures and brand fragmentation.",
+            solution: "Positioned DAVIDsTEA as a modern wellness ritual brand with integrated campaigns across digital, CRM, and experiential touchpoints to drive online sales and emotional connection.",
+            keyPoints: ["Wellness Positioning", "CRM & Digital Integration", "Repeat Purchase Focus"]
         },
         {
             id: 4,
-            title: "Product Launch",
-            problem: "New SaaS product lacked differentiation in crowded landscape.",
-            solution: "Crafted challenge-based narrative positioning the tool as the 'Anti-Complexity' hero. Achieved 200% of signup goal in launch week.",
-            keyPoints: ["Product Positioning", "200% Signup Goal", "Narrative Design"]
+            title: "Ottawa 67's – IMC Plan",
+            problem: "Declining Friday-night game attendance caused by an aging fan base, with games not seen as a social destination.",
+            solution: "Introduced pub-led game-night experience and 'Break the Ice' digital strategy targeting young professionals to reframe games as a social destination.",
+            keyPoints: ["3,700 Ticket Goal/Game", "$79K Incremental Revenue", "Young Professional Focus"]
         }
     ];
 
