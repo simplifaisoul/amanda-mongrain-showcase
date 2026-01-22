@@ -29,11 +29,11 @@ const Hero = () => {
             <h1 className="text-6xl md:text-8xl font-black text-foreground tracking-tighter leading-none">
               AMANDA
               <br />
-              <span className="text-[#dc79bb]">MONGRAIN</span>
+              <span className="text-[#d680b8]">MONGRAIN</span>
             </h1>
           </div>
 
-          <h2 className="text-2xl md:text-3xl font-light text-muted-foreground uppercase tracking-widest border-l-4 border-primary pl-4">
+          <h2 className="text-2xl md:text-3xl font-light uppercase tracking-widest border-l-4 border-primary pl-4 text-muted">
             Marketing Strategist
           </h2>
         </motion.div>
@@ -51,12 +51,8 @@ const Hero = () => {
           delay: 0.4
         }}>
             <figure className="bg-card/50 backdrop-blur-sm p-4 rounded-r-2xl border-l-4 border-secondary border-y border-r border-white/5">
-              <blockquote className="text-lg italic text-foreground/80">
-                "One of the most strategic minds I've worked with."
-              </blockquote>
-              <figcaption className="text-sm text-primary mt-2 font-bold uppercase">
-                - Prof, Algonquin
-              </figcaption>
+              <blockquote className="text-lg italic text-foreground/80">"Amanda has a calmness, maturity and authority that not many students have. Her commitment to the quality of the work and her teammates is evident, and she is someone who will truly make a career for herself."</blockquote>
+              <figcaption className="text-sm text-primary mt-2 font-bold uppercase">- JAKE VOLT, PROF, ALGONQUIN</figcaption>
             </figure>
             <figure className="bg-card/50 backdrop-blur-sm p-4 rounded-r-2xl border-l-4 border-secondary border-y border-r border-white/5">
               <blockquote className="text-lg italic text-foreground/80">
