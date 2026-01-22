@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Award, BarChart3, Share2, MessageCircle, X } from "lucide-react";
 
-import projectManagementCert from "@/assets/certifications/project-management-cert.jpg";
+import projectManagementCert from "@/assets/certifications/linkedin-project-management-cert.jpg";
 import googleAnalyticsCert from "@/assets/certifications/google-analytics-cert.jpg";
 import hubspotCert from "@/assets/certifications/hubspot-social-media-cert.png";
 import hootsuiteCert from "@/assets/certifications/hootsuite-cert.jpg";
@@ -15,7 +15,9 @@ const Certifications = () => {
             title: "Project Management", 
             icon: <Award className="w-10 h-10 mb-4 text-primary" />,
             image: projectManagementCert,
-            issuer: "Project Management Certification",
+            issuer: "LinkedIn Learning",
+            issueDate: "December 9, 2025",
+            certificateId: "02f8e573c989929373c9fec96c4c913f2d38586dca29f56f3293e8c7ff41b0a0"
         },
         { 
             title: "Google Analytics", 
