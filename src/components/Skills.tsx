@@ -8,8 +8,6 @@ const Skills = () => {
         { title: "Social Media Marketing", delay: 0.3 },
         { title: "Content Strategy", delay: 0.4 },
         { title: "Brand Management", delay: 0.5 },
-        { title: "Analytics", delay: 0.6 },
-        { title: "Project Management", delay: 0.7 },
     ];
 
     return (
