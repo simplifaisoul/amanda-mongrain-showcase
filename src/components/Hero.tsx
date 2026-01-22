@@ -17,15 +17,6 @@ const Hero = () => {
         duration: 0.8
       }}>
           <div className="relative">
-            <motion.span className="absolute -top-8 -left-8 text-6xl opacity-20 text-primary rotate-[-10deg] font-script" initial={{
-            opacity: 0
-          }} animate={{
-            opacity: 0.2
-          }} transition={{
-            delay: 1
-          }}>
-              hello
-            </motion.span>
             <h1 className="text-6xl md:text-8xl font-black text-foreground tracking-tighter leading-none">
               AMANDA
               <br />
