@@ -89,7 +89,7 @@ const StrategicWork = () => {
     const projects = [
         {
             id: 1,
-            title: "Market Expansion",
+            title: "Ottawa 67's IMC Plan",
             problem: "Client struggled to penetrate Q4 saturated market with legacy messaging.",
             solution: "Developed 'Quiet Luxury' campaign focusing on exclusivity, resulting in 40% lead increase. Leveraged A/B testing on social channels to refine audience targeting.",
             keyPoints: ["40% Lead Increase", "New Market Penetration", "Cross-channel Strategy"]
