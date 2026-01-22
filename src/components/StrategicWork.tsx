@@ -89,14 +89,14 @@ const StrategicWork = () => {
     const projects = [
         {
             id: 1,
-            title: "Mighty Maestro – DIG Project",
+            title: "Mighty Maestro - Social Media Campaign",
             problem: "Low class attendance (5–10 people per session) at an inclusive Ottawa fitness studio, with Gen Z audiences experiencing gym anxiety and lack of belonging.",
             solution: "Created 'Step. Sweat. Smile. Repeat.' campaign using community-driven storytelling and digital executions to reduce gym anxiety and emphasize inclusivity.",
             keyPoints: ["Target: 30% Awareness Increase", "Boost to 20–25 Attendees", "Gen Z Social Strategy"]
         },
         {
             id: 2,
-            title: "Retail Project",
+            title: "Place D'Orleans - IMC Plan",
             problem: "Retail brand facing increased competition and shifting consumer behaviour during high-pressure seasonal periods.",
             solution: "Repositioned brand around convenience, emotional relief, and experiential value through integrated digital and in-store approach to drive foot traffic and sales.",
             keyPoints: ["Brand Repositioning", "Omnichannel Strategy", "Seasonal Campaign"]
