@@ -28,24 +28,16 @@ const FlipCard = ({ project }: { project: ProjectCardProps }) => {
                 animate={{ rotateY: isFlipped ? 180 : 0 }}
                 transition={{ duration: 0.7, ease: 'easeInOut' }}
             >
-                {/* Front - Project Details */}
+                {/* Front - Title & Key Points */}
                 <div 
-                    className="absolute inset-0 backface-hidden rounded-2xl overflow-hidden shadow-xl border border-white/10 group-hover:border-primary/50 transition-colors bg-background p-6 md:p-8 flex flex-col" 
+                    className="absolute inset-0 backface-hidden rounded-2xl overflow-hidden shadow-xl border border-white/10 group-hover:border-primary/50 transition-colors bg-background p-6 md:p-8 flex flex-col justify-center items-center text-center" 
                     style={{ backfaceVisibility: 'hidden' }}
                 >
-                    {/* Header */}
-                    <div className="flex items-start justify-between mb-4">
-                        <div>
-                            <span className="text-primary font-mono text-xs tracking-wider uppercase">Project {project.id}</span>
-                            <h3 className="text-xl md:text-2xl font-bold mt-1 text-foreground leading-tight">{project.title}</h3>
-                        </div>
-                        <div className="bg-primary/90 text-primary-foreground px-3 py-1.5 rounded-full text-[10px] font-bold tracking-wider">
-                            FLIP FOR IMAGE →
-                        </div>
-                    </div>
-
+                    <span className="text-primary font-mono text-xs tracking-wider uppercase mb-2">Project {project.id}</span>
+                    <h3 className="text-2xl md:text-3xl font-bold text-foreground leading-tight mb-6">{project.title}</h3>
+                    
                     {/* Key Points */}
-                    <div className="flex flex-wrap gap-2 mb-6">
+                    <div className="flex flex-wrap justify-center gap-2 mb-8">
                         {project.keyPoints.map((point, i) => (
                             <span key={i} className="bg-primary/10 text-primary text-xs px-3 py-1.5 rounded-full border border-primary/20">
                                 {point}
@@ -53,55 +45,65 @@ const FlipCard = ({ project }: { project: ProjectCardProps }) => {
                         ))}
                     </div>
 
-                    {/* Problem & Solution */}
-                    <div className="flex-1 flex flex-col md:flex-row gap-4">
-                        <div className="md:w-1/2 bg-primary/5 p-4 rounded-xl border border-primary/10">
-                            <h4 className="text-xs font-bold text-primary uppercase tracking-widest mb-2">The Problem</h4>
-                            <p className="text-sm leading-relaxed text-foreground/80">{project.problem}</p>
-                        </div>
-
-                        <div className="md:w-1/2 bg-secondary/5 p-4 rounded-xl border border-secondary/10">
-                            <h4 className="text-xs font-bold text-secondary uppercase tracking-widest mb-2">The Solution</h4>
-                            <p className="text-sm leading-relaxed text-foreground/80">{project.solution}</p>
-                        </div>
-                    </div>
-
-                    {/* CTA */}
-                    <div className="mt-4">
-                        <a
-                            href={project.pdfLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={(e) => e.stopPropagation()}
-                            className="inline-flex items-center gap-2 bg-primary text-primary-foreground py-3 px-6 rounded-xl font-semibold text-sm hover:bg-primary/90 transition-colors"
-                        >
-                            <ExternalLink className="w-4 h-4" />
-                            View Full Project
-                        </a>
+                    <div className="bg-primary/90 text-primary-foreground px-4 py-2 rounded-full text-xs font-bold tracking-wider">
+                        CLICK TO EXPLORE →
                     </div>
                 </div>
 
-                {/* Back - Full Image */}
+                {/* Back - Image + Problem/Solution */}
                 <div
-                    className="absolute inset-0 backface-hidden rounded-2xl overflow-hidden border border-primary/20 shadow-2xl"
-                    style={{ transform: "rotateY(180deg)", backfaceVisibility: 'hidden' }}
+                    className="absolute inset-0 backface-hidden rounded-2xl overflow-hidden border border-primary/20 shadow-2xl flex flex-col md:flex-row"
+                    style={{ transform: "rotateY(180deg)", backfaceVisibility: 'hidden', backgroundColor: 'hsl(var(--background))' }}
                 >
-                    {project.image ? (
-                        <img 
-                            src={project.image} 
-                            alt={project.title}
-                            className="w-full h-full object-cover"
-                        />
-                    ) : (
-                        <div className="w-full h-full bg-muted flex items-center justify-center">
-                            <span className="text-muted-foreground/50 font-bold tracking-widest text-sm">[ PROJECT VISUAL ]</span>
+                    {/* Image Section */}
+                    <div className="md:w-1/2 h-48 md:h-full relative overflow-hidden">
+                        {project.image ? (
+                            <img 
+                                src={project.image} 
+                                alt={project.title}
+                                className="w-full h-full object-cover"
+                            />
+                        ) : (
+                            <div className="w-full h-full bg-muted flex items-center justify-center">
+                                <span className="text-muted-foreground/50 font-bold tracking-widest text-sm">[ PROJECT VISUAL ]</span>
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Content Section */}
+                    <div className="md:w-1/2 p-5 md:p-6 flex flex-col">
+                        <div className="mb-3">
+                            <span className="text-primary font-mono text-xs tracking-wider uppercase">Project {project.id}</span>
+                            <h3 className="text-lg font-bold mt-1 text-foreground leading-tight">{project.title}</h3>
                         </div>
-                    )}
-                    {/* Overlay with title */}
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                        <span className="text-primary font-mono text-xs tracking-wider uppercase">Project {project.id}</span>
-                        <h3 className="text-xl font-bold text-white mt-1">{project.title}</h3>
-                        <span className="text-xs text-white/60 mt-2 block">Click to flip back</span>
+
+                        {/* Problem & Solution */}
+                        <div className="flex-1 flex flex-col gap-3">
+                            <div className="bg-primary/5 p-3 rounded-xl border border-primary/10">
+                                <h4 className="text-xs font-bold text-primary uppercase tracking-widest mb-1">The Problem</h4>
+                                <p className="text-xs leading-relaxed text-foreground/80">{project.problem}</p>
+                            </div>
+
+                            <div className="bg-secondary/5 p-3 rounded-xl border border-secondary/10">
+                                <h4 className="text-xs font-bold text-secondary uppercase tracking-widest mb-1">The Solution</h4>
+                                <p className="text-xs leading-relaxed text-foreground/80">{project.solution}</p>
+                            </div>
+                        </div>
+
+                        {/* CTA */}
+                        <div className="mt-3 flex items-center gap-3">
+                            <a
+                                href={project.pdfLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={(e) => e.stopPropagation()}
+                                className="flex-1 flex items-center justify-center gap-2 bg-primary text-primary-foreground py-2.5 px-4 rounded-xl font-semibold text-xs hover:bg-primary/90 transition-colors"
+                            >
+                                <ExternalLink className="w-3 h-3" />
+                                View Full Project
+                            </a>
+                            <span className="text-[10px] text-muted-foreground">Click to flip</span>
+                        </div>
                     </div>
                 </div>
             </motion.div>
