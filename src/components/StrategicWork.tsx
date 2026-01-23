@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { ExternalLink } from "lucide-react";
+import mightyMaestroImg from "@/assets/strategic/mighty-maestro.jpg";
 
 interface ProjectCardProps {
     id: number;
@@ -9,6 +10,7 @@ interface ProjectCardProps {
     solution: string;
     keyPoints: string[];
     pdfLink: string;
+    image?: string;
 }
 
 const FlipCard = ({ project }: { project: ProjectCardProps }) => {
@@ -62,12 +64,20 @@ const FlipCard = ({ project }: { project: ProjectCardProps }) => {
                     className="absolute inset-0 backface-hidden p-0 rounded-2xl border border-primary/20 shadow-2xl overflow-hidden rotate-y-180 flex flex-col"
                     style={{ transform: "rotateY(180deg)", backfaceVisibility: 'hidden', backgroundColor: 'hsl(var(--background))' }}
                 >
-                    {/* Image Placeholder Section */}
-                    <div className="h-1/3 bg-muted relative group-hover:saturate-150 transition-all">
+                    {/* Image Section */}
+                    <div className="h-1/3 bg-muted relative group-hover:saturate-150 transition-all overflow-hidden">
+                        {project.image ? (
+                            <img 
+                                src={project.image} 
+                                alt={project.title}
+                                className="w-full h-full object-cover"
+                            />
+                        ) : (
+                            <div className="absolute inset-0 flex items-center justify-center">
+                                <span className="text-muted-foreground/50 font-bold tracking-widest">[ PROJECT VISUAL ]</span>
+                            </div>
+                        )}
                         <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent"></div>
-                        <div className="absolute inset-0 flex items-center justify-center">
-                            <span className="text-muted-foreground/50 font-bold tracking-widest">[ PROJECT VISUAL ]</span>
-                        </div>
                     </div>
 
                     <div className="p-6 flex-1 flex flex-col gap-4 overflow-y-auto">
@@ -106,7 +116,8 @@ const StrategicWork = () => {
             problem: "Low class attendance (5–10 people per session) at an inclusive Ottawa fitness studio, with Gen Z audiences experiencing gym anxiety and lack of belonging.",
             solution: "Created 'Step. Sweat. Smile. Repeat.' campaign using community-driven storytelling and digital executions to reduce gym anxiety and emphasize inclusivity.",
             keyPoints: ["Target: 30% Awareness Increase", "Boost to 20–25 Attendees", "Gen Z Social Strategy"],
-            pdfLink: "https://drive.google.com/file/d/1TAZjK0JHLTi5mN_Hp-cdxzwDwv8G22_M/view"
+            pdfLink: "https://drive.google.com/file/d/1TAZjK0JHLTi5mN_Hp-cdxzwDwv8G22_M/view",
+            image: mightyMaestroImg
         },
         {
             id: 2,
