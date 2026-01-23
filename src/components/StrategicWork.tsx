@@ -62,12 +62,12 @@ const FlipCard = ({ project }: { project: ProjectCardProps }) => {
                     style={{ transform: "rotateY(180deg)", backfaceVisibility: 'hidden', backgroundColor: 'hsl(var(--background))' }}
                 >
                     {/* Image Section */}
-                    <div className="md:w-1/2 h-48 md:h-full relative overflow-hidden bg-muted/30 flex items-center justify-center">
+                    <div className="md:w-1/2 h-48 md:h-full relative overflow-hidden bg-muted/30 flex items-center justify-center p-4">
                         {project.image ? (
                             <img 
                                 src={project.image} 
                                 alt={project.title}
-                                className="w-full h-full object-contain"
+                                className="max-w-full max-h-full object-contain"
                             />
                         ) : (
                             <div className="w-full h-full bg-muted flex items-center justify-center">
