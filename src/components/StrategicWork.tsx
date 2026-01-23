@@ -114,7 +114,7 @@ const StrategicWork = () => {
             problem: "Retail brand facing increased competition and shifting consumer behaviour during high-pressure seasonal periods.",
             solution: "Repositioned brand around convenience, emotional relief, and experiential value through integrated digital and in-store approach to drive foot traffic and sales.",
             keyPoints: ["Brand Repositioning", "Omnichannel Strategy", "Seasonal Campaign"],
-            pdfLink: "https://drive.google.com/drive/folders/1oK9W4ydoRJMMp0tyy2ghYOLfHGcuGkFa?usp=drive_link"
+            pdfLink: "https://drive.google.com/file/d/1MugEW8pEIwq2fSJd2UbCCQnfbEh4iC4h/view"
         },
         {
             id: 3,
