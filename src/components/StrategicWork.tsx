@@ -37,13 +37,14 @@ const FlipCard = ({ project }: { project: ProjectCardProps }) => {
                     <h3 className="text-2xl md:text-3xl font-bold text-foreground leading-tight mb-6">{project.title}</h3>
                     
                     {/* Key Points */}
-                    <div className="flex flex-wrap justify-center gap-2 mb-8">
+                    <ul className="text-left space-y-2 mb-8">
                         {project.keyPoints.map((point, i) => (
-                            <span key={i} className="bg-primary/10 text-primary text-xs px-3 py-1.5 rounded-full border border-primary/20">
+                            <li key={i} className="flex items-center gap-2 text-sm text-foreground/80">
+                                <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
                                 {point}
-                            </span>
+                            </li>
                         ))}
-                    </div>
+                    </ul>
 
                     <div className="bg-primary/90 text-primary-foreground px-4 py-2 rounded-full text-xs font-bold tracking-wider">
                         CLICK TO EXPLORE →
