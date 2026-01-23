@@ -3,6 +3,7 @@ import { useState } from "react";
 import { ExternalLink } from "lucide-react";
 import mightyMaestroImg from "@/assets/strategic/mighty-maestro.jpg";
 import placeDorleans from "@/assets/strategic/place-dorleans.jpg";
+import davidsteaImg from "@/assets/strategic/davidstea.jpg";
 
 interface ProjectCardProps {
     id: number;
@@ -143,7 +144,8 @@ const StrategicWork = () => {
             problem: "Rebuilding relevance and loyalty among Gen Z and Millennials following store closures and brand fragmentation.",
             solution: "Positioned DAVIDsTEA as a modern wellness ritual brand with integrated campaigns across digital, CRM, and experiential touchpoints to drive online sales and emotional connection.",
             keyPoints: ["Wellness Positioning", "CRM & Digital Integration", "Repeat Purchase Focus"],
-            pdfLink: "https://drive.google.com/file/d/10l4cAqubCHlpI7xKguIpe_R7EpVbCDoj/view"
+            pdfLink: "https://drive.google.com/file/d/10l4cAqubCHlpI7xKguIpe_R7EpVbCDoj/view",
+            image: davidsteaImg
         },
         {
             id: 4,
