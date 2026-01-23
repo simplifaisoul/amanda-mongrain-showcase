@@ -28,55 +28,29 @@ const FlipCard = ({ project }: { project: ProjectCardProps }) => {
                 animate={{ rotateY: isFlipped ? 180 : 0 }}
                 transition={{ duration: 0.7, ease: 'easeInOut' }}
             >
-                {/* Front - Horizontal Layout */}
+                {/* Front - Project Details */}
                 <div 
-                    className="absolute inset-0 backface-hidden rounded-2xl overflow-hidden shadow-xl border border-white/10 group-hover:border-primary/50 transition-colors bg-background flex flex-col md:flex-row" 
+                    className="absolute inset-0 backface-hidden rounded-2xl overflow-hidden shadow-xl border border-white/10 group-hover:border-primary/50 transition-colors bg-background p-6 md:p-8 flex flex-col" 
                     style={{ backfaceVisibility: 'hidden' }}
                 >
-                    {/* Image Section */}
-                    <div className="md:w-1/2 h-64 md:h-full relative overflow-hidden">
-                        {project.image ? (
-                            <img 
-                                src={project.image} 
-                                alt={project.title}
-                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                            />
-                        ) : (
-                            <div className="w-full h-full bg-muted flex items-center justify-center">
-                                <span className="text-muted-foreground/50 font-bold tracking-widest text-sm">[ PROJECT VISUAL ]</span>
-                            </div>
-                        )}
-                    </div>
-
-                    {/* Content Section */}
-                    <div className="md:w-1/2 p-6 flex flex-col justify-center relative">
-                        {/* Flip Indicator */}
-                        <div className="absolute top-4 right-4 bg-primary/90 text-primary-foreground px-2 py-1 rounded-full text-[10px] font-bold tracking-wider">
-                            FLIP →
-                        </div>
-
-                        <span className="text-primary font-mono text-xs tracking-wider uppercase">Project {project.id}</span>
-                        <h3 className="text-xl md:text-2xl font-bold mt-2 mb-4 text-foreground leading-tight">{project.title}</h3>
-                        
-                        <div className="flex flex-wrap gap-2">
-                            {project.keyPoints.map((point, i) => (
-                                <span key={i} className="bg-primary/10 text-primary text-xs px-3 py-1.5 rounded-full border border-primary/20">
-                                    {point}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-
-                {/* Back - Details */}
-                <div
-                    className="absolute inset-0 backface-hidden p-6 md:p-8 rounded-2xl border border-primary/20 shadow-2xl flex flex-col"
-                    style={{ transform: "rotateY(180deg)", backfaceVisibility: 'hidden', backgroundColor: 'hsl(var(--background))' }}
-                >
                     {/* Header */}
-                    <div className="mb-4">
-                        <span className="text-primary font-mono text-xs tracking-wider uppercase">Project {project.id}</span>
-                        <h3 className="text-xl font-bold mt-1 text-foreground leading-tight">{project.title}</h3>
+                    <div className="flex items-start justify-between mb-4">
+                        <div>
+                            <span className="text-primary font-mono text-xs tracking-wider uppercase">Project {project.id}</span>
+                            <h3 className="text-xl md:text-2xl font-bold mt-1 text-foreground leading-tight">{project.title}</h3>
+                        </div>
+                        <div className="bg-primary/90 text-primary-foreground px-3 py-1.5 rounded-full text-[10px] font-bold tracking-wider">
+                            FLIP FOR IMAGE →
+                        </div>
+                    </div>
+
+                    {/* Key Points */}
+                    <div className="flex flex-wrap gap-2 mb-6">
+                        {project.keyPoints.map((point, i) => (
+                            <span key={i} className="bg-primary/10 text-primary text-xs px-3 py-1.5 rounded-full border border-primary/20">
+                                {point}
+                            </span>
+                        ))}
                     </div>
 
                     {/* Problem & Solution */}
@@ -93,18 +67,41 @@ const FlipCard = ({ project }: { project: ProjectCardProps }) => {
                     </div>
 
                     {/* CTA */}
-                    <div className="mt-4 flex items-center gap-4">
+                    <div className="mt-4">
                         <a
                             href={project.pdfLink}
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={(e) => e.stopPropagation()}
-                            className="flex-1 flex items-center justify-center gap-2 bg-primary text-primary-foreground py-3 px-6 rounded-xl font-semibold text-sm hover:bg-primary/90 transition-colors"
+                            className="inline-flex items-center gap-2 bg-primary text-primary-foreground py-3 px-6 rounded-xl font-semibold text-sm hover:bg-primary/90 transition-colors"
                         >
                             <ExternalLink className="w-4 h-4" />
                             View Full Project
                         </a>
-                        <span className="text-xs text-muted-foreground">Click to flip back</span>
+                    </div>
+                </div>
+
+                {/* Back - Full Image */}
+                <div
+                    className="absolute inset-0 backface-hidden rounded-2xl overflow-hidden border border-primary/20 shadow-2xl"
+                    style={{ transform: "rotateY(180deg)", backfaceVisibility: 'hidden' }}
+                >
+                    {project.image ? (
+                        <img 
+                            src={project.image} 
+                            alt={project.title}
+                            className="w-full h-full object-cover"
+                        />
+                    ) : (
+                        <div className="w-full h-full bg-muted flex items-center justify-center">
+                            <span className="text-muted-foreground/50 font-bold tracking-widest text-sm">[ PROJECT VISUAL ]</span>
+                        </div>
+                    )}
+                    {/* Overlay with title */}
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                        <span className="text-primary font-mono text-xs tracking-wider uppercase">Project {project.id}</span>
+                        <h3 className="text-xl font-bold text-white mt-1">{project.title}</h3>
+                        <span className="text-xs text-white/60 mt-2 block">Click to flip back</span>
                     </div>
                 </div>
             </motion.div>
