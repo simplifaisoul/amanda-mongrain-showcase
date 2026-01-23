@@ -18,7 +18,7 @@ const FlipCard = ({ project }: { project: ProjectCardProps }) => {
 
     return (
         <div
-            className="relative w-full h-[350px] md:h-[400px] cursor-pointer group"
+            className="relative w-full h-[500px] md:h-[550px] cursor-pointer group"
             style={{ perspective: '1000px' }}
             onClick={() => setIsFlipped(!isFlipped)}
         >
@@ -34,7 +34,7 @@ const FlipCard = ({ project }: { project: ProjectCardProps }) => {
                     style={{ backfaceVisibility: 'hidden' }}
                 >
                     {/* Image Section */}
-                    <div className="md:w-1/2 h-48 md:h-full relative overflow-hidden">
+                    <div className="md:w-1/2 h-64 md:h-full relative overflow-hidden">
                         {project.image ? (
                             <img 
                                 src={project.image} 
