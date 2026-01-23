@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { ExternalLink } from "lucide-react";
 
 interface ProjectCardProps {
     id: number;
@@ -7,6 +8,7 @@ interface ProjectCardProps {
     problem: string;
     solution: string;
     keyPoints: string[];
+    pdfLink: string;
 }
 
 const FlipCard = ({ project }: { project: ProjectCardProps }) => {
@@ -78,6 +80,17 @@ const FlipCard = ({ project }: { project: ProjectCardProps }) => {
                             <h4 className="text-xs font-bold text-secondary uppercase tracking-widest mb-1">The Solution</h4>
                             <p className="text-sm leading-relaxed text-foreground/90">{project.solution}</p>
                         </div>
+
+                        <a
+                            href={project.pdfLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className="mt-auto flex items-center justify-center gap-2 bg-primary text-primary-foreground py-3 px-4 rounded-lg font-semibold text-sm hover:bg-primary/90 transition-colors"
+                        >
+                            <ExternalLink className="w-4 h-4" />
+                            View Full Project
+                        </a>
                     </div>
                 </div>
             </motion.div>
@@ -92,28 +105,32 @@ const StrategicWork = () => {
             title: "Mighty Maestro - Social Media Campaign",
             problem: "Low class attendance (5–10 people per session) at an inclusive Ottawa fitness studio, with Gen Z audiences experiencing gym anxiety and lack of belonging.",
             solution: "Created 'Step. Sweat. Smile. Repeat.' campaign using community-driven storytelling and digital executions to reduce gym anxiety and emphasize inclusivity.",
-            keyPoints: ["Target: 30% Awareness Increase", "Boost to 20–25 Attendees", "Gen Z Social Strategy"]
+            keyPoints: ["Target: 30% Awareness Increase", "Boost to 20–25 Attendees", "Gen Z Social Strategy"],
+            pdfLink: "https://drive.google.com/drive/folders/17aGTNqYKFB6_vDCZf_jnl3t_JezbZfnD"
         },
         {
             id: 2,
             title: "Place D'Orleans - IMC Plan",
             problem: "Retail brand facing increased competition and shifting consumer behaviour during high-pressure seasonal periods.",
             solution: "Repositioned brand around convenience, emotional relief, and experiential value through integrated digital and in-store approach to drive foot traffic and sales.",
-            keyPoints: ["Brand Repositioning", "Omnichannel Strategy", "Seasonal Campaign"]
+            keyPoints: ["Brand Repositioning", "Omnichannel Strategy", "Seasonal Campaign"],
+            pdfLink: "https://drive.google.com/drive/folders/17aGTNqYKFB6_vDCZf_jnl3t_JezbZfnD"
         },
         {
             id: 3,
             title: "DAVIDsTEA – Brand Proposal",
             problem: "Rebuilding relevance and loyalty among Gen Z and Millennials following store closures and brand fragmentation.",
             solution: "Positioned DAVIDsTEA as a modern wellness ritual brand with integrated campaigns across digital, CRM, and experiential touchpoints to drive online sales and emotional connection.",
-            keyPoints: ["Wellness Positioning", "CRM & Digital Integration", "Repeat Purchase Focus"]
+            keyPoints: ["Wellness Positioning", "CRM & Digital Integration", "Repeat Purchase Focus"],
+            pdfLink: "https://drive.google.com/drive/folders/17aGTNqYKFB6_vDCZf_jnl3t_JezbZfnD"
         },
         {
             id: 4,
             title: "Ottawa 67's – IMC Plan",
             problem: "Declining Friday-night game attendance caused by an aging fan base, with games not seen as a social destination.",
             solution: "Introduced pub-led game-night experience and 'Break the Ice' digital strategy targeting young professionals to reframe games as a social destination.",
-            keyPoints: ["3,700 Ticket Goal/Game", "$79K Incremental Revenue", "Young Professional Focus"]
+            keyPoints: ["3,700 Ticket Goal/Game", "$79K Incremental Revenue", "Young Professional Focus"],
+            pdfLink: "https://drive.google.com/drive/folders/17aGTNqYKFB6_vDCZf_jnl3t_JezbZfnD"
         }
     ];
 
