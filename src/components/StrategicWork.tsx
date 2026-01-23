@@ -130,7 +130,7 @@ const StrategicWork = () => {
             problem: "Declining Friday-night game attendance caused by an aging fan base, with games not seen as a social destination.",
             solution: "Introduced pub-led game-night experience and 'Break the Ice' digital strategy targeting young professionals to reframe games as a social destination.",
             keyPoints: ["3,700 Ticket Goal/Game", "$79K Incremental Revenue", "Young Professional Focus"],
-            pdfLink: "https://drive.google.com/drive/folders/1LSQ4_icytyUrjShyspmVd-aT_ZV2A9mt?usp=drive_link"
+            pdfLink: "https://drive.google.com/file/d/1MugEW8pEIwq2fSJd2UbCCQnfbEh4iC4h/view"
         }
     ];
 
