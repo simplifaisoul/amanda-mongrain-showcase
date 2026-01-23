@@ -30,8 +30,12 @@ const FlipCard = ({ project }: { project: ProjectCardProps }) => {
             >
                 {/* Front - Title & Key Points */}
                 <div 
-                    className="absolute inset-0 backface-hidden rounded-2xl overflow-hidden shadow-xl border border-white/10 group-hover:border-primary/50 transition-colors bg-background p-6 md:p-8 flex flex-col justify-center items-center text-center" 
-                    style={{ backfaceVisibility: 'hidden' }}
+                    className="absolute inset-0 backface-hidden rounded-2xl overflow-hidden shadow-xl bg-background p-6 md:p-8 flex flex-col justify-center items-center text-center" 
+                    style={{ 
+                        backfaceVisibility: 'hidden',
+                        background: 'linear-gradient(hsl(var(--background)), hsl(var(--background))) padding-box, linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary) / 0.3), hsl(var(--primary)), hsl(var(--primary) / 0.3)) border-box',
+                        border: '2px solid transparent'
+                    }}
                 >
                     <span className="text-primary font-mono text-xs tracking-wider uppercase mb-2">Project {project.id}</span>
                     <h3 className="text-2xl md:text-3xl font-bold text-foreground leading-tight mb-6">{project.title}</h3>
