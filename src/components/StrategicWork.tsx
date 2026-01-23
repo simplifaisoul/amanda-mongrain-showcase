@@ -13,73 +13,102 @@ interface ProjectCardProps {
     image?: string;
 }
 
-const ProjectCard = ({ project }: { project: ProjectCardProps }) => {
+const FlipCard = ({ project }: { project: ProjectCardProps }) => {
+    const [isFlipped, setIsFlipped] = useState(false);
+
     return (
-        <motion.div
-            className="group bg-background border border-white/10 rounded-2xl overflow-hidden shadow-xl hover:border-primary/50 transition-all duration-300"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: project.id * 0.1 }}
+        <div
+            className="relative w-full h-[350px] md:h-[400px] cursor-pointer group"
+            style={{ perspective: '1000px' }}
+            onClick={() => setIsFlipped(!isFlipped)}
         >
-            <div className="flex flex-col md:flex-row">
-                {/* Image Section */}
-                <div className="md:w-1/2 h-64 md:h-auto md:min-h-[400px] relative overflow-hidden">
-                    {project.image ? (
-                        <img 
-                            src={project.image} 
-                            alt={project.title}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        />
-                    ) : (
-                        <div className="w-full h-full bg-muted flex items-center justify-center">
-                            <span className="text-muted-foreground/50 font-bold tracking-widest">[ PROJECT VISUAL ]</span>
+            <motion.div
+                className="relative w-full h-full"
+                style={{ transformStyle: 'preserve-3d' }}
+                animate={{ rotateY: isFlipped ? 180 : 0 }}
+                transition={{ duration: 0.7, ease: 'easeInOut' }}
+            >
+                {/* Front - Horizontal Layout */}
+                <div 
+                    className="absolute inset-0 backface-hidden rounded-2xl overflow-hidden shadow-xl border border-white/10 group-hover:border-primary/50 transition-colors bg-background flex flex-col md:flex-row" 
+                    style={{ backfaceVisibility: 'hidden' }}
+                >
+                    {/* Image Section */}
+                    <div className="md:w-1/2 h-48 md:h-full relative overflow-hidden">
+                        {project.image ? (
+                            <img 
+                                src={project.image} 
+                                alt={project.title}
+                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            />
+                        ) : (
+                            <div className="w-full h-full bg-muted flex items-center justify-center">
+                                <span className="text-muted-foreground/50 font-bold tracking-widest text-sm">[ PROJECT VISUAL ]</span>
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Content Section */}
+                    <div className="md:w-1/2 p-6 flex flex-col justify-center relative">
+                        {/* Flip Indicator */}
+                        <div className="absolute top-4 right-4 bg-primary/90 text-primary-foreground px-2 py-1 rounded-full text-[10px] font-bold tracking-wider">
+                            FLIP →
                         </div>
-                    )}
-                    {/* Subtle gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-background/20 md:block hidden"></div>
+
+                        <span className="text-primary font-mono text-xs tracking-wider uppercase">Project {project.id}</span>
+                        <h3 className="text-xl md:text-2xl font-bold mt-2 mb-4 text-foreground leading-tight">{project.title}</h3>
+                        
+                        <div className="flex flex-wrap gap-2">
+                            {project.keyPoints.map((point, i) => (
+                                <span key={i} className="bg-primary/10 text-primary text-xs px-3 py-1.5 rounded-full border border-primary/20">
+                                    {point}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
                 </div>
 
-                {/* Content Section */}
-                <div className="md:w-1/2 p-6 md:p-8 flex flex-col">
-                    <span className="text-primary font-mono text-sm tracking-wider uppercase">Project {project.id}</span>
-                    <h3 className="text-xl md:text-2xl font-bold mt-2 mb-4 text-foreground leading-tight">{project.title}</h3>
-                    
-                    {/* Key Points */}
-                    <div className="flex flex-wrap gap-2 mb-6">
-                        {project.keyPoints.map((point, i) => (
-                            <span key={i} className="bg-primary/10 text-primary text-xs px-3 py-1.5 rounded-full border border-primary/20">
-                                {point}
-                            </span>
-                        ))}
+                {/* Back - Details */}
+                <div
+                    className="absolute inset-0 backface-hidden p-6 md:p-8 rounded-2xl border border-primary/20 shadow-2xl flex flex-col"
+                    style={{ transform: "rotateY(180deg)", backfaceVisibility: 'hidden', backgroundColor: 'hsl(var(--background))' }}
+                >
+                    {/* Header */}
+                    <div className="mb-4">
+                        <span className="text-primary font-mono text-xs tracking-wider uppercase">Project {project.id}</span>
+                        <h3 className="text-xl font-bold mt-1 text-foreground leading-tight">{project.title}</h3>
                     </div>
 
                     {/* Problem & Solution */}
-                    <div className="flex-1 space-y-4">
-                        <div className="bg-primary/5 p-4 rounded-xl border border-primary/10">
-                            <h4 className="text-xs font-bold text-primary uppercase tracking-widest mb-1">The Problem</h4>
+                    <div className="flex-1 flex flex-col md:flex-row gap-4">
+                        <div className="md:w-1/2 bg-primary/5 p-4 rounded-xl border border-primary/10">
+                            <h4 className="text-xs font-bold text-primary uppercase tracking-widest mb-2">The Problem</h4>
                             <p className="text-sm leading-relaxed text-foreground/80">{project.problem}</p>
                         </div>
 
-                        <div className="bg-secondary/5 p-4 rounded-xl border border-secondary/10">
-                            <h4 className="text-xs font-bold text-secondary uppercase tracking-widest mb-1">The Solution</h4>
+                        <div className="md:w-1/2 bg-secondary/5 p-4 rounded-xl border border-secondary/10">
+                            <h4 className="text-xs font-bold text-secondary uppercase tracking-widest mb-2">The Solution</h4>
                             <p className="text-sm leading-relaxed text-foreground/80">{project.solution}</p>
                         </div>
                     </div>
 
                     {/* CTA */}
-                    <a
-                        href={project.pdfLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-6 flex items-center justify-center gap-2 bg-primary text-primary-foreground py-3 px-6 rounded-xl font-semibold text-sm hover:bg-primary/90 transition-colors"
-                    >
-                        <ExternalLink className="w-4 h-4" />
-                        View Full Project
-                    </a>
+                    <div className="mt-4 flex items-center gap-4">
+                        <a
+                            href={project.pdfLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className="flex-1 flex items-center justify-center gap-2 bg-primary text-primary-foreground py-3 px-6 rounded-xl font-semibold text-sm hover:bg-primary/90 transition-colors"
+                        >
+                            <ExternalLink className="w-4 h-4" />
+                            View Full Project
+                        </a>
+                        <span className="text-xs text-muted-foreground">Click to flip back</span>
+                    </div>
                 </div>
-            </div>
-        </motion.div>
+            </motion.div>
+        </div>
     );
 };
 
@@ -135,7 +164,7 @@ const StrategicWork = () => {
 
                 <div className="flex flex-col gap-8">
                     {projects.map((project) => (
-                        <ProjectCard key={project.id} project={project} />
+                        <FlipCard key={project.id} project={project} />
                     ))}
                 </div>
             </div>
