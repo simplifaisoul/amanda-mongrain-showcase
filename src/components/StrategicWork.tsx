@@ -122,7 +122,7 @@ const StrategicWork = () => {
             problem: "Rebuilding relevance and loyalty among Gen Z and Millennials following store closures and brand fragmentation.",
             solution: "Positioned DAVIDsTEA as a modern wellness ritual brand with integrated campaigns across digital, CRM, and experiential touchpoints to drive online sales and emotional connection.",
             keyPoints: ["Wellness Positioning", "CRM & Digital Integration", "Repeat Purchase Focus"],
-            pdfLink: "https://drive.google.com/drive/folders/1-3ar1TDAGBaTR942DBgDOwr-AgzROWOv?usp=drive_link"
+            pdfLink: "https://drive.google.com/file/d/10l4cAqubCHlpI7xKguIpe_R7EpVbCDoj/view"
         },
         {
             id: 4,
