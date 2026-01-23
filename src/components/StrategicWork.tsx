@@ -13,85 +13,57 @@ interface ProjectCardProps {
     image?: string;
 }
 
-const FlipCard = ({ project }: { project: ProjectCardProps }) => {
-    const [isFlipped, setIsFlipped] = useState(false);
-
+const ProjectCard = ({ project }: { project: ProjectCardProps }) => {
     return (
-        <div
-            className="relative w-full h-[600px] cursor-pointer group"
-            style={{ perspective: '1000px' }}
-            onClick={() => setIsFlipped(!isFlipped)}
+        <motion.div
+            className="group bg-background border border-white/10 rounded-2xl overflow-hidden shadow-xl hover:border-primary/50 transition-all duration-300"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: project.id * 0.1 }}
         >
-            <motion.div
-                className="relative w-full h-full"
-                style={{ transformStyle: 'preserve-3d' }}
-                animate={{ rotateY: isFlipped ? 180 : 0 }}
-                transition={{ duration: 0.7, ease: 'easeInOut' }}
-            >
-                {/* Front - Image Focused */}
-                <div 
-                    className="absolute inset-0 backface-hidden rounded-2xl overflow-hidden shadow-xl border border-white/10 group-hover:border-primary/50 transition-colors" 
-                    style={{ backfaceVisibility: 'hidden' }}
-                >
-                    {/* Full Image Background */}
-                    <div className="absolute inset-0">
-                        {project.image ? (
-                            <img 
-                                src={project.image} 
-                                alt={project.title}
-                                className="w-full h-full object-cover"
-                            />
-                        ) : (
-                            <div className="w-full h-full bg-muted flex items-center justify-center">
-                                <span className="text-muted-foreground/50 font-bold tracking-widest">[ PROJECT VISUAL ]</span>
-                            </div>
-                        )}
-                        {/* Gradient overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
-                    </div>
-
-                    {/* Visual Flip Indicator */}
-                    <div className="absolute top-4 right-4 bg-primary/90 text-primary-foreground px-3 py-1.5 rounded-full text-xs font-bold tracking-wider flex items-center gap-1.5 shadow-lg">
-                        <span>FLIP FOR DETAILS</span>
-                        <span className="text-sm">→</span>
-                    </div>
-
-                    {/* Content overlay at bottom */}
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                        <span className="text-primary font-mono text-sm tracking-wider uppercase">Project {project.id}</span>
-                        <h3 className="text-2xl md:text-3xl font-bold mt-2 text-white leading-tight">{project.title}</h3>
-                        
-                        <div className="flex flex-wrap gap-2 mt-4">
-                            {project.keyPoints.map((point, i) => (
-                                <span key={i} className="bg-white/10 backdrop-blur-sm text-white/90 text-xs px-3 py-1.5 rounded-full border border-white/20">
-                                    {point}
-                                </span>
-                            ))}
+            <div className="flex flex-col md:flex-row">
+                {/* Image Section */}
+                <div className="md:w-1/2 h-64 md:h-auto md:min-h-[400px] relative overflow-hidden">
+                    {project.image ? (
+                        <img 
+                            src={project.image} 
+                            alt={project.title}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                    ) : (
+                        <div className="w-full h-full bg-muted flex items-center justify-center">
+                            <span className="text-muted-foreground/50 font-bold tracking-widest">[ PROJECT VISUAL ]</span>
                         </div>
-                    </div>
+                    )}
+                    {/* Subtle gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-background/20 md:block hidden"></div>
                 </div>
 
-                {/* Back - Details */}
-                <div
-                    className="absolute inset-0 backface-hidden p-8 rounded-2xl border border-primary/20 shadow-2xl flex flex-col"
-                    style={{ transform: "rotateY(180deg)", backfaceVisibility: 'hidden', backgroundColor: 'hsl(var(--background))' }}
-                >
-                    {/* Header */}
-                    <div className="mb-6">
-                        <span className="text-primary font-mono text-sm tracking-wider uppercase">Project {project.id}</span>
-                        <h3 className="text-2xl font-bold mt-2 text-foreground leading-tight">{project.title}</h3>
+                {/* Content Section */}
+                <div className="md:w-1/2 p-6 md:p-8 flex flex-col">
+                    <span className="text-primary font-mono text-sm tracking-wider uppercase">Project {project.id}</span>
+                    <h3 className="text-xl md:text-2xl font-bold mt-2 mb-4 text-foreground leading-tight">{project.title}</h3>
+                    
+                    {/* Key Points */}
+                    <div className="flex flex-wrap gap-2 mb-6">
+                        {project.keyPoints.map((point, i) => (
+                            <span key={i} className="bg-primary/10 text-primary text-xs px-3 py-1.5 rounded-full border border-primary/20">
+                                {point}
+                            </span>
+                        ))}
                     </div>
 
                     {/* Problem & Solution */}
-                    <div className="flex-1 flex flex-col gap-5">
-                        <div className="bg-primary/5 p-5 rounded-xl border border-primary/10">
-                            <h4 className="text-sm font-bold text-primary uppercase tracking-widest mb-2">The Problem</h4>
-                            <p className="text-sm leading-relaxed text-foreground/90">{project.problem}</p>
+                    <div className="flex-1 space-y-4">
+                        <div className="bg-primary/5 p-4 rounded-xl border border-primary/10">
+                            <h4 className="text-xs font-bold text-primary uppercase tracking-widest mb-1">The Problem</h4>
+                            <p className="text-sm leading-relaxed text-foreground/80">{project.problem}</p>
                         </div>
 
-                        <div className="bg-secondary/5 p-5 rounded-xl border border-secondary/10">
-                            <h4 className="text-sm font-bold text-secondary uppercase tracking-widest mb-2">The Solution</h4>
-                            <p className="text-sm leading-relaxed text-foreground/90">{project.solution}</p>
+                        <div className="bg-secondary/5 p-4 rounded-xl border border-secondary/10">
+                            <h4 className="text-xs font-bold text-secondary uppercase tracking-widest mb-1">The Solution</h4>
+                            <p className="text-sm leading-relaxed text-foreground/80">{project.solution}</p>
                         </div>
                     </div>
 
@@ -100,17 +72,14 @@ const FlipCard = ({ project }: { project: ProjectCardProps }) => {
                         href={project.pdfLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        className="mt-6 flex items-center justify-center gap-2 bg-primary text-primary-foreground py-4 px-6 rounded-xl font-semibold text-sm hover:bg-primary/90 transition-colors"
+                        className="mt-6 flex items-center justify-center gap-2 bg-primary text-primary-foreground py-3 px-6 rounded-xl font-semibold text-sm hover:bg-primary/90 transition-colors"
                     >
                         <ExternalLink className="w-4 h-4" />
                         View Full Project
                     </a>
-
-                    <p className="text-center text-xs text-muted-foreground mt-4">Click anywhere to flip back</p>
                 </div>
-            </motion.div>
-        </div>
+            </div>
+        </motion.div>
     );
 };
 
@@ -164,9 +133,9 @@ const StrategicWork = () => {
                     <span className="absolute -bottom-4 left-0 w-1/3 h-2 bg-gradient-to-r from-primary to-transparent"></span>
                 </motion.h2>
 
-                <div className="grid md:grid-cols-2 gap-8">
+                <div className="flex flex-col gap-8">
                     {projects.map((project) => (
-                        <FlipCard key={project.id} project={project} />
+                        <ProjectCard key={project.id} project={project} />
                     ))}
                 </div>
             </div>
