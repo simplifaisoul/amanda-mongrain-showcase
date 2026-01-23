@@ -106,7 +106,7 @@ const StrategicWork = () => {
             problem: "Low class attendance (5–10 people per session) at an inclusive Ottawa fitness studio, with Gen Z audiences experiencing gym anxiety and lack of belonging.",
             solution: "Created 'Step. Sweat. Smile. Repeat.' campaign using community-driven storytelling and digital executions to reduce gym anxiety and emphasize inclusivity.",
             keyPoints: ["Target: 30% Awareness Increase", "Boost to 20–25 Attendees", "Gen Z Social Strategy"],
-            pdfLink: "https://drive.google.com/drive/folders/17aGTNqYKFB6_vDCZf_jnl3t_JezbZfnD?usp=drive_link"
+            pdfLink: "https://drive.google.com/file/d/1TAZjK0JHLTi5mN_Hp-cdxzwDwv8G22_M/view"
         },
         {
             id: 2,
