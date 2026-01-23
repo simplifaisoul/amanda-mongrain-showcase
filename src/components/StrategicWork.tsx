@@ -106,7 +106,7 @@ const StrategicWork = () => {
             problem: "Low class attendance (5–10 people per session) at an inclusive Ottawa fitness studio, with Gen Z audiences experiencing gym anxiety and lack of belonging.",
             solution: "Created 'Step. Sweat. Smile. Repeat.' campaign using community-driven storytelling and digital executions to reduce gym anxiety and emphasize inclusivity.",
             keyPoints: ["Target: 30% Awareness Increase", "Boost to 20–25 Attendees", "Gen Z Social Strategy"],
-            pdfLink: "https://drive.google.com/drive/folders/17aGTNqYKFB6_vDCZf_jnl3t_JezbZfnD"
+            pdfLink: "https://drive.google.com/drive/folders/17aGTNqYKFB6_vDCZf_jnl3t_JezbZfnD?usp=drive_link"
         },
         {
             id: 2,
@@ -114,7 +114,7 @@ const StrategicWork = () => {
             problem: "Retail brand facing increased competition and shifting consumer behaviour during high-pressure seasonal periods.",
             solution: "Repositioned brand around convenience, emotional relief, and experiential value through integrated digital and in-store approach to drive foot traffic and sales.",
             keyPoints: ["Brand Repositioning", "Omnichannel Strategy", "Seasonal Campaign"],
-            pdfLink: "https://drive.google.com/drive/folders/17aGTNqYKFB6_vDCZf_jnl3t_JezbZfnD"
+            pdfLink: "https://drive.google.com/drive/folders/1oK9W4ydoRJMMp0tyy2ghYOLfHGcuGkFa?usp=drive_link"
         },
         {
             id: 3,
@@ -122,7 +122,7 @@ const StrategicWork = () => {
             problem: "Rebuilding relevance and loyalty among Gen Z and Millennials following store closures and brand fragmentation.",
             solution: "Positioned DAVIDsTEA as a modern wellness ritual brand with integrated campaigns across digital, CRM, and experiential touchpoints to drive online sales and emotional connection.",
             keyPoints: ["Wellness Positioning", "CRM & Digital Integration", "Repeat Purchase Focus"],
-            pdfLink: "https://drive.google.com/drive/folders/17aGTNqYKFB6_vDCZf_jnl3t_JezbZfnD"
+            pdfLink: "https://drive.google.com/drive/folders/1-3ar1TDAGBaTR942DBgDOwr-AgzROWOv?usp=drive_link"
         },
         {
             id: 4,
@@ -130,7 +130,7 @@ const StrategicWork = () => {
             problem: "Declining Friday-night game attendance caused by an aging fan base, with games not seen as a social destination.",
             solution: "Introduced pub-led game-night experience and 'Break the Ice' digital strategy targeting young professionals to reframe games as a social destination.",
             keyPoints: ["3,700 Ticket Goal/Game", "$79K Incremental Revenue", "Young Professional Focus"],
-            pdfLink: "https://drive.google.com/drive/folders/17aGTNqYKFB6_vDCZf_jnl3t_JezbZfnD"
+            pdfLink: "https://drive.google.com/drive/folders/1LSQ4_icytyUrjShyspmVd-aT_ZV2A9mt?usp=drive_link"
         }
     ];
 
