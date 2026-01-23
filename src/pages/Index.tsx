@@ -30,7 +30,7 @@ const Index = () => {
       >
         <div className="absolute inset-0 bg-background/50 backdrop-blur-3xl z-0"></div>
         <p className="text-muted-foreground relative z-10 text-sm tracking-widest uppercase">
-          © 2024 Amanda Mongrain. Crafted with Strategic Precision.
+          © 2026 Amanda Mongrain.
         </p>
       </motion.footer>
     </div>
