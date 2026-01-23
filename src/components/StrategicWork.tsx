@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { ExternalLink } from "lucide-react";
 import mightyMaestroImg from "@/assets/strategic/mighty-maestro.jpg";
+import placeDorleans from "@/assets/strategic/place-dorleans.jpg";
 
 interface ProjectCardProps {
     id: number;
@@ -133,7 +134,8 @@ const StrategicWork = () => {
             problem: "Retail brand facing increased competition and shifting consumer behaviour during high-pressure seasonal periods.",
             solution: "Repositioned brand around convenience, emotional relief, and experiential value through integrated digital and in-store approach to drive foot traffic and sales.",
             keyPoints: ["Brand Repositioning", "Omnichannel Strategy", "Seasonal Campaign"],
-            pdfLink: "https://drive.google.com/file/d/1S2BMYMHQ8Z-cCpz7kp1W07CVm94IM9Bs/view"
+            pdfLink: "https://drive.google.com/file/d/1S2BMYMHQ8Z-cCpz7kp1W07CVm94IM9Bs/view",
+            image: placeDorleans
         },
         {
             id: 3,
