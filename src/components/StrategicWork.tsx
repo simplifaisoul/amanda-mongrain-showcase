@@ -4,6 +4,7 @@ import { ExternalLink } from "lucide-react";
 import mightyMaestroImg from "@/assets/strategic/mighty-maestro.jpg";
 import placeDorleans from "@/assets/strategic/place-dorleans.jpg";
 import davidsteaImg from "@/assets/strategic/davidstea.jpg";
+import ottawa67sImg from "@/assets/strategic/ottawa-67s.jpg";
 
 interface ProjectCardProps {
     id: number;
@@ -153,7 +154,8 @@ const StrategicWork = () => {
             problem: "Declining Friday-night game attendance caused by an aging fan base, with games not seen as a social destination.",
             solution: "Introduced pub-led game-night experience and 'Break the Ice' digital strategy targeting young professionals to reframe games as a social destination.",
             keyPoints: ["3,700 Ticket Goal/Game", "$79K Incremental Revenue", "Young Professional Focus"],
-            pdfLink: "https://drive.google.com/file/d/1MugEW8pEIwq2fSJd2UbCCQnfbEh4iC4h/view"
+            pdfLink: "https://drive.google.com/file/d/1MugEW8pEIwq2fSJd2UbCCQnfbEh4iC4h/view",
+            image: ottawa67sImg
         }
     ];
 
