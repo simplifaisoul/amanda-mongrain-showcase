@@ -50,10 +50,12 @@ const Contact = () => {
             </Button>
           </a>
 
-          <Button variant="outline" size="lg" className="h-16 px-8 text-lg border-2 border-white/20 text-foreground hover:bg-white hover:text-black transition-all w-64 justify-start group">
-            <FileText className="mr-4 w-6 h-6 group-hover:scale-110 transition-transform" />
-            Resume
-          </Button>
+          <a href="/Amanda-Mongrain-Resume.pdf" target="_blank" rel="noopener noreferrer">
+            <Button variant="outline" size="lg" className="h-16 px-8 text-lg border-2 border-white/20 text-foreground hover:bg-white hover:text-black transition-all w-64 justify-start group">
+              <FileText className="mr-4 w-6 h-6 group-hover:scale-110 transition-transform" />
+              Resume
+            </Button>
+          </a>
         </motion.div>
       </div>
     </section>
