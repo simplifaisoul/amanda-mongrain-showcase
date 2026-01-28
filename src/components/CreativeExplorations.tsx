@@ -15,14 +15,14 @@ import illustratorLemons from "@/assets/creatives/illustrator-lemons.jpg";
 
 const creatives = [
     {
-        title: "Nike Ad",
-        subtitle: "Advertising Design",
-        image: nikeAd,
-    },
-    {
         title: "Self Portrait",
         subtitle: "Digital Art & Photography",
         image: selfPortrait,
+    },
+    {
+        title: "Nike Ad",
+        subtitle: "Advertising Design",
+        image: nikeAd,
     },
     {
         title: "Illustrator Work",
