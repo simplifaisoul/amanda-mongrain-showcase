@@ -35,23 +35,24 @@ const CreativeExplorations = () => {
     const [selectedCreative, setSelectedCreative] = useState<number | null>(null);
 
     return (
-        <section className="py-24 px-6 bg-background relative">
-            <div className="max-w-5xl mx-auto">
+        <section className="py-24 bg-background relative">
+            <div className="max-w-7xl mx-auto px-6 mb-20">
                 <motion.h2
-                    className="text-4xl md:text-6xl font-black text-right mb-20 text-foreground"
+                    className="text-4xl md:text-6xl font-black text-right text-foreground"
                     initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                 >
                     CREATIVE <span className="text-secondary">EXPLORATIONS</span>
                 </motion.h2>
+            </div>
 
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="relative px-16"
-                >
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="relative px-4 md:px-16"
+            >
                     <Carousel className="w-full">
                         <CarouselContent>
                             {creatives.map((creative, idx) => (
@@ -77,8 +78,7 @@ const CreativeExplorations = () => {
                         <CarouselPrevious className="left-0 h-12 w-12 border-white/20 bg-black/50 hover:bg-black/70 text-white" />
                         <CarouselNext className="right-0 h-12 w-12 border-white/20 bg-black/50 hover:bg-black/70 text-white" />
                     </Carousel>
-                </motion.div>
-            </div>
+            </motion.div>
 
             {/* Lightbox Modal */}
             <AnimatePresence>
