@@ -12,7 +12,8 @@ import davidsteaImg from "@/assets/strategic/davidstea.jpg";
 import ottawa67sImg from "@/assets/strategic/ottawa-67s.jpg";
 import ottawa67sPersonaImg from "@/assets/strategic/ottawa-67s-persona.jpg";
 import ottawa67sAppImg from "@/assets/strategic/ottawa-67s-app.jpg";
-import ottawa67sCombinedImg from "@/assets/strategic/ottawa-67s-combined.jpg";
+import ottawa67sLeaderboardImg from "@/assets/strategic/ottawa-67s-leaderboard.jpg";
+import ottawa67sEmailImg from "@/assets/strategic/ottawa-67s-email.jpg";
 
 const StrategicWork = () => {
     const caseStudies: CaseStudyProps[] = [
@@ -56,7 +57,7 @@ const StrategicWork = () => {
                 }
             ],
             pdfLink: "https://drive.google.com/file/d/1MugEW8pEIwq2fSJd2UbCCQnfbEh4iC4h/view",
-            images: [ottawa67sImg, ottawa67sPersonaImg, ottawa67sAppImg, ottawa67sCombinedImg]
+            images: [ottawa67sImg, ottawa67sPersonaImg, ottawa67sAppImg, ottawa67sLeaderboardImg, ottawa67sEmailImg]
         },
         {
             id: 2,
