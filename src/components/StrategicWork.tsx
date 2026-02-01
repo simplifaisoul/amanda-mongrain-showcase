@@ -15,6 +15,48 @@ const StrategicWork = () => {
     const caseStudies: CaseStudyProps[] = [
         {
             id: 1,
+            hook: "Ottawa 67's",
+            description: "\"Break the Ice\" – A strategic IMC proposal to transform Friday-night hockey games into must-attend social destinations for young professionals.",
+            sections: [
+                {
+                    title: "The Challenge",
+                    icon: <Target className="w-4 h-4" />,
+                    content: "The Problem: Declining Friday night game attendance among the 25-30 age demographic in Ottawa. The Objective: Develop a 3-month integrated strategy to drive $79,000 in projected incremental revenue and sell 3,700 additional tickets."
+                },
+                {
+                    title: "The Insight",
+                    icon: <Lightbulb className="w-4 h-4" />,
+                    content: "\"Hockey culture can feel exclusive.\" Research into Ottawa young professionals revealed that while they value community, they often feel intimidated by traditional sports environments. The strategy shifted the focus from \"the game\" to \"the social catalyst.\""
+                },
+                {
+                    title: "The Strategy",
+                    icon: <Rocket className="w-4 h-4" />,
+                    content: "Concept: \"Break the Ice.\" I built a \"ground-up\" Integrated Marketing Communications (IMC) plan to reframe the Ottawa 67's as a social hub. The strategy focused on lowering social barriers for \"non-hockey fans\" to foster new local connections."
+                },
+                {
+                    title: "The Execution",
+                    icon: <Rocket className="w-4 h-4" />,
+                    content: [
+                        "BRRReakthrough App: A conceptual community-building tool to connect fans with shared interests in-arena.",
+                        "O'Riley's Pub Pop-Up: A strategic partnership proposal to create a dedicated social gathering space at TD Place.",
+                        "Thematic Messaging: \"Your team, your terms\" tagline designed to emphasize inclusivity and social belonging."
+                    ]
+                },
+                {
+                    title: "Success Benchmarks",
+                    icon: <BarChart3 className="w-4 h-4" />,
+                    content: [
+                        "Revenue Target: $79,000 in incremental ticket and F&B sales.",
+                        "Growth Target: 3,700 additional tickets sold over the campaign period.",
+                        "Engagement Target: 5,000 app downloads with a 50% interaction rate."
+                    ]
+                }
+            ],
+            pdfLink: "https://drive.google.com/file/d/1MugEW8pEIwq2fSJd2UbCCQnfbEh4iC4h/view",
+            images: [ottawa67sImg]
+        },
+        {
+            id: 2,
             hook: "Mighty Maestro",
             description: "A strategic social media growth pitch designed to double class attendance for a local fitness studio by targeting Gen Z women with an inclusive, community-first approach.",
             sections: [
@@ -56,7 +98,7 @@ const StrategicWork = () => {
             images: [mightyMaestroImg, mightyMaestroPersonaImg, mightyMaestroStepImg, mightyMaestroSweatImg, mightyMaestroSmileImg, mightyMaestroRepeatImg]
         },
         {
-            id: 2,
+            id: 3,
             hook: "Place D'Orleans",
             description: "A seasonal integrated marketing campaign designed to revive retail foot traffic and reposition the shopping center as a convenient, emotionally rewarding destination.",
             sections: [
@@ -84,7 +126,7 @@ const StrategicWork = () => {
             images: [placeDorleans]
         },
         {
-            id: 3,
+            id: 4,
             hook: "DAVIDsTEA",
             description: "A brand revitalization proposal to rebuild relevance among Gen Z and Millennials by repositioning DAVIDsTEA as a modern wellness ritual brand.",
             sections: [
@@ -110,48 +152,6 @@ const StrategicWork = () => {
             ],
             pdfLink: "https://drive.google.com/file/d/10l4cAqubCHlpI7xKguIpe_R7EpVbCDoj/view",
             images: [davidsteaImg]
-        },
-        {
-            id: 4,
-            hook: "Ottawa 67's",
-            description: "\"Break the Ice\" – A strategic IMC proposal to transform Friday-night hockey games into must-attend social destinations for young professionals.",
-            sections: [
-                {
-                    title: "The Challenge",
-                    icon: <Target className="w-4 h-4" />,
-                    content: "The Problem: Declining Friday night game attendance among the 25-30 age demographic in Ottawa. The Objective: Develop a 3-month integrated strategy to drive $79,000 in projected incremental revenue and sell 3,700 additional tickets."
-                },
-                {
-                    title: "The Insight",
-                    icon: <Lightbulb className="w-4 h-4" />,
-                    content: "\"Hockey culture can feel exclusive.\" Research into Ottawa young professionals revealed that while they value community, they often feel intimidated by traditional sports environments. The strategy shifted the focus from \"the game\" to \"the social catalyst.\""
-                },
-                {
-                    title: "The Strategy",
-                    icon: <Rocket className="w-4 h-4" />,
-                    content: "Concept: \"Break the Ice.\" I built a \"ground-up\" Integrated Marketing Communications (IMC) plan to reframe the Ottawa 67's as a social hub. The strategy focused on lowering social barriers for \"non-hockey fans\" to foster new local connections."
-                },
-                {
-                    title: "The Execution",
-                    icon: <Rocket className="w-4 h-4" />,
-                    content: [
-                        "BRRReakthrough App: A conceptual community-building tool to connect fans with shared interests in-arena.",
-                        "O'Riley's Pub Pop-Up: A strategic partnership proposal to create a dedicated social gathering space at TD Place.",
-                        "Thematic Messaging: \"Your team, your terms\" tagline designed to emphasize inclusivity and social belonging."
-                    ]
-                },
-                {
-                    title: "Success Benchmarks",
-                    icon: <BarChart3 className="w-4 h-4" />,
-                    content: [
-                        "Revenue Target: $79,000 in incremental ticket and F&B sales.",
-                        "Growth Target: 3,700 additional tickets sold over the campaign period.",
-                        "Engagement Target: 5,000 app downloads with a 50% interaction rate."
-                    ]
-                }
-            ],
-            pdfLink: "https://drive.google.com/file/d/1MugEW8pEIwq2fSJd2UbCCQnfbEh4iC4h/view",
-            images: [ottawa67sImg]
         }
     ];
 
