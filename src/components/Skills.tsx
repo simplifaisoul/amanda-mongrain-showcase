@@ -9,12 +9,12 @@ const Skills = () => {
     },
     { 
       title: "Consumer Insights", 
-      description: "Diving deep into audience psychology to identify the 'why' behind consumer behavior (e.g., identifying 'gym anxiety' as a barrier to fitness).",
+      description: "Diving deep into audience psychology to identify the 'why' behind consumer behavior.",
       delay: 0.05 
     },
     { 
       title: "Content Architecture", 
-      description: "Building strategic content funnels (like the Step, Sweat, Smile, Repeat framework) that move audiences from awareness to action.",
+      description: "Building strategic content funnels that move audiences from awareness to action.",
       delay: 0.1 
     },
     { 
