@@ -110,25 +110,40 @@ const StrategicWork = () => {
         {
             id: 3,
             hook: "Place D'Orleans",
-            description: "A seasonal integrated marketing campaign designed to revive retail foot traffic and reposition the shopping center as a convenient, emotionally rewarding destination.",
+            description: "\"More Holiday\" – A seasonal IMC campaign to reposition an Ottawa shopping center as the stress-free alternative, targeting 120,000 visitors and a 6% sales lift.",
             sections: [
                 {
                     title: "The Challenge",
                     icon: <Target className="w-4 h-4" />,
-                    content: "Retail brand facing increased competition and shifting consumer behaviour during high-pressure seasonal periods."
+                    content: "The Problem: Place d'Orléans faced declining holiday traffic due to intense competition from larger malls and e-commerce. Families experienced high stress during holiday shopping. The Objective: Develop a campaign to reposition the mall as the \"calm, convenient alternative\" to drive 120,000 projected visitors and boost retailer sales by 6% by December 31, 2025."
+                },
+                {
+                    title: "The Insight",
+                    icon: <Lightbulb className="w-4 h-4" />,
+                    content: "\"Shoppers aren't looking for more to do; they're looking for less stress.\" Research into suburban Ottawa women (35-45) revealed a deep desire for ease and joy during the holidays, not just more shopping options. The strategy shifted from transactional retail to experiential relief."
                 },
                 {
                     title: "The Strategy",
                     icon: <Rocket className="w-4 h-4" />,
-                    content: "Repositioned brand around convenience, emotional relief, and experiential value through integrated digital and in-store approach to drive foot traffic and sales."
+                    content: "Concept: \"More Holiday.\" I crafted an Integrated Marketing Communications (IMC) plan to transform the mall's perception from a shopping destination to a stress-free, community-focused holiday hub. The \"Big Idea\" was to offer \"more calm, clarity, and joy\" through a curated experience."
                 },
                 {
-                    title: "Key Tactics",
-                    icon: <Lightbulb className="w-4 h-4" />,
+                    title: "The Execution",
+                    icon: <Rocket className="w-4 h-4" />,
                     content: [
-                        "Brand Repositioning around emotional value",
-                        "Omnichannel Strategy across digital and physical",
-                        "Seasonal Campaign optimization"
+                        "Digital Ecosystem: Targeted paid social media (Instagram/TikTok), Google Display banners, and SEM to reach busy parents with the \"Skip the Chaos. Shop Calm.\" message.",
+                        "Experiential Activation: Proposed an in-mall \"Branded Photo Zone\" to create shareable, joyful moments and encourage user-generated content.",
+                        "Omnichannel Touchpoints: Integrated transit shelter ads on commuter routes and a central campaign landing page to ensure consistent messaging across all customer journeys."
+                    ]
+                },
+                {
+                    title: "Success Benchmarks",
+                    icon: <BarChart3 className="w-4 h-4" />,
+                    content: [
+                        "Visitor Traffic: 120,000 projected in-mall visits.",
+                        "Retailer Sales: 6% projected increase in retailer sales.",
+                        "Digital Reach: 500,000 projected display impressions and 15,000 high-intent search clicks.",
+                        "Brand Perception: Establish Place d'Orléans as the preferred stress-free holiday shopping destination in East Ottawa."
                     ]
                 }
             ],
