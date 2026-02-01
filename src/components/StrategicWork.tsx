@@ -3,6 +3,10 @@ import { useState } from "react";
 import { ExternalLink, Target, Lightbulb, Rocket, BarChart3, ChevronDown, ChevronUp, ChevronLeft, ChevronRight } from "lucide-react";
 import mightyMaestroImg from "@/assets/strategic/mighty-maestro.jpg";
 import mightyMaestroPersonaImg from "@/assets/strategic/mighty-maestro-persona.jpg";
+import mightyMaestroStepImg from "@/assets/strategic/mighty-maestro-step.jpg";
+import mightyMaestroSweatImg from "@/assets/strategic/mighty-maestro-sweat.jpg";
+import mightyMaestroSmileImg from "@/assets/strategic/mighty-maestro-smile.jpg";
+import mightyMaestroRepeatImg from "@/assets/strategic/mighty-maestro-repeat.jpg";
 import placeDorleans from "@/assets/strategic/place-dorleans.jpg";
 import davidsteaImg from "@/assets/strategic/davidstea.jpg";
 import ottawa67sImg from "@/assets/strategic/ottawa-67s.jpg";
@@ -202,7 +206,7 @@ const StrategicWork = () => {
                 }
             ],
             pdfLink: "https://drive.google.com/file/d/1TAZjK0JHLTi5mN_Hp-cdxzwDwv8G22_M/view",
-            images: [mightyMaestroPersonaImg, mightyMaestroImg]
+            images: [mightyMaestroPersonaImg, mightyMaestroImg, mightyMaestroStepImg, mightyMaestroSweatImg, mightyMaestroSmileImg, mightyMaestroRepeatImg]
         },
         {
             id: 2,
