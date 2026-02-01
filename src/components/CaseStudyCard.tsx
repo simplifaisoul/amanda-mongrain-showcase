@@ -11,10 +11,69 @@ interface CaseStudySection {
 export interface CaseStudyProps {
     id: number;
     hook: string;
+    description: string;
     sections: CaseStudySection[];
     pdfLink: string;
     images?: string[];
 }
+
+const ImageCarousel = ({ 
+    images, 
+    currentIndex, 
+    onNext, 
+    onPrev, 
+    onDotClick,
+    alt 
+}: { 
+    images: string[]; 
+    currentIndex: number; 
+    onNext: (e: React.MouseEvent) => void; 
+    onPrev: (e: React.MouseEvent) => void;
+    onDotClick: (e: React.MouseEvent, index: number) => void;
+    alt: string;
+}) => {
+    const hasMultipleImages = images.length > 1;
+
+    return (
+        <div className="h-64 md:h-80 overflow-hidden bg-muted/30 flex items-center justify-center p-4 relative">
+            <img 
+                src={images[currentIndex]} 
+                alt={alt}
+                className="max-w-full max-h-full object-contain rounded-lg"
+            />
+            
+            {hasMultipleImages && (
+                <>
+                    <button
+                        onClick={onPrev}
+                        className="absolute left-3 top-1/2 -translate-y-1/2 bg-background/90 hover:bg-background text-foreground p-2.5 rounded-full shadow-lg transition-all hover:scale-110 z-10"
+                        aria-label="Previous image"
+                    >
+                        <ChevronLeft className="w-5 h-5" />
+                    </button>
+                    <button
+                        onClick={onNext}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 bg-background/90 hover:bg-background text-foreground p-2.5 rounded-full shadow-lg transition-all hover:scale-110 z-10"
+                        aria-label="Next image"
+                    >
+                        <ChevronRight className="w-5 h-5" />
+                    </button>
+                    
+                    <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 bg-background/70 px-3 py-1.5 rounded-full">
+                        {images.map((_, i) => (
+                            <button
+                                key={i}
+                                onClick={(e) => onDotClick(e, i)}
+                                className={`w-2.5 h-2.5 rounded-full transition-all ${i === currentIndex ? 'bg-primary w-7' : 'bg-foreground/30 hover:bg-foreground/50'}`}
+                                aria-label={`Go to image ${i + 1}`}
+                            />
+                        ))}
+                    </div>
+                </>
+            )}
+        </div>
+    );
+};
 
 const CaseStudyCard = ({ study, index }: { study: CaseStudyProps; index: number }) => {
     const [isFlipped, setIsFlipped] = useState(false);
@@ -22,7 +81,6 @@ const CaseStudyCard = ({ study, index }: { study: CaseStudyProps; index: number 
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     const images = study.images || [];
-    const hasMultipleImages = images.length > 1;
 
     const nextImage = (e: React.MouseEvent) => {
         e.stopPropagation();
@@ -34,21 +92,22 @@ const CaseStudyCard = ({ study, index }: { study: CaseStudyProps; index: number 
         setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
     };
 
+    const handleDotClick = (e: React.MouseEvent, index: number) => {
+        e.stopPropagation();
+        setCurrentImageIndex(index);
+    };
+
     const handleFlip = () => {
         setIsFlipped(!isFlipped);
     };
 
-    // Get first two sections for the front preview
-    const keyPoints = study.sections.slice(0, 2);
-
     return (
         <motion.div
-            className="perspective-1000 h-[600px] md:h-[650px] cursor-pointer"
+            className="perspective-1000 h-[700px] md:h-[750px]"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: index * 0.1 }}
-            onClick={handleFlip}
         >
             <motion.div
                 className="relative w-full h-full transition-transform duration-700 preserve-3d"
@@ -60,89 +119,63 @@ const CaseStudyCard = ({ study, index }: { study: CaseStudyProps; index: number 
                     className="absolute inset-0 backface-hidden bg-card rounded-3xl overflow-hidden shadow-2xl border border-border/50"
                     style={{ backfaceVisibility: "hidden" }}
                 >
-                    {/* Image */}
+                    {/* Image Carousel */}
                     {images.length > 0 && (
-                        <div className="h-56 md:h-72 overflow-hidden bg-muted/30 flex items-center justify-center p-4 relative">
-                            <img 
-                                src={images[currentImageIndex]} 
-                                alt={study.hook}
-                                className="max-w-full max-h-full object-contain rounded-lg"
-                            />
-                            
-                            {/* Image Navigation */}
-                            {hasMultipleImages && (
-                                <>
-                                    <button
-                                        onClick={prevImage}
-                                        className="absolute left-4 top-1/2 -translate-y-1/2 bg-background/80 hover:bg-background text-foreground p-2 rounded-full shadow-lg transition-all hover:scale-110"
-                                    >
-                                        <ChevronLeft className="w-5 h-5" />
-                                    </button>
-                                    <button
-                                        onClick={nextImage}
-                                        className="absolute right-4 top-1/2 -translate-y-1/2 bg-background/80 hover:bg-background text-foreground p-2 rounded-full shadow-lg transition-all hover:scale-110"
-                                    >
-                                        <ChevronRight className="w-5 h-5" />
-                                    </button>
-                                    
-                                    {/* Image Indicators */}
-                                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-                                        {images.map((_, i) => (
-                                            <button
-                                                key={i}
-                                                onClick={(e) => {
-                                                    e.stopPropagation();
-                                                    setCurrentImageIndex(i);
-                                                }}
-                                                className={`w-2 h-2 rounded-full transition-all ${i === currentImageIndex ? 'bg-primary w-6' : 'bg-foreground/30 hover:bg-foreground/50'}`}
-                                            />
-                                        ))}
-                                    </div>
-                                </>
-                            )}
-                        </div>
+                        <ImageCarousel 
+                            images={images}
+                            currentIndex={currentImageIndex}
+                            onNext={nextImage}
+                            onPrev={prevImage}
+                            onDotClick={handleDotClick}
+                            alt={study.hook}
+                        />
                     )}
                     
                     {/* Front Content */}
                     <div className="p-6 md:p-8">
-                        <span className="inline-block bg-primary/20 text-primary px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase mb-3">
+                        <span className="inline-block bg-primary/20 text-primary px-4 py-1.5 rounded-full text-sm font-bold tracking-wider uppercase mb-4">
                             Case Study {study.id}
                         </span>
-                        <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground leading-tight mb-4">
+                        <h3 className="text-2xl md:text-3xl font-bold text-foreground leading-tight mb-4">
                             {study.hook}
                         </h3>
+                        <p className="text-base md:text-lg text-foreground/70 leading-relaxed mb-6">
+                            {study.description}
+                        </p>
                         
-                        {/* Key Points Preview */}
-                        <div className="space-y-3">
-                            {keyPoints.map((section, i) => (
-                                <div key={i} className="flex items-start gap-3">
-                                    <div className="w-6 h-6 rounded-lg bg-primary/10 flex items-center justify-center text-primary flex-shrink-0 mt-0.5">
-                                        {section.icon}
-                                    </div>
-                                    <p className="text-sm text-foreground/70 line-clamp-2">
-                                        {Array.isArray(section.content) ? section.content[0] : section.content}
-                                    </p>
-                                </div>
-                            ))}
-                        </div>
-                        
-                        {/* Flip Hint */}
-                        <div className="mt-6 flex items-center justify-center gap-2 text-primary/60">
-                            <RotateCcw className="w-4 h-4" />
-                            <span className="text-xs font-medium">Click to see more</span>
-                        </div>
+                        {/* Flip Button */}
+                        <button
+                            onClick={handleFlip}
+                            className="w-full flex items-center justify-center gap-3 bg-primary/10 hover:bg-primary/20 text-primary py-4 rounded-2xl transition-all hover:scale-[1.02] group"
+                        >
+                            <span className="text-base font-semibold">View Full Details</span>
+                            <RotateCcw className="w-5 h-5 group-hover:rotate-180 transition-transform duration-500" />
+                        </button>
                     </div>
                 </div>
 
                 {/* Back of Card */}
                 <div 
-                    className="absolute inset-0 backface-hidden bg-card rounded-3xl overflow-hidden shadow-2xl border border-border/50 overflow-y-auto"
+                    className="absolute inset-0 backface-hidden bg-card rounded-3xl overflow-hidden shadow-2xl border border-border/50"
                     style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
                 >
-                    <div className="p-6 md:p-8">
+                    {/* Image Carousel on Back */}
+                    {images.length > 0 && (
+                        <ImageCarousel 
+                            images={images}
+                            currentIndex={currentImageIndex}
+                            onNext={nextImage}
+                            onPrev={prevImage}
+                            onDotClick={handleDotClick}
+                            alt={study.hook}
+                        />
+                    )}
+                    
+                    {/* Back Content - Scrollable */}
+                    <div className="p-6 md:p-8 h-[calc(100%-20rem)] md:h-[calc(100%-22rem)] overflow-y-auto">
                         {/* Header */}
-                        <div className="flex items-start justify-between mb-6">
-                            <div>
+                        <div className="flex items-start justify-between mb-5">
+                            <div className="flex-1 pr-4">
                                 <span className="inline-block bg-primary/20 text-primary px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase mb-2">
                                     Case Study {study.id}
                                 </span>
@@ -155,9 +188,10 @@ const CaseStudyCard = ({ study, index }: { study: CaseStudyProps; index: number 
                                     e.stopPropagation();
                                     setIsFlipped(false);
                                 }}
-                                className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 text-primary transition-colors"
+                                className="p-2.5 rounded-full bg-primary/10 hover:bg-primary/20 text-primary transition-colors flex-shrink-0"
+                                aria-label="Flip back"
                             >
-                                <RotateCcw className="w-4 h-4" />
+                                <RotateCcw className="w-5 h-5" />
                             </button>
                         </div>
 
@@ -169,24 +203,24 @@ const CaseStudyCard = ({ study, index }: { study: CaseStudyProps; index: number 
                                     className="bg-background/50 rounded-xl p-4 border border-border/30"
                                 >
                                     <div className="flex items-center gap-2 mb-2">
-                                        <div className="w-6 h-6 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                                        <div className="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
                                             {section.icon}
                                         </div>
-                                        <h4 className="font-bold text-foreground text-xs uppercase tracking-wide">
+                                        <h4 className="font-bold text-foreground text-sm uppercase tracking-wide">
                                             {section.title}
                                         </h4>
                                     </div>
                                     {Array.isArray(section.content) ? (
-                                        <ul className="space-y-1">
+                                        <ul className="space-y-1.5">
                                             {section.content.map((item, j) => (
-                                                <li key={j} className="flex items-start gap-2 text-xs text-foreground/80 leading-relaxed">
-                                                    <span className="w-1 h-1 rounded-full bg-primary mt-1.5 flex-shrink-0" />
+                                                <li key={j} className="flex items-start gap-2 text-sm text-foreground/80 leading-relaxed">
+                                                    <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
                                                     {item}
                                                 </li>
                                             ))}
                                         </ul>
                                     ) : (
-                                        <p className="text-xs text-foreground/80 leading-relaxed">{section.content}</p>
+                                        <p className="text-sm text-foreground/80 leading-relaxed">{section.content}</p>
                                     )}
                                 </div>
                             ))}
@@ -199,12 +233,12 @@ const CaseStudyCard = ({ study, index }: { study: CaseStudyProps; index: number 
                                     e.stopPropagation();
                                     setIsExpanded(!isExpanded);
                                 }}
-                                className="w-full mt-3 flex items-center justify-center gap-2 text-primary hover:text-primary/80 transition-colors py-2 rounded-xl bg-primary/5 hover:bg-primary/10"
+                                className="w-full mt-3 flex items-center justify-center gap-2 text-primary hover:text-primary/80 transition-colors py-2.5 rounded-xl bg-primary/5 hover:bg-primary/10"
                             >
-                                <span className="text-xs font-semibold">
-                                    {isExpanded ? 'Show Less' : `Show ${study.sections.length - 3} More`}
+                                <span className="text-sm font-semibold">
+                                    {isExpanded ? 'Show Less' : `Show ${study.sections.length - 3} More Sections`}
                                 </span>
-                                {isExpanded ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
+                                {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                             </button>
                         )}
 
@@ -215,7 +249,7 @@ const CaseStudyCard = ({ study, index }: { study: CaseStudyProps; index: number 
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 onClick={(e) => e.stopPropagation()}
-                                className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 rounded-xl font-semibold text-sm hover:bg-primary/90 transition-all hover:scale-105 shadow-lg"
+                                className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-xl font-semibold text-sm hover:bg-primary/90 transition-all hover:scale-105 shadow-lg"
                             >
                                 <ExternalLink className="w-4 h-4" />
                                 View Full Case Study
