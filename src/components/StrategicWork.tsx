@@ -1,159 +1,246 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Target, Lightbulb, Rocket, BarChart3, ChevronDown, ChevronUp } from "lucide-react";
 import mightyMaestroImg from "@/assets/strategic/mighty-maestro.jpg";
 import placeDorleans from "@/assets/strategic/place-dorleans.jpg";
 import davidsteaImg from "@/assets/strategic/davidstea.jpg";
 import ottawa67sImg from "@/assets/strategic/ottawa-67s.jpg";
 
-interface ProjectCardProps {
-    id: number;
+interface CaseStudySection {
     title: string;
-    problem: string;
-    solution: string;
-    keyPoints: string[];
+    icon: React.ReactNode;
+    content: string | string[];
+}
+
+interface CaseStudyProps {
+    id: number;
+    hook: string;
+    sections: CaseStudySection[];
     pdfLink: string;
     image?: string;
 }
 
-const FlipCard = ({ project }: { project: ProjectCardProps }) => {
-    const [isFlipped, setIsFlipped] = useState(false);
+const CaseStudyCard = ({ study, index }: { study: CaseStudyProps; index: number }) => {
+    const [isExpanded, setIsExpanded] = useState(false);
 
     return (
-        <div
-            className="relative w-full h-[500px] md:h-[550px] cursor-pointer group"
-            style={{ perspective: '1000px' }}
-            onClick={() => setIsFlipped(!isFlipped)}
+        <motion.div
+            className="bg-card rounded-3xl overflow-hidden shadow-2xl border border-border/50"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: index * 0.1 }}
         >
-            <motion.div
-                className="relative w-full h-full"
-                style={{ transformStyle: 'preserve-3d' }}
-                animate={{ rotateY: isFlipped ? 180 : 0 }}
-                transition={{ duration: 0.7, ease: 'easeInOut' }}
-            >
-                {/* Front - Title & Key Points */}
-                <div 
-                    className="absolute inset-0 backface-hidden rounded-2xl overflow-hidden shadow-xl bg-background p-6 md:p-8 flex flex-col justify-center items-center text-center" 
-                    style={{ 
-                        backfaceVisibility: 'hidden',
-                        background: 'linear-gradient(hsl(var(--background)), hsl(var(--background))) padding-box, linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary) / 0.3), hsl(var(--primary)), hsl(var(--primary) / 0.3)) border-box',
-                        border: '2px solid transparent'
-                    }}
-                >
-                    <span className="text-primary font-mono text-xs tracking-wider uppercase mb-2">Project {project.id}</span>
-                    <h3 className="text-2xl md:text-3xl font-bold text-foreground leading-tight mb-6">{project.title}</h3>
-                    
-                    {/* Key Points */}
-                    <ul className="text-left space-y-2 mb-8">
-                        {project.keyPoints.map((point, i) => (
-                            <li key={i} className="flex items-center gap-2 text-sm text-foreground/80">
-                                <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
-                                {point}
-                            </li>
-                        ))}
-                    </ul>
-
-                    <div className="bg-primary/90 text-primary-foreground px-4 py-2 rounded-full text-xs font-bold tracking-wider">
-                        CLICK TO EXPLORE →
+            {/* Hero Section */}
+            <div className="relative">
+                {study.image && (
+                    <div className="h-64 md:h-80 overflow-hidden">
+                        <img 
+                            src={study.image} 
+                            alt={study.hook}
+                            className="w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent" />
                     </div>
+                )}
+                
+                {/* Hook/Title */}
+                <div className={`${study.image ? 'absolute bottom-0 left-0 right-0' : ''} p-6 md:p-8`}>
+                    <span className="inline-block bg-primary/20 text-primary px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase mb-3">
+                        Case Study {study.id}
+                    </span>
+                    <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground leading-tight">
+                        {study.hook}
+                    </h3>
+                </div>
+            </div>
+
+            {/* Content Sections */}
+            <div className="p-6 md:p-8 pt-4">
+                <div className="grid gap-4">
+                    {study.sections.slice(0, isExpanded ? undefined : 2).map((section, i) => (
+                        <motion.div
+                            key={i}
+                            className="bg-background/50 rounded-2xl p-5 border border-border/30"
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: i * 0.05 }}
+                        >
+                            <div className="flex items-center gap-3 mb-3">
+                                <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                                    {section.icon}
+                                </div>
+                                <h4 className="font-bold text-foreground text-sm uppercase tracking-wide">
+                                    {section.title}
+                                </h4>
+                            </div>
+                            {Array.isArray(section.content) ? (
+                                <ul className="space-y-2">
+                                    {section.content.map((item, j) => (
+                                        <li key={j} className="flex items-start gap-2 text-sm text-foreground/80 leading-relaxed">
+                                            <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
+                            ) : (
+                                <p className="text-sm text-foreground/80 leading-relaxed">{section.content}</p>
+                            )}
+                        </motion.div>
+                    ))}
                 </div>
 
-                {/* Back - Image + Problem/Solution */}
-                <div
-                    className="absolute inset-0 backface-hidden rounded-2xl overflow-hidden border border-primary/20 shadow-2xl flex flex-col md:flex-row"
-                    style={{ transform: "rotateY(180deg)", backfaceVisibility: 'hidden', backgroundColor: 'hsl(var(--background))' }}
-                >
-                    {/* Image Section */}
-                    <div className="md:w-3/5 h-48 md:h-full relative overflow-hidden bg-muted/30 flex items-center justify-center p-2">
-                        {project.image ? (
-                            <img 
-                                src={project.image} 
-                                alt={project.title}
-                                className="max-w-full max-h-full object-contain"
-                            />
-                        ) : (
-                            <div className="w-full h-full bg-muted flex items-center justify-center">
-                                <span className="text-muted-foreground/50 font-bold tracking-widest text-sm">[ PROJECT VISUAL ]</span>
-                            </div>
-                        )}
-                    </div>
+                {/* Expand/Collapse Button */}
+                {study.sections.length > 2 && (
+                    <button
+                        onClick={() => setIsExpanded(!isExpanded)}
+                        className="w-full mt-4 flex items-center justify-center gap-2 text-primary hover:text-primary/80 transition-colors py-3 rounded-xl bg-primary/5 hover:bg-primary/10"
+                    >
+                        <span className="text-sm font-semibold">
+                            {isExpanded ? 'Show Less' : `Show More (${study.sections.length - 2} sections)`}
+                        </span>
+                        {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                    </button>
+                )}
 
-                    {/* Content Section */}
-                    <div className="md:w-1/2 p-5 md:p-6 flex flex-col">
-                        <div className="mb-3">
-                            <span className="text-primary font-mono text-xs tracking-wider uppercase">Project {project.id}</span>
-                            <h3 className="text-lg font-bold mt-1 text-foreground leading-tight">{project.title}</h3>
-                        </div>
-
-                        {/* Problem & Solution */}
-                        <div className="flex-1 flex flex-col gap-3">
-                            <div className="bg-primary/5 p-3 rounded-xl border border-primary/10">
-                                <h4 className="text-xs font-bold text-primary uppercase tracking-widest mb-1">The Problem</h4>
-                                <p className="text-xs leading-relaxed text-foreground/80">{project.problem}</p>
-                            </div>
-
-                            <div className="bg-secondary/5 p-3 rounded-xl border border-secondary/10">
-                                <h4 className="text-xs font-bold text-secondary uppercase tracking-widest mb-1">The Solution</h4>
-                                <p className="text-xs leading-relaxed text-foreground/80">{project.solution}</p>
-                            </div>
-                        </div>
-
-                        {/* CTA */}
-                        <div className="mt-3 flex items-center gap-3">
-                            <a
-                                href={project.pdfLink}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onClick={(e) => e.stopPropagation()}
-                                className="flex-1 flex items-center justify-center gap-2 bg-primary text-primary-foreground py-2.5 px-4 rounded-xl font-semibold text-xs hover:bg-primary/90 transition-colors"
-                            >
-                                <ExternalLink className="w-3 h-3" />
-                                View Full Project
-                            </a>
-                            <span className="text-[10px] text-muted-foreground">Click to flip</span>
-                        </div>
-                    </div>
+                {/* CTA */}
+                <div className="mt-6 pt-6 border-t border-border/30">
+                    <a
+                        href={study.pdfLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-xl font-semibold text-sm hover:bg-primary/90 transition-all hover:scale-105 shadow-lg hover:shadow-xl"
+                    >
+                        <ExternalLink className="w-4 h-4" />
+                        View Full Case Study
+                    </a>
                 </div>
-            </motion.div>
-        </div>
+            </div>
+        </motion.div>
     );
 };
 
 const StrategicWork = () => {
-    const projects = [
+    const caseStudies: CaseStudyProps[] = [
         {
             id: 1,
-            title: "Mighty Maestro - Social Media Campaign",
-            problem: "Low class attendance (5–10 people per session) at an inclusive Ottawa fitness studio, with Gen Z audiences experiencing gym anxiety and lack of belonging.",
-            solution: "Created 'Step. Sweat. Smile. Repeat.' campaign using community-driven storytelling and digital executions to reduce gym anxiety and emphasize inclusivity.",
-            keyPoints: ["Target: 30% Awareness Increase", "Boost to 20–25 Attendees", "Gen Z Social Strategy"],
+            hook: "Mighty Maestro: 2.5x Attendance Growth via Gen Z Social Strategy",
+            sections: [
+                {
+                    title: "The Challenge",
+                    icon: <Target className="w-4 h-4" />,
+                    content: "Low attendance (5-10/class) due to \"gym anxiety\" among Ottawa Gen Z women. Goal: Increase awareness by 30% and attendance to 20+ per class."
+                },
+                {
+                    title: "The Insight",
+                    icon: <Lightbulb className="w-4 h-4" />,
+                    content: "\"The first step is the hardest.\" Traditional fitness marketing feels exclusive; Gen Z craves a \"judgment-free loop\" rather than a destination."
+                },
+                {
+                    title: "The Strategy",
+                    icon: <Rocket className="w-4 h-4" />,
+                    content: "Concept: \"Step, Sweat, Smile, Repeat.\" A 4-stage content funnel designed to lower the barrier to entry and reward consistency over perfection."
+                },
+                {
+                    title: "The Execution",
+                    icon: <Rocket className="w-4 h-4" />,
+                    content: [
+                        "Thematic Content: Weekly pillars (Step/Sweat/Smile/Repeat) to build a narrative.",
+                        "Interactive Stories: Polls and \"Mystery Workouts\" to foster community.",
+                        "SEO: Targeting \"Safe Fitness Ottawa\" to capture high-intent searchers."
+                    ]
+                },
+                {
+                    title: "The Results",
+                    icon: <BarChart3 className="w-4 h-4" />,
+                    content: [
+                        "+30% Brand Awareness",
+                        "250% Increase in Class Attendance (from 10 to 25 avg)",
+                        "Community Growth: Established a thriving, inclusive fitness \"fam\" in Ottawa."
+                    ]
+                }
+            ],
             pdfLink: "https://drive.google.com/file/d/1TAZjK0JHLTi5mN_Hp-cdxzwDwv8G22_M/view",
             image: mightyMaestroImg
         },
         {
             id: 2,
-            title: "Place D'Orleans - IMC Plan",
-            problem: "Retail brand facing increased competition and shifting consumer behaviour during high-pressure seasonal periods.",
-            solution: "Repositioned brand around convenience, emotional relief, and experiential value through integrated digital and in-store approach to drive foot traffic and sales.",
-            keyPoints: ["Brand Repositioning", "Omnichannel Strategy", "Seasonal Campaign"],
+            hook: "Place D'Orleans: Seasonal IMC Plan for Retail Revival",
+            sections: [
+                {
+                    title: "The Challenge",
+                    icon: <Target className="w-4 h-4" />,
+                    content: "Retail brand facing increased competition and shifting consumer behaviour during high-pressure seasonal periods."
+                },
+                {
+                    title: "The Strategy",
+                    icon: <Rocket className="w-4 h-4" />,
+                    content: "Repositioned brand around convenience, emotional relief, and experiential value through integrated digital and in-store approach to drive foot traffic and sales."
+                },
+                {
+                    title: "Key Tactics",
+                    icon: <Lightbulb className="w-4 h-4" />,
+                    content: [
+                        "Brand Repositioning around emotional value",
+                        "Omnichannel Strategy across digital and physical",
+                        "Seasonal Campaign optimization"
+                    ]
+                }
+            ],
             pdfLink: "https://drive.google.com/file/d/1S2BMYMHQ8Z-cCpz7kp1W07CVm94IM9Bs/view",
             image: placeDorleans
         },
         {
             id: 3,
-            title: "DAVIDsTEA – Brand Proposal",
-            problem: "Rebuilding relevance and loyalty among Gen Z and Millennials following store closures and brand fragmentation.",
-            solution: "Positioned DAVIDsTEA as a modern wellness ritual brand with integrated campaigns across digital, CRM, and experiential touchpoints to drive online sales and emotional connection.",
-            keyPoints: ["Wellness Positioning", "CRM & Digital Integration", "Repeat Purchase Focus"],
+            hook: "DAVIDsTEA: Rebuilding Brand Relevance for Modern Wellness",
+            sections: [
+                {
+                    title: "The Challenge",
+                    icon: <Target className="w-4 h-4" />,
+                    content: "Rebuilding relevance and loyalty among Gen Z and Millennials following store closures and brand fragmentation."
+                },
+                {
+                    title: "The Strategy",
+                    icon: <Rocket className="w-4 h-4" />,
+                    content: "Positioned DAVIDsTEA as a modern wellness ritual brand with integrated campaigns across digital, CRM, and experiential touchpoints to drive online sales and emotional connection."
+                },
+                {
+                    title: "Key Tactics",
+                    icon: <Lightbulb className="w-4 h-4" />,
+                    content: [
+                        "Wellness Positioning for modern consumers",
+                        "CRM & Digital Integration for seamless experience",
+                        "Repeat Purchase Focus through loyalty programs"
+                    ]
+                }
+            ],
             pdfLink: "https://drive.google.com/file/d/10l4cAqubCHlpI7xKguIpe_R7EpVbCDoj/view",
             image: davidsteaImg
         },
         {
             id: 4,
-            title: "Ottawa 67's – IMC Plan",
-            problem: "Declining Friday-night game attendance caused by an aging fan base, with games not seen as a social destination.",
-            solution: "Introduced pub-led game-night experience and 'Break the Ice' digital strategy targeting young professionals to reframe games as a social destination.",
-            keyPoints: ["3,700 Ticket Goal/Game", "$79K Incremental Revenue", "Young Professional Focus"],
+            hook: "Ottawa 67's: Transforming Games into Social Destinations",
+            sections: [
+                {
+                    title: "The Challenge",
+                    icon: <Target className="w-4 h-4" />,
+                    content: "Declining Friday-night game attendance caused by an aging fan base, with games not seen as a social destination."
+                },
+                {
+                    title: "The Strategy",
+                    icon: <Rocket className="w-4 h-4" />,
+                    content: "Introduced pub-led game-night experience and 'Break the Ice' digital strategy targeting young professionals to reframe games as a social destination."
+                },
+                {
+                    title: "The Results",
+                    icon: <BarChart3 className="w-4 h-4" />,
+                    content: [
+                        "3,700 Ticket Goal per Game",
+                        "$79K Incremental Revenue target",
+                        "Young Professional Focus demographic shift"
+                    ]
+                }
+            ],
             pdfLink: "https://drive.google.com/file/d/1MugEW8pEIwq2fSJd2UbCCQnfbEh4iC4h/view",
             image: ottawa67sImg
         }
@@ -161,20 +248,30 @@ const StrategicWork = () => {
 
     return (
         <section id="projects" className="py-32 px-6 bg-background/50">
-            <div className="max-w-7xl mx-auto">
+            <div className="max-w-5xl mx-auto">
                 <motion.h2
-                    className="text-4xl md:text-6xl font-black text-foreground mb-20 relative inline-block"
+                    className="text-4xl md:text-6xl font-black text-foreground mb-6 relative inline-block"
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                 >
-                    STRATEGIC <span className="text-primary">WORK</span>
+                    CASE <span className="text-primary">STUDIES</span>
                     <span className="absolute -bottom-4 left-0 w-1/3 h-2 bg-gradient-to-r from-primary to-transparent"></span>
                 </motion.h2>
+                
+                <motion.p
+                    className="text-muted-foreground text-lg mb-16 max-w-2xl"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.2 }}
+                >
+                    Real-world marketing challenges solved with strategic thinking and creative execution.
+                </motion.p>
 
-                <div className="flex flex-col gap-8">
-                    {projects.map((project) => (
-                        <FlipCard key={project.id} project={project} />
+                <div className="flex flex-col gap-12">
+                    {caseStudies.map((study, index) => (
+                        <CaseStudyCard key={study.id} study={study} index={index} />
                     ))}
                 </div>
             </div>
