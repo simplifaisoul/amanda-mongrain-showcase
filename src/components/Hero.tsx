@@ -37,7 +37,7 @@ const Hero = () => {
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-foreground/90 tracking-wide">
               Creative Strategist
             </h2>
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-lg border-l-2 border-primary/50 pl-6">
+            <p className="text-xl md:text-2xl text-foreground/80 leading-relaxed max-w-lg font-light">
               Building brand strategies from the ground up to connect people with purpose.
             </p>
           </div>
