@@ -114,25 +114,39 @@ const StrategicWork = () => {
         {
             id: 4,
             hook: "Ottawa 67's",
-            description: "An IMC plan to transform Friday-night hockey games into must-attend social destinations for young professionals through experiential marketing.",
+            description: "\"Break the Ice\" – A strategic IMC proposal to transform Friday-night hockey games into must-attend social destinations for young professionals.",
             sections: [
                 {
                     title: "The Challenge",
                     icon: <Target className="w-4 h-4" />,
-                    content: "Declining Friday-night game attendance caused by an aging fan base, with games not seen as a social destination."
+                    content: "The Problem: Declining Friday night game attendance among the 25-30 age demographic in Ottawa. The Objective: Develop a 3-month integrated strategy to drive $79,000 in projected incremental revenue and sell 3,700 additional tickets."
+                },
+                {
+                    title: "The Insight",
+                    icon: <Lightbulb className="w-4 h-4" />,
+                    content: "\"Hockey culture can feel exclusive.\" Research into Ottawa young professionals revealed that while they value community, they often feel intimidated by traditional sports environments. The strategy shifted the focus from \"the game\" to \"the social catalyst.\""
                 },
                 {
                     title: "The Strategy",
                     icon: <Rocket className="w-4 h-4" />,
-                    content: "Introduced pub-led game-night experience and 'Break the Ice' digital strategy targeting young professionals to reframe games as a social destination."
+                    content: "Concept: \"Break the Ice.\" I built a \"ground-up\" Integrated Marketing Communications (IMC) plan to reframe the Ottawa 67's as a social hub. The strategy focused on lowering social barriers for \"non-hockey fans\" to foster new local connections."
                 },
                 {
-                    title: "The Results",
+                    title: "The Execution",
+                    icon: <Rocket className="w-4 h-4" />,
+                    content: [
+                        "BRRReakthrough App: A conceptual community-building tool to connect fans with shared interests in-arena.",
+                        "O'Riley's Pub Pop-Up: A strategic partnership proposal to create a dedicated social gathering space at TD Place.",
+                        "Thematic Messaging: \"Your team, your terms\" tagline designed to emphasize inclusivity and social belonging."
+                    ]
+                },
+                {
+                    title: "Success Benchmarks",
                     icon: <BarChart3 className="w-4 h-4" />,
                     content: [
-                        "3,700 Ticket Goal per Game",
-                        "$79K Incremental Revenue target",
-                        "Young Professional Focus demographic shift"
+                        "Revenue Target: $79,000 in incremental ticket and F&B sales.",
+                        "Growth Target: 3,700 additional tickets sold over the campaign period.",
+                        "Engagement Target: 5,000 app downloads with a 50% interaction rate."
                     ]
                 }
             ],
