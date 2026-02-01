@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { ExternalLink, Target, Lightbulb, Rocket, BarChart3, ChevronDown, ChevronUp } from "lucide-react";
+import { ExternalLink, Target, Lightbulb, Rocket, BarChart3, ChevronDown, ChevronUp, ChevronLeft, ChevronRight } from "lucide-react";
 import mightyMaestroImg from "@/assets/strategic/mighty-maestro.jpg";
+import mightyMaestroPersonaImg from "@/assets/strategic/mighty-maestro-persona.jpg";
 import placeDorleans from "@/assets/strategic/place-dorleans.jpg";
 import davidsteaImg from "@/assets/strategic/davidstea.jpg";
 import ottawa67sImg from "@/assets/strategic/ottawa-67s.jpg";
@@ -17,11 +18,23 @@ interface CaseStudyProps {
     hook: string;
     sections: CaseStudySection[];
     pdfLink: string;
-    image?: string;
+    images?: string[];
 }
 
 const CaseStudyCard = ({ study, index }: { study: CaseStudyProps; index: number }) => {
     const [isExpanded, setIsExpanded] = useState(false);
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+    const images = study.images || [];
+    const hasMultipleImages = images.length > 1;
+
+    const nextImage = () => {
+        setCurrentImageIndex((prev) => (prev + 1) % images.length);
+    };
+
+    const prevImage = () => {
+        setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+    };
 
     return (
         <motion.div
@@ -33,13 +46,42 @@ const CaseStudyCard = ({ study, index }: { study: CaseStudyProps; index: number 
         >
             {/* Hero Section */}
             <div className="relative">
-                {study.image && (
-                    <div className="h-72 md:h-96 overflow-hidden bg-muted/30 flex items-center justify-center p-4">
+                {images.length > 0 && (
+                    <div className="h-72 md:h-96 overflow-hidden bg-muted/30 flex items-center justify-center p-4 relative">
                         <img 
-                            src={study.image} 
+                            src={images[currentImageIndex]} 
                             alt={study.hook}
                             className="max-w-full max-h-full object-contain rounded-lg"
                         />
+                        
+                        {/* Image Navigation */}
+                        {hasMultipleImages && (
+                            <>
+                                <button
+                                    onClick={prevImage}
+                                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-background/80 hover:bg-background text-foreground p-2 rounded-full shadow-lg transition-all hover:scale-110"
+                                >
+                                    <ChevronLeft className="w-5 h-5" />
+                                </button>
+                                <button
+                                    onClick={nextImage}
+                                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-background/80 hover:bg-background text-foreground p-2 rounded-full shadow-lg transition-all hover:scale-110"
+                                >
+                                    <ChevronRight className="w-5 h-5" />
+                                </button>
+                                
+                                {/* Image Indicators */}
+                                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                                    {images.map((_, i) => (
+                                        <button
+                                            key={i}
+                                            onClick={() => setCurrentImageIndex(i)}
+                                            className={`w-2 h-2 rounded-full transition-all ${i === currentImageIndex ? 'bg-primary w-6' : 'bg-foreground/30 hover:bg-foreground/50'}`}
+                                        />
+                                    ))}
+                                </div>
+                            </>
+                        )}
                     </div>
                 )}
                 
@@ -160,7 +202,7 @@ const StrategicWork = () => {
                 }
             ],
             pdfLink: "https://drive.google.com/file/d/1TAZjK0JHLTi5mN_Hp-cdxzwDwv8G22_M/view",
-            image: mightyMaestroImg
+            images: [mightyMaestroImg, mightyMaestroPersonaImg]
         },
         {
             id: 2,
@@ -187,7 +229,7 @@ const StrategicWork = () => {
                 }
             ],
             pdfLink: "https://drive.google.com/file/d/1S2BMYMHQ8Z-cCpz7kp1W07CVm94IM9Bs/view",
-            image: placeDorleans
+            images: [placeDorleans]
         },
         {
             id: 3,
@@ -214,7 +256,7 @@ const StrategicWork = () => {
                 }
             ],
             pdfLink: "https://drive.google.com/file/d/10l4cAqubCHlpI7xKguIpe_R7EpVbCDoj/view",
-            image: davidsteaImg
+            images: [davidsteaImg]
         },
         {
             id: 4,
@@ -241,7 +283,7 @@ const StrategicWork = () => {
                 }
             ],
             pdfLink: "https://drive.google.com/file/d/1MugEW8pEIwq2fSJd2UbCCQnfbEh4iC4h/view",
-            image: ottawa67sImg
+            images: [ottawa67sImg]
         }
     ];
 
