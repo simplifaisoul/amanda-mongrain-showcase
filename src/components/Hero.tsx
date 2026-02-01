@@ -24,10 +24,10 @@ const Hero = () => {
             >
               Welcome
             </motion.p>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-foreground tracking-tight leading-[0.9]">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-foreground tracking-tight leading-[0.9]">
               AMANDA
               <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d680b8] to-[#a855c7]">
+              <span className="text-[#d680b8] drop-shadow-[0_0_30px_rgba(214,128,184,0.4)]">
                 MONGRAIN
               </span>
             </h1>
