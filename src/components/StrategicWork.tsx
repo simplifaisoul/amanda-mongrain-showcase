@@ -133,7 +133,7 @@ const StrategicWork = () => {
                 {
                     title: "The Insight",
                     icon: <Lightbulb className="w-4 h-4" />,
-                    content: "\"The First Step is the Hardest.\" Research into the Ottawa Gen Z demographic revealed that \"gym anxiety\" and toxic masculinity in traditional spaces were the primary barriers. The audience wasn't looking for a \"body transformation\"—they were looking for belonging."
+                    content: "\"The First Step is the Hardest.\" Research into the Ottawa Gen Z demographic revealed that \"gym anxiety\" and toxic masculinity in traditional spaces were the primary barriers. The audience wasn't looking for a \"body transformation,\" they were looking for belonging."
                 },
                 {
                     title: "The Strategy",
