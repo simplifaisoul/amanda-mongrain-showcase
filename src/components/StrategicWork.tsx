@@ -34,18 +34,17 @@ const CaseStudyCard = ({ study, index }: { study: CaseStudyProps; index: number 
             {/* Hero Section */}
             <div className="relative">
                 {study.image && (
-                    <div className="h-64 md:h-80 overflow-hidden">
+                    <div className="h-72 md:h-96 overflow-hidden bg-muted/30 flex items-center justify-center p-4">
                         <img 
                             src={study.image} 
                             alt={study.hook}
-                            className="w-full h-full object-cover"
+                            className="max-w-full max-h-full object-contain rounded-lg"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent" />
                     </div>
                 )}
                 
                 {/* Hook/Title */}
-                <div className={`${study.image ? 'absolute bottom-0 left-0 right-0' : ''} p-6 md:p-8`}>
+                <div className="p-6 md:p-8">
                     <span className="inline-block bg-primary/20 text-primary px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase mb-3">
                         Case Study {study.id}
                     </span>
