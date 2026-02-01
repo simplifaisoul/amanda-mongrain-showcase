@@ -128,34 +128,34 @@ const StrategicWork = () => {
                 {
                     title: "The Challenge",
                     icon: <Target className="w-4 h-4" />,
-                    content: "Low attendance (5-10/class) due to \"gym anxiety\" among Ottawa Gen Z women. Goal: Increase awareness by 30% and attendance to 20+ per class."
+                    content: "The Problem: Mighty Maestro Fitness (Ottawa) struggled with low class attendance (5-10/session). The Goal: Develop a 2-month integrated strategy to increase awareness by 30% and scale attendance to 20-25 participants per class."
                 },
                 {
                     title: "The Insight",
                     icon: <Lightbulb className="w-4 h-4" />,
-                    content: "\"The first step is the hardest.\" Traditional fitness marketing feels exclusive; Gen Z craves a \"judgment-free loop\" rather than a destination."
+                    content: "\"The First Step is the Hardest.\" Research into the Ottawa Gen Z demographic revealed that \"gym anxiety\" and toxic masculinity in traditional spaces were the primary barriers. The audience wasn't looking for a \"body transformation\"—they were looking for belonging."
                 },
                 {
                     title: "The Strategy",
                     icon: <Rocket className="w-4 h-4" />,
-                    content: "Concept: \"Step, Sweat, Smile, Repeat.\" A 4-stage content funnel designed to lower the barrier to entry and reward consistency over perfection."
+                    content: "Concept: \"Step, Sweat, Smile, Repeat.\" I developed a circular content framework designed to lower the psychological barrier to entry. Instead of marketing \"fitness,\" we marketed a community loop that rewards showing up over perfection."
                 },
                 {
                     title: "The Execution",
                     icon: <Rocket className="w-4 h-4" />,
                     content: [
-                        "Thematic Content: Weekly pillars (Step/Sweat/Smile/Repeat) to build a narrative.",
-                        "Interactive Stories: Polls and \"Mystery Workouts\" to foster community.",
-                        "SEO: Targeting \"Safe Fitness Ottawa\" to capture high-intent searchers."
+                        "Thematic Pillars: A 4-week rotating content calendar (Step/Sweat/Smile/Repeat) to build narrative momentum.",
+                        "Engagement Funnel: Used interactive Instagram Stories (Polls, Mystery Workouts) to convert \"passive followers\" into \"active participants.\"",
+                        "Local SEO: Targeted high-intent keywords like \"Safe Fitness Ottawa\" and \"Affordable Community Gym\" to capture local search traffic."
                     ]
                 },
                 {
-                    title: "The Results",
+                    title: "Strategic KPIs",
                     icon: <BarChart3 className="w-4 h-4" />,
                     content: [
-                        "+30% Brand Awareness",
-                        "250% Increase in Class Attendance (from 10 to 25 avg)",
-                        "Community Growth: Established a thriving, inclusive fitness \"fam\" in Ottawa."
+                        "Primary KPI: 150% growth in class attendance.",
+                        "Secondary KPI: 30% lift in brand sentiment and awareness.",
+                        "Growth Metric: 5% quarterly increase in organic web traffic via SEO."
                     ]
                 }
             ],
