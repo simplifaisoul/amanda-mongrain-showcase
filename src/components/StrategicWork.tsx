@@ -123,7 +123,7 @@ const StrategicWork = () => {
     const caseStudies: CaseStudyProps[] = [
         {
             id: 1,
-            hook: "Mighty Maestro: 2.5x Attendance Growth via Gen Z Social Strategy",
+            hook: "Mighty Maestro: A Strategic Social Growth Pitch",
             sections: [
                 {
                     title: "The Challenge",
