@@ -5,19 +5,21 @@ import * as THREE from 'three';
 export const ParticleField = () => {
   const pointsRef = useRef<THREE.Points>(null);
   
-  const particlesCount = 1000;
+  // Reduced particle count for better performance on MacBook Pro
+  const particlesCount = 500;
   
   const [positions, colors] = useMemo(() => {
     const positions = new Float32Array(particlesCount * 3);
     const colors = new Float32Array(particlesCount * 3);
     
     for (let i = 0; i < particlesCount; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 20;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 20;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 20;
+      positions[i * 3] = (Math.random() - 0.5) * 25;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 25;
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 25;
       
       const color = new THREE.Color();
-      color.setHSL(Math.random() * 0.1 + 0.9, 0.5, 0.6);
+      // Subtle, professional color palette
+      color.setHSL(0.9 + Math.random() * 0.1, 0.3, 0.5);
       colors[i * 3] = color.r;
       colors[i * 3 + 1] = color.g;
       colors[i * 3 + 2] = color.b;
@@ -28,8 +30,8 @@ export const ParticleField = () => {
 
   useFrame((state) => {
     if (pointsRef.current) {
-      pointsRef.current.rotation.y = state.clock.getElapsedTime() * 0.05;
-      pointsRef.current.rotation.x = state.clock.getElapsedTime() * 0.03;
+      pointsRef.current.rotation.y = state.clock.getElapsedTime() * 0.02;
+      pointsRef.current.rotation.x = state.clock.getElapsedTime() * 0.01;
     }
   });
 
@@ -50,10 +52,10 @@ export const ParticleField = () => {
         />
       </bufferGeometry>
       <pointsMaterial
-        size={0.05}
+        size={0.03}
         vertexColors
         transparent
-        opacity={0.8}
+        opacity={0.4}
         sizeAttenuation
       />
     </points>

@@ -1,51 +1,52 @@
 import { motion } from "framer-motion";
 
 const Skills = () => {
-    const qualities = [
-        { title: "Creative Problem Solving", delay: 0 },
-        { title: "IMC Planning", delay: 0.1 },
-        { title: "Interpersonal Skills", delay: 0.2 },
-        { title: "Social Media Marketing", delay: 0.3 },
-        { title: "Content Strategy", delay: 0.4 },
-        { title: "Brand Management", delay: 0.5 },
-    ];
+  const qualities = [
+    { title: "Creative Problem Solving", delay: 0 },
+    { title: "IMC Planning", delay: 0.05 },
+    { title: "Interpersonal Skills", delay: 0.1 },
+    { title: "Social Media Marketing", delay: 0.15 },
+    { title: "Content Strategy", delay: 0.2 },
+    { title: "Brand Management", delay: 0.25 },
+  ];
 
-    return (
-        <section id="skills" className="py-20 px-6 bg-background relative overflow-hidden">
-            <div className="max-w-7xl mx-auto">
-                <motion.h2
-                    className="text-4xl md:text-5xl font-bold text-center text-foreground mb-16"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                >
-                    What I Bring
-                </motion.h2>
+  return (
+    <section id="skills" className="py-24 px-6 bg-card">
+      <div className="max-w-4xl mx-auto">
+        <motion.div
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            What I Bring
+          </h2>
+          <p className="text-muted-foreground max-w-md mx-auto">
+            Core competencies that drive impactful brand strategies
+          </p>
+        </motion.div>
 
-                <div className="flex flex-wrap justify-center gap-6 md:gap-12">
-                    {qualities.map((q, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ scale: 0, opacity: 0 }}
-                            whileInView={{ scale: 1, opacity: 1 }}
-                            viewport={{ once: true }}
-                            transition={{
-                                type: "spring",
-                                stiffness: 200,
-                                delay: q.delay
-                            }}
-                            whileHover={{ scale: 1.1 }}
-                            className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 border-2 border-primary/30 flex items-center justify-center backdrop-blur-sm hover:border-primary hover:bg-primary/30 transition-colors cursor-default"
-                        >
-                            <span className="text-sm md:text-lg font-semibold text-center text-foreground px-2 leading-tight">
-                                {q.title}
-                            </span>
-                        </motion.div>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {qualities.map((q, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: q.delay }}
+              className="p-6 rounded-lg bg-background border border-border hover:border-primary/50 transition-colors"
+            >
+              <span className="text-sm md:text-base font-medium text-foreground">
+                {q.title}
+              </span>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Skills;
