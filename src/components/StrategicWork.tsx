@@ -202,7 +202,7 @@ const StrategicWork = () => {
                 }
             ],
             pdfLink: "https://drive.google.com/file/d/1TAZjK0JHLTi5mN_Hp-cdxzwDwv8G22_M/view",
-            images: [mightyMaestroImg, mightyMaestroPersonaImg]
+            images: [mightyMaestroPersonaImg, mightyMaestroImg]
         },
         {
             id: 2,
