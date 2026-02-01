@@ -15,7 +15,8 @@ const StrategicWork = () => {
     const caseStudies: CaseStudyProps[] = [
         {
             id: 1,
-            hook: "Mighty Maestro: A Strategic Social Growth Pitch",
+            hook: "Mighty Maestro",
+            description: "A strategic social media growth pitch designed to double class attendance for a local fitness studio by targeting Gen Z women with an inclusive, community-first approach.",
             sections: [
                 {
                     title: "The Challenge",
@@ -56,7 +57,8 @@ const StrategicWork = () => {
         },
         {
             id: 2,
-            hook: "Place D'Orleans: Seasonal IMC Plan for Retail Revival",
+            hook: "Place D'Orleans",
+            description: "A seasonal integrated marketing campaign designed to revive retail foot traffic and reposition the shopping center as a convenient, emotionally rewarding destination.",
             sections: [
                 {
                     title: "The Challenge",
@@ -83,7 +85,8 @@ const StrategicWork = () => {
         },
         {
             id: 3,
-            hook: "DAVIDsTEA: Rebuilding Brand Relevance for Modern Wellness",
+            hook: "DAVIDsTEA",
+            description: "A brand revitalization proposal to rebuild relevance among Gen Z and Millennials by repositioning DAVIDsTEA as a modern wellness ritual brand.",
             sections: [
                 {
                     title: "The Challenge",
@@ -110,7 +113,8 @@ const StrategicWork = () => {
         },
         {
             id: 4,
-            hook: "Ottawa 67's: Transforming Games into Social Destinations",
+            hook: "Ottawa 67's",
+            description: "An IMC plan to transform Friday-night hockey games into must-attend social destinations for young professionals through experiential marketing.",
             sections: [
                 {
                     title: "The Challenge",
@@ -139,7 +143,7 @@ const StrategicWork = () => {
 
     return (
         <section id="projects" className="py-32 px-6 bg-background/50">
-            <div className="max-w-6xl mx-auto">
+            <div className="max-w-7xl mx-auto">
                 <motion.h2
                     className="text-4xl md:text-6xl font-black text-foreground mb-6 relative inline-block"
                     initial={{ opacity: 0, x: -20 }}
@@ -157,10 +161,10 @@ const StrategicWork = () => {
                     viewport={{ once: true }}
                     transition={{ delay: 0.2 }}
                 >
-                    Real-world marketing challenges solved with strategic thinking and creative execution. Click to explore each project.
+                    Real-world marketing challenges solved with strategic thinking and creative execution.
                 </motion.p>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     {caseStudies.map((study, index) => (
                         <CaseStudyCard key={study.id} study={study} index={index} />
                     ))}
