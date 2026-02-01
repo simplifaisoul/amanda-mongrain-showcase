@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
-import { ExternalLink, Target, Lightbulb, Rocket, BarChart3, ChevronDown, ChevronUp, ChevronLeft, ChevronRight } from "lucide-react";
+import { Target, Lightbulb, Rocket, BarChart3 } from "lucide-react";
+import CaseStudyCard, { CaseStudyProps } from "./CaseStudyCard";
 import mightyMaestroImg from "@/assets/strategic/mighty-maestro.jpg";
 import mightyMaestroPersonaImg from "@/assets/strategic/mighty-maestro-persona.jpg";
 import mightyMaestroStepImg from "@/assets/strategic/mighty-maestro-step.jpg";
@@ -10,160 +10,6 @@ import mightyMaestroRepeatImg from "@/assets/strategic/mighty-maestro-repeat.jpg
 import placeDorleans from "@/assets/strategic/place-dorleans.jpg";
 import davidsteaImg from "@/assets/strategic/davidstea.jpg";
 import ottawa67sImg from "@/assets/strategic/ottawa-67s.jpg";
-
-interface CaseStudySection {
-    title: string;
-    icon: React.ReactNode;
-    content: string | string[];
-}
-
-interface CaseStudyProps {
-    id: number;
-    hook: string;
-    sections: CaseStudySection[];
-    pdfLink: string;
-    images?: string[];
-}
-
-const CaseStudyCard = ({ study, index }: { study: CaseStudyProps; index: number }) => {
-    const [isExpanded, setIsExpanded] = useState(false);
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-    const images = study.images || [];
-    const hasMultipleImages = images.length > 1;
-
-    const nextImage = () => {
-        setCurrentImageIndex((prev) => (prev + 1) % images.length);
-    };
-
-    const prevImage = () => {
-        setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
-    };
-
-    return (
-        <motion.div
-            className="bg-card rounded-3xl overflow-hidden shadow-2xl border border-border/50"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
-        >
-            {/* Hero Section */}
-            <div className="relative">
-                {images.length > 0 && (
-                    <div className="h-72 md:h-96 overflow-hidden bg-muted/30 flex items-center justify-center p-4 relative">
-                        <img 
-                            src={images[currentImageIndex]} 
-                            alt={study.hook}
-                            className="max-w-full max-h-full object-contain rounded-lg"
-                        />
-                        
-                        {/* Image Navigation */}
-                        {hasMultipleImages && (
-                            <>
-                                <button
-                                    onClick={prevImage}
-                                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-background/80 hover:bg-background text-foreground p-2 rounded-full shadow-lg transition-all hover:scale-110"
-                                >
-                                    <ChevronLeft className="w-5 h-5" />
-                                </button>
-                                <button
-                                    onClick={nextImage}
-                                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-background/80 hover:bg-background text-foreground p-2 rounded-full shadow-lg transition-all hover:scale-110"
-                                >
-                                    <ChevronRight className="w-5 h-5" />
-                                </button>
-                                
-                                {/* Image Indicators */}
-                                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-                                    {images.map((_, i) => (
-                                        <button
-                                            key={i}
-                                            onClick={() => setCurrentImageIndex(i)}
-                                            className={`w-2 h-2 rounded-full transition-all ${i === currentImageIndex ? 'bg-primary w-6' : 'bg-foreground/30 hover:bg-foreground/50'}`}
-                                        />
-                                    ))}
-                                </div>
-                            </>
-                        )}
-                    </div>
-                )}
-                
-                {/* Hook/Title */}
-                <div className="p-6 md:p-8">
-                    <span className="inline-block bg-primary/20 text-primary px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase mb-3">
-                        Case Study {study.id}
-                    </span>
-                    <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground leading-tight">
-                        {study.hook}
-                    </h3>
-                </div>
-            </div>
-
-            {/* Content Sections */}
-            <div className="p-6 md:p-8 pt-4">
-                <div className="grid gap-4">
-                    {study.sections.slice(0, isExpanded ? undefined : 2).map((section, i) => (
-                        <motion.div
-                            key={i}
-                            className="bg-background/50 rounded-2xl p-5 border border-border/30"
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: i * 0.05 }}
-                        >
-                            <div className="flex items-center gap-3 mb-3">
-                                <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
-                                    {section.icon}
-                                </div>
-                                <h4 className="font-bold text-foreground text-sm uppercase tracking-wide">
-                                    {section.title}
-                                </h4>
-                            </div>
-                            {Array.isArray(section.content) ? (
-                                <ul className="space-y-2">
-                                    {section.content.map((item, j) => (
-                                        <li key={j} className="flex items-start gap-2 text-sm text-foreground/80 leading-relaxed">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                                            {item}
-                                        </li>
-                                    ))}
-                                </ul>
-                            ) : (
-                                <p className="text-sm text-foreground/80 leading-relaxed">{section.content}</p>
-                            )}
-                        </motion.div>
-                    ))}
-                </div>
-
-                {/* Expand/Collapse Button */}
-                {study.sections.length > 2 && (
-                    <button
-                        onClick={() => setIsExpanded(!isExpanded)}
-                        className="w-full mt-4 flex items-center justify-center gap-2 text-primary hover:text-primary/80 transition-colors py-3 rounded-xl bg-primary/5 hover:bg-primary/10"
-                    >
-                        <span className="text-sm font-semibold">
-                            {isExpanded ? 'Show Less' : `Show More (${study.sections.length - 2} sections)`}
-                        </span>
-                        {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
-                    </button>
-                )}
-
-                {/* CTA */}
-                <div className="mt-6 pt-6 border-t border-border/30">
-                    <a
-                        href={study.pdfLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-xl font-semibold text-sm hover:bg-primary/90 transition-all hover:scale-105 shadow-lg hover:shadow-xl"
-                    >
-                        <ExternalLink className="w-4 h-4" />
-                        View Full Case Study
-                    </a>
-                </div>
-            </div>
-        </motion.div>
-    );
-};
 
 const StrategicWork = () => {
     const caseStudies: CaseStudyProps[] = [
@@ -293,7 +139,7 @@ const StrategicWork = () => {
 
     return (
         <section id="projects" className="py-32 px-6 bg-background/50">
-            <div className="max-w-5xl mx-auto">
+            <div className="max-w-6xl mx-auto">
                 <motion.h2
                     className="text-4xl md:text-6xl font-black text-foreground mb-6 relative inline-block"
                     initial={{ opacity: 0, x: -20 }}
@@ -311,10 +157,10 @@ const StrategicWork = () => {
                     viewport={{ once: true }}
                     transition={{ delay: 0.2 }}
                 >
-                    Real-world marketing challenges solved with strategic thinking and creative execution.
+                    Real-world marketing challenges solved with strategic thinking and creative execution. Click to explore each project.
                 </motion.p>
 
-                <div className="flex flex-col gap-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {caseStudies.map((study, index) => (
                         <CaseStudyCard key={study.id} study={study} index={index} />
                     ))}
