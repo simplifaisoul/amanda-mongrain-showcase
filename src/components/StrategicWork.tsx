@@ -150,12 +150,12 @@ const StrategicWork = () => {
                     ]
                 },
                 {
-                    title: "Strategic KPIs",
+                    title: "Strategic Goals",
                     icon: <BarChart3 className="w-4 h-4" />,
                     content: [
-                        "Primary KPI: 150% growth in class attendance.",
-                        "Secondary KPI: 30% lift in brand sentiment and awareness.",
-                        "Growth Metric: 5% quarterly increase in organic web traffic via SEO."
+                        "Scale Attendance: Design a funnel to move the average class size from 10 to 25 participants.",
+                        "Brand Awareness: Establish Mighty Maestro as the #1 \"Safe Space\" for fitness in the Ottawa student community.",
+                        "Organic Growth: Implement an SEO-first content strategy to drive consistent, non-paid web traffic."
                     ]
                 }
             ],
