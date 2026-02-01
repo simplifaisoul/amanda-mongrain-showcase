@@ -35,12 +35,7 @@ const Navigation = () => {
       >
         <div className="max-w-6xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <button
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="text-lg font-semibold text-foreground hover:text-primary transition-colors"
-            >
-              AM
-            </button>
+            <div className="w-8" /> {/* Spacer for layout balance */}
 
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center gap-6">
