@@ -8,6 +8,12 @@ import mightyMaestroSweatImg from "@/assets/strategic/mighty-maestro-sweat.jpg";
 import mightyMaestroSmileImg from "@/assets/strategic/mighty-maestro-smile.jpg";
 import mightyMaestroRepeatImg from "@/assets/strategic/mighty-maestro-repeat.jpg";
 import placeDorleans from "@/assets/strategic/place-dorleans.jpg";
+import placeDorleansBillboard from "@/assets/strategic/place-dorleans-billboard.jpg";
+import placeDorleansInstagram from "@/assets/strategic/place-dorleans-instagram.jpg";
+import placeDorleansNewspaper from "@/assets/strategic/place-dorleans-newspaper.jpg";
+import placeDorleansWebsite from "@/assets/strategic/place-dorleans-website.jpg";
+import placeDorleansActivation from "@/assets/strategic/place-dorleans-activation.jpg";
+import placeDorleansGifts from "@/assets/strategic/place-dorleans-gifts.jpg";
 import davidsteaImg from "@/assets/strategic/davidstea.jpg";
 import ottawa67sImg from "@/assets/strategic/ottawa-67s.jpg";
 import ottawa67sPersonaImg from "@/assets/strategic/ottawa-67s-persona.jpg";
@@ -127,7 +133,7 @@ const StrategicWork = () => {
                 }
             ],
             pdfLink: "https://drive.google.com/file/d/1S2BMYMHQ8Z-cCpz7kp1W07CVm94IM9Bs/view",
-            images: [placeDorleans]
+            images: [placeDorleans, placeDorleansBillboard, placeDorleansInstagram, placeDorleansNewspaper, placeDorleansWebsite, placeDorleansActivation, placeDorleansGifts]
         },
         {
             id: 4,
