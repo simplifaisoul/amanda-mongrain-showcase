@@ -154,26 +154,35 @@ const StrategicWork = () => {
         {
             id: 4,
             hook: "DAVIDsTEA",
-            description: "A brand revitalization proposal to rebuild relevance among Gen Z and Millennials by repositioning DAVIDsTEA as a modern wellness ritual brand.",
+            description: "RFP: DAVIDsTEA Brand Revitalization. Role: Strategic Architect (Market Analysis, Brief Writing, KPI Definition)",
             sections: [
                 {
                     title: "The Challenge",
                     icon: <Target className="w-4 h-4" />,
-                    content: "Rebuilding relevance and loyalty among Gen Z and Millennials following store closures and brand fragmentation."
+                    content: "The Scenario: I developed a comprehensive Strategic Procurement Brief for DAVIDsTEA, simulating a national brand revitalization project with a hypothetical annual budget of $300,000 to $500,000."
+                },
+                {
+                    title: "The Insight",
+                    icon: <Lightbulb className="w-4 h-4" />,
+                    content: "\"The Wellness Gap.\" I conducted a deep-dive market analysis of the Canadian tea landscape, identifying that while DAVIDsTEA has high awareness, it lacks \"daily ritual\" relevance for Gen Z. I defined the \"Modern Ritual Seeker\" persona to bridge this gap."
                 },
                 {
                     title: "The Strategy",
                     icon: <Rocket className="w-4 h-4" />,
-                    content: "Positioned DAVIDsTEA as a modern wellness ritual brand with integrated campaigns across digital, CRM, and experiential touchpoints to drive online sales and emotional connection."
+                    content: "Architecting the Vision. I authored the full RFP, defining six strategic pillars (from \"Matcha Mission\" to \"Garden to Cup\") to show how a brand can move from \"occasional treat\" to \"daily wellness essential.\""
                 },
                 {
-                    title: "Key Tactics",
-                    icon: <Lightbulb className="w-4 h-4" />,
+                    title: "The Requirements",
+                    icon: <Rocket className="w-4 h-4" />,
                     content: [
-                        "Wellness Positioning for modern consumers",
-                        "CRM & Digital Integration for seamless experience",
-                        "Repeat Purchase Focus through loyalty programs"
+                        "KPI Framework: I established rigorous success metrics, including a 15% target for DTC sales growth.",
+                        "Operational Scope: I defined professional standards for the project, including AODA accessibility compliance and national French-language requirements."
                     ]
+                },
+                {
+                    title: "The Goal",
+                    icon: <BarChart3 className="w-4 h-4" />,
+                    content: "Strategic Mastery: This project was designed to demonstrate the ability to lead a brand's high-level vision, financial parameters, and creative standards from a \"Client-Side\" perspective."
                 }
             ],
             pdfLink: "https://drive.google.com/file/d/10l4cAqubCHlpI7xKguIpe_R7EpVbCDoj/view",
