@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -12,164 +14,103 @@ const Navigation = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
-    element?.scrollIntoView({
-      behavior: "smooth"
-    });
+    element?.scrollIntoView({ behavior: "smooth" });
     setIsMobileMenuOpen(false);
   };
-  return <>
-    <motion.nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? "bg-background/95 backdrop-blur-xl shadow-lg border-b border-border/50" : "bg-transparent"}`} initial={{
-      y: -100
-    }} animate={{
-      y: 0
-    }} transition={{
-      duration: 0.8,
-      ease: "easeOut"
-    }}>
-      <div className="max-w-7xl mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
-          <motion.button onClick={() => window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-          })} className="text-2xl font-bold text-foreground hover:text-accent transition-colors relative group" whileHover={{
-            scale: 1.05
-          }} whileTap={{
-            scale: 0.95
-          }}>
-            <motion.span className="relative z-10" animate={{
-              backgroundImage: ["linear-gradient(to right, hsl(var(--foreground)), hsl(var(--foreground)))", "linear-gradient(to right, hsl(var(--accent)), hsl(var(--foreground)))", "linear-gradient(to right, hsl(var(--foreground)), hsl(var(--foreground)))"]
-            }} style={{
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent"
-            }} transition={{
-              duration: 3,
-              repeat: Infinity
-            }}></motion.span>
-            <motion.div className="absolute -inset-2 bg-accent/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity -z-10" />
-          </motion.button>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-8">
-            <motion.div initial={{
-              opacity: 0,
-              x: 20
-            }} animate={{
-              opacity: 1,
-              x: 0
-            }} transition={{
-              duration: 0.5,
-              delay: 0.2
-            }}>
-              <Button variant="ghost" onClick={() => scrollToSection("projects")} className="relative group bg-zinc-50/0 text-primary-foreground">
+  return (
+    <>
+      <motion.nav
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled
+            ? "bg-background/90 backdrop-blur-md border-b border-border"
+            : "bg-transparent"
+        }`}
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <div className="max-w-6xl mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="text-lg font-semibold text-foreground hover:text-primary transition-colors"
+            >
+              AM
+            </button>
+
+            {/* Desktop Menu */}
+            <div className="hidden md:flex items-center gap-6">
+              <button
+                onClick={() => scrollToSection("projects")}
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
                 Projects
-                <motion.div className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
-              </Button>
-            </motion.div>
-            <motion.div initial={{
-              opacity: 0,
-              x: 20
-            }} animate={{
-              opacity: 1,
-              x: 0
-            }} transition={{
-              duration: 0.5,
-              delay: 0.3
-            }}>
-              <Button variant="ghost" onClick={() => scrollToSection("skills")} className="relative group text-primary-foreground">
+              </button>
+              <button
+                onClick={() => scrollToSection("skills")}
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
                 Skills
-                <motion.div className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
-              </Button>
-            </motion.div>
-            <motion.div initial={{
-              opacity: 0,
-              x: 20
-            }} animate={{
-              opacity: 1,
-              x: 0
-            }} transition={{
-              duration: 0.5,
-              delay: 0.4
-            }} whileHover={{
-              scale: 1.05
-            }} whileTap={{
-              scale: 0.95
-            }}>
-              <Button onClick={() => scrollToSection("contact")} className="bg-accent hover:bg-accent/90 text-accent-foreground shadow-lg hover:shadow-xl transition-all">
+              </button>
+              <Button
+                onClick={() => scrollToSection("contact")}
+                size="sm"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground"
+              >
                 Contact
               </Button>
-            </motion.div>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              className="md:hidden text-foreground"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
           </div>
-
-          {/* Mobile Menu Button */}
-          <motion.button className="md:hidden text-foreground" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} whileTap={{
-            scale: 0.9
-          }}>
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </motion.button>
         </div>
-      </div>
-    </motion.nav>
+      </motion.nav>
 
-    {/* Mobile Menu */}
-    <AnimatePresence>
-      {isMobileMenuOpen && <motion.div className="fixed inset-0 z-40 md:hidden" initial={{
-        opacity: 0
-      }} animate={{
-        opacity: 1
-      }} exit={{
-        opacity: 0
-      }}>
-        <motion.div className="absolute inset-0 bg-background/98 backdrop-blur-xl" initial={{
-          opacity: 0
-        }} animate={{
-          opacity: 1
-        }} exit={{
-          opacity: 0
-        }} />
-        <motion.div className="relative h-full flex flex-col items-center justify-center space-y-8" initial={{
-          scale: 0.9,
-          opacity: 0
-        }} animate={{
-          scale: 1,
-          opacity: 1
-        }} exit={{
-          scale: 0.9,
-          opacity: 0
-        }} transition={{
-          duration: 0.3
-        }}>
-          <motion.div whileHover={{
-            scale: 1.1
-          }} whileTap={{
-            scale: 0.95
-          }}>
-            <Button variant="ghost" onClick={() => scrollToSection("projects")} className="text-2xl text-foreground hover:text-accent">
-              Projects
-            </Button>
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            className="fixed inset-0 z-40 md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <div className="absolute inset-0 bg-background/95 backdrop-blur-md" />
+            <div className="relative h-full flex flex-col items-center justify-center space-y-6">
+              <button
+                onClick={() => scrollToSection("projects")}
+                className="text-xl text-foreground hover:text-primary transition-colors"
+              >
+                Projects
+              </button>
+              <button
+                onClick={() => scrollToSection("skills")}
+                className="text-xl text-foreground hover:text-primary transition-colors"
+              >
+                Skills
+              </button>
+              <Button
+                onClick={() => scrollToSection("contact")}
+                className="bg-primary hover:bg-primary/90 text-primary-foreground"
+              >
+                Contact
+              </Button>
+            </div>
           </motion.div>
-          <motion.div whileHover={{
-            scale: 1.1
-          }} whileTap={{
-            scale: 0.95
-          }}>
-            <Button variant="ghost" onClick={() => scrollToSection("skills")} className="text-2xl text-foreground hover:text-accent">
-              Skills
-            </Button>
-          </motion.div>
-          <motion.div whileHover={{
-            scale: 1.1
-          }} whileTap={{
-            scale: 0.95
-          }}>
-            <Button onClick={() => scrollToSection("contact")} className="text-2xl bg-accent hover:bg-accent/90 text-accent-foreground">
-              Contact
-            </Button>
-          </motion.div>
-        </motion.div>
-      </motion.div>}
-    </AnimatePresence>
-  </>;
+        )}
+      </AnimatePresence>
+    </>
+  );
 };
+
 export default Navigation;
