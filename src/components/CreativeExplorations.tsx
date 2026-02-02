@@ -5,6 +5,7 @@ import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import nikeAd from "@/assets/creatives/nike-ad.jpg";
 import selfPortrait from "@/assets/creatives/self-portrait.jpg";
 import illustratorLemons from "@/assets/creatives/illustrator-lemons.jpg";
+import calvinKleinAd from "@/assets/creatives/calvin-klein-ad.jpg";
 
 const creatives = [
     {
@@ -21,6 +22,11 @@ const creatives = [
         title: "Illustrator Work",
         subtitle: "Vector Illustration",
         image: illustratorLemons,
+    },
+    {
+        title: "Calvin Klein Ad",
+        subtitle: "Transit Shelter Campaign",
+        image: calvinKleinAd,
     },
 ];
 
