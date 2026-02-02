@@ -22,7 +22,7 @@ const Hero = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
             >
-              Creative Strategist
+              Marketing Strategist & Creative Storyteller
             </motion.p>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground tracking-tight leading-[1.1]">
               Amanda
