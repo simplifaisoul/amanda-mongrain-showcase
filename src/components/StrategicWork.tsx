@@ -16,6 +16,7 @@ import placeDorleansWebsite from "@/assets/strategic/place-dorleans-website.jpg"
 import placeDorleansActivation from "@/assets/strategic/place-dorleans-activation.jpg";
 import placeDorleansGifts from "@/assets/strategic/place-dorleans-gifts.jpg";
 import davidsteaImg from "@/assets/strategic/davidstea.jpg";
+import royalCanadianMintImg from "@/assets/strategic/royal-canadian-mint.jpg";
 import ottawa67sImg from "@/assets/strategic/ottawa-67s.jpg";
 import ottawa67sPersonaImg from "@/assets/strategic/ottawa-67s-persona.jpg";
 import ottawa67sAppImg from "@/assets/strategic/ottawa-67s-app.jpg";
@@ -153,6 +154,49 @@ const StrategicWork = () => {
         },
         {
             id: 4,
+            hook: "Royal Canadian Mint",
+            description: "\"Whispers of the Past\" – An IMC plan to drive awareness and sales for the Gibraltar Point Lighthouse Haunted Canada Coin, targeting paranormal enthusiasts and collectors.",
+            sections: [
+                {
+                    title: "The Challenge",
+                    icon: <Target className="w-4 h-4" />,
+                    content: "The Objective: Drive awareness and sales for the Royal Canadian Mint's Gibraltar Point Lighthouse Haunted Canada Coin. The Goal: Generate 200 conversions and 1,400 leads for a niche collectible product."
+                },
+                {
+                    title: "The Insight",
+                    icon: <Lightbulb className="w-4 h-4" />,
+                    content: "\"History with a Haunting.\" Research revealed a growing interest among Gen Z and Millennials in Canadian folklore, paranormal stories, and \"dark tourism.\" The coin offered a unique opportunity to connect with this audience through narrative."
+                },
+                {
+                    title: "The Strategy",
+                    icon: <Rocket className="w-4 h-4" />,
+                    content: "Concept: \"Whispers of the Past.\" I developed an Integrated Marketing Communications (IMC) plan positioning the coin as a tangible piece of Canadian history, intertwined with a compelling ghost story. The strategy aimed to leverage emotional engagement and narrative immersion."
+                },
+                {
+                    title: "The Execution",
+                    icon: <Rocket className="w-4 h-4" />,
+                    content: [
+                        "Digital Landing Page: A dedicated, conversion-focused website for lead generation and sales.",
+                        "Targeted SEM & Social Ads: Utilizing keywords like \"Haunted Canada\" and visual storytelling on Instagram/Facebook to reach paranormal enthusiasts.",
+                        "Experiential Marketing: Conceptualized immersive \"paranormal murder mystery\" events in major Canadian cities to drive engagement and sales."
+                    ]
+                },
+                {
+                    title: "Success Benchmarks",
+                    icon: <BarChart3 className="w-4 h-4" />,
+                    content: [
+                        "Awareness: Reach 70,000 target audience members via social media.",
+                        "Engagement: Achieve 700 social media engagements and 1,400 website leads.",
+                        "Conversions: Generate 200 coin sales through the landing page.",
+                        "Experiential: 50 participants per event city with 30+ QR code scans per event."
+                    ]
+                }
+            ],
+            pdfLink: "/royal-canadian-mint-imc-plan.pdf",
+            images: [royalCanadianMintImg]
+        },
+        {
+            id: 5,
             hook: "DAVIDsTEA",
             description: "RFP: DAVIDsTEA Brand Revitalization. Role: Strategic Architect (Market Analysis, Brief Writing, KPI Definition)",
             sections: [
