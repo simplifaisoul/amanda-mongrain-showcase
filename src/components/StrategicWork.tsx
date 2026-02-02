@@ -216,6 +216,7 @@ const StrategicWork = () => {
             id: 5,
             hook: "Ontario One Call",
             description: "\"Call Before You Dig\" – A strategic RFP response to reframe a public safety organization as a community protector and drive a 15% increase in locate requests.",
+            role: "RFP Strategist",
             sections: [
                 {
                     title: "The Challenge",
