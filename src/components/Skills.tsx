@@ -13,34 +13,24 @@ const Skills = () => {
       delay: 0.05 
     },
     { 
-      title: "Content Architecture", 
-      description: "Building strategic content funnels that move audiences from awareness to action.",
-      delay: 0.1 
-    },
-    { 
-      title: "Brand Storytelling", 
-      description: "Translating complex brand values into compelling narratives that resonate emotionally with Gen Z and Millennial demographics.",
-      delay: 0.15 
-    },
-    { 
-      title: "Data-Driven Logic", 
-      description: "Defining and tracking Target KPIs to ensure every creative decision is backed by measurable business objectives and ROI.",
-      delay: 0.2 
-    },
-    { 
-      title: "Multi-Platform Design", 
-      description: "Creating cohesive visual experiences across web, mobile, and social platforms that maintain brand consistency.",
-      delay: 0.25 
-    },
-    { 
       title: "Client & Project Management", 
       description: "Managing the bridge between client goals and creative execution to ensure projects stay on-strategy and on-budget.",
-      delay: 0.3 
+      delay: 0.1 
     },
     { 
       title: "Digital Ecosystem Strategy", 
       description: "Architecting cohesive brand experiences across SEO, paid social, and web to optimize impact on every platform.",
-      delay: 0.35 
+      delay: 0.15 
+    },
+    { 
+      title: "Brand Storytelling", 
+      description: "Translating complex brand values into compelling narratives that resonate emotionally with Gen Z and Millennial demographics.",
+      delay: 0.2 
+    },
+    { 
+      title: "Data-Driven Logic", 
+      description: "Defining and tracking Target KPIs to ensure every creative decision is backed by measurable business objectives and ROI.",
+      delay: 0.25 
     },
   ];
 
