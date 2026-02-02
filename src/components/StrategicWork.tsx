@@ -192,7 +192,7 @@ const StrategicWork = () => {
                     ]
                 }
             ],
-            pdfLink: "/royal-canadian-mint-imc-plan.pdf",
+            pdfLink: `${window.location.origin}/royal-canadian-mint-imc-plan.pdf`,
             images: [royalCanadianMintImg]
         },
         {
