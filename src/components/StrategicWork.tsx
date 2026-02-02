@@ -16,7 +16,13 @@ import placeDorleansWebsite from "@/assets/strategic/place-dorleans-website.jpg"
 import placeDorleansActivation from "@/assets/strategic/place-dorleans-activation.jpg";
 import placeDorleansGifts from "@/assets/strategic/place-dorleans-gifts.jpg";
 import davidsteaImg from "@/assets/strategic/davidstea.jpg";
-import royalCanadianMintImg from "@/assets/strategic/royal-canadian-mint.jpg";
+import rcmCoverImg from "@/assets/strategic/rcm-cover.jpg";
+import rcmPersonaImg from "@/assets/strategic/rcm-persona.jpg";
+import rcmCoinImg from "@/assets/strategic/rcm-coin.jpg";
+import rcmLaptopImg from "@/assets/strategic/rcm-laptop.jpg";
+import rcmWebsiteImg from "@/assets/strategic/rcm-website.jpg";
+import rcmGoogleTabletImg from "@/assets/strategic/rcm-google-tablet.jpg";
+import rcmGoogleAdImg from "@/assets/strategic/rcm-google-ad.jpg";
 import ottawa67sImg from "@/assets/strategic/ottawa-67s.jpg";
 import ottawa67sPersonaImg from "@/assets/strategic/ottawa-67s-persona.jpg";
 import ottawa67sAppImg from "@/assets/strategic/ottawa-67s-app.jpg";
@@ -193,7 +199,7 @@ const StrategicWork = () => {
                 }
             ],
             pdfLink: "https://drive.google.com/file/d/17d7cZUbiKvQZ4GUKZU4a0tOgmUzw1PO9/view",
-            images: [royalCanadianMintImg]
+            images: [rcmCoverImg, rcmPersonaImg, rcmCoinImg, rcmLaptopImg, rcmWebsiteImg, rcmGoogleTabletImg, rcmGoogleAdImg]
         },
         {
             id: 5,
