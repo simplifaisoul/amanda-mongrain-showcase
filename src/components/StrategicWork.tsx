@@ -23,6 +23,13 @@ import rcmLaptopImg from "@/assets/strategic/rcm-laptop.jpg";
 import rcmWebsiteImg from "@/assets/strategic/rcm-website.jpg";
 import rcmGoogleTabletImg from "@/assets/strategic/rcm-google-tablet.jpg";
 import rcmGoogleAdImg from "@/assets/strategic/rcm-google-ad.jpg";
+import rcmWeatherAdImg from "@/assets/strategic/rcm-weather-ad.jpg";
+import rcmWeatherDisplayImg from "@/assets/strategic/rcm-weather-display.jpg";
+import rcmMobileCoinImg from "@/assets/strategic/rcm-mobile-coin.jpg";
+import rcmInstagramPostImg from "@/assets/strategic/rcm-instagram-post.jpg";
+import rcmSocialAdImg from "@/assets/strategic/rcm-social-ad.jpg";
+import rcmInstagramEventImg from "@/assets/strategic/rcm-instagram-event.jpg";
+import rcmEventPosterImg from "@/assets/strategic/rcm-event-poster.jpg";
 import ottawa67sImg from "@/assets/strategic/ottawa-67s.jpg";
 import ottawa67sPersonaImg from "@/assets/strategic/ottawa-67s-persona.jpg";
 import ottawa67sAppImg from "@/assets/strategic/ottawa-67s-app.jpg";
@@ -199,7 +206,7 @@ const StrategicWork = () => {
                 }
             ],
             pdfLink: "https://drive.google.com/file/d/17d7cZUbiKvQZ4GUKZU4a0tOgmUzw1PO9/view",
-            images: [rcmCoverImg, rcmPersonaImg, rcmCoinImg, rcmLaptopImg, rcmWebsiteImg, rcmGoogleTabletImg, rcmGoogleAdImg]
+            images: [rcmCoverImg, rcmPersonaImg, rcmCoinImg, rcmLaptopImg, rcmWebsiteImg, rcmGoogleTabletImg, rcmGoogleAdImg, rcmWeatherAdImg, rcmWeatherDisplayImg, rcmMobileCoinImg, rcmInstagramPostImg, rcmSocialAdImg, rcmInstagramEventImg, rcmEventPosterImg]
         },
         {
             id: 5,
