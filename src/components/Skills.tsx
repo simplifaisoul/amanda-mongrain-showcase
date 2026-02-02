@@ -32,6 +32,16 @@ const Skills = () => {
       description: "Creating cohesive visual experiences across web, mobile, and social platforms that maintain brand consistency.",
       delay: 0.25 
     },
+    { 
+      title: "Client Relations & Project Management", 
+      description: "Bridging the gap between client business goals and creative execution. Experienced in managing project timelines, cross-functional team collaboration, and ensuring every deliverable is on-strategy and on-budget.",
+      delay: 0.3 
+    },
+    { 
+      title: "Multi-Channel Digital Strategy", 
+      description: "Architecting cohesive brand experiences across the digital ecosystem. From SEO-driven content to paid social funnels, I ensure a brand's message is optimized for the specific strengths of every digital platform.",
+      delay: 0.35 
+    },
   ];
 
   return (
