@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Award, BarChart3, Share2, MessageCircle, X } from "lucide-react";
+import { Briefcase, TrendingUp, Megaphone, CalendarClock, X } from "lucide-react";
 
 import projectManagementCert from "@/assets/certifications/linkedin-project-management-cert.jpg";
 import googleAnalyticsCert from "@/assets/certifications/google-analytics-cert.jpg";
@@ -13,7 +13,7 @@ const Certifications = () => {
     const certs = [
         { 
             title: "Project Management", 
-            icon: <Award className="w-10 h-10 mb-4 text-primary" />,
+            icon: <Briefcase className="w-10 h-10 mb-4 text-primary" />,
             image: projectManagementCert,
             issuer: "LinkedIn Learning",
             issueDate: "December 9, 2025",
@@ -21,7 +21,7 @@ const Certifications = () => {
         },
         { 
             title: "Google Analytics", 
-            icon: <BarChart3 className="w-10 h-10 mb-4 text-secondary" />,
+            icon: <TrendingUp className="w-10 h-10 mb-4 text-secondary" />,
             image: googleAnalyticsCert,
             issuer: "Google",
             issueDate: "October 20, 2025",
@@ -30,7 +30,7 @@ const Certifications = () => {
         },
         { 
             title: "Social Media Marketing", 
-            icon: <Share2 className="w-10 h-10 mb-4 text-primary" />,
+            icon: <Megaphone className="w-10 h-10 mb-4 text-primary" />,
             image: hubspotCert,
             issuer: "HubSpot Academy",
             issueDate: "December 3, 2025",
@@ -39,7 +39,7 @@ const Certifications = () => {
         },
         { 
             title: "Hootsuite Platform", 
-            icon: <MessageCircle className="w-10 h-10 mb-4 text-secondary" />,
+            icon: <CalendarClock className="w-10 h-10 mb-4 text-secondary" />,
             image: hootsuiteCert,
             issuer: "Hootsuite Academy",
             issueDate: "February 19, 2025",
