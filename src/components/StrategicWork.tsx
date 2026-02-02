@@ -169,12 +169,12 @@ const StrategicWork = () => {
         {
             id: 4,
             hook: "Mighty Maestro",
-            description: "A strategic social media growth pitch designed to double class attendance for a local fitness studio by targeting Gen Z women with an inclusive, community-first approach.",
+            description: "Role: Account Lead & Creative Strategist (Primary Client Point of Contact)",
             sections: [
                 {
                     title: "The Challenge",
                     icon: <Target className="w-4 h-4" />,
-                    content: "The Problem: Mighty Maestro Fitness (Ottawa) struggled with low class attendance (5-10/session). The Goal: Develop a 2-month integrated strategy to increase awareness by 30% and scale attendance to 20-25 participants per class."
+                    content: "The Problem: Mighty Maestro Fitness (Ottawa) struggled with low class attendance. My Role: As the Primary Point of Contact, I managed the client relationship from initial discovery to final strategic delivery."
                 },
                 {
                     title: "The Insight",
