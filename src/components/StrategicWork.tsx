@@ -35,6 +35,7 @@ import ottawa67sPersonaImg from "@/assets/strategic/ottawa-67s-persona.jpg";
 import ottawa67sAppImg from "@/assets/strategic/ottawa-67s-app.jpg";
 import ottawa67sLeaderboardImg from "@/assets/strategic/ottawa-67s-leaderboard.jpg";
 import ottawa67sEmailImg from "@/assets/strategic/ottawa-67s-email.jpg";
+import ontarioOneCallImg from "@/assets/strategic/ontario-one-call.jpg";
 
 const StrategicWork = () => {
     const caseStudies: CaseStudyProps[] = [
@@ -252,7 +253,7 @@ const StrategicWork = () => {
                 }
             ],
             pdfLink: "https://drive.google.com/file/d/1MAjvj_e06kJNYBoDI-RNkJarjWU4xGEt/view",
-            images: []
+            images: [ontarioOneCallImg]
         },
         {
             id: 6,
