@@ -1,59 +1,71 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Folder, BarChart2, Share, MessageSquare, X } from "lucide-react";
+import { X } from "lucide-react";
 
 import projectManagementCert from "@/assets/certifications/linkedin-project-management-cert.jpg";
 import googleAnalyticsCert from "@/assets/certifications/google-analytics-cert.jpg";
 import hubspotCert from "@/assets/certifications/hubspot-social-media-cert.png";
 import hootsuiteCert from "@/assets/certifications/hootsuite-cert.jpg";
 
-const iconClassName = "w-10 h-10 mb-4";
+// Inline SVG icons to avoid tree-shaking issues
+const FolderIcon = ({ className }: { className?: string }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+        <path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/>
+    </svg>
+);
+
+const ChartIcon = ({ className }: { className?: string }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+        <line x1="18" x2="18" y1="20" y2="10"/>
+        <line x1="12" x2="12" y1="20" y2="4"/>
+        <line x1="6" x2="6" y1="20" y2="14"/>
+    </svg>
+);
+
+const ShareIcon = ({ className }: { className?: string }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+        <polyline points="16 6 12 2 8 6"/>
+        <line x1="12" x2="12" y1="2" y2="15"/>
+    </svg>
+);
+
+const MessageIcon = ({ className }: { className?: string }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+);
 
 const certs = [
     { 
         title: "Project Management", 
-        iconType: "folder" as const,
+        icon: FolderIcon,
         iconColor: "text-primary",
         image: projectManagementCert,
         issuer: "LinkedIn Learning",
     },
     { 
         title: "Google Analytics", 
-        iconType: "chart" as const,
+        icon: ChartIcon,
         iconColor: "text-secondary",
         image: googleAnalyticsCert,
         issuer: "Google",
     },
     { 
         title: "Social Media Marketing", 
-        iconType: "share" as const,
+        icon: ShareIcon,
         iconColor: "text-primary",
         image: hubspotCert,
         issuer: "HubSpot Academy",
     },
     { 
         title: "Hootsuite Platform", 
-        iconType: "message" as const,
+        icon: MessageIcon,
         iconColor: "text-secondary",
         image: hootsuiteCert,
         issuer: "Hootsuite Academy",
     },
 ];
-
-const CertIcon = ({ iconType, colorClass }: { iconType: string; colorClass: string }) => {
-    switch (iconType) {
-        case "folder":
-            return <Folder className={`${iconClassName} ${colorClass}`} />;
-        case "chart":
-            return <BarChart2 className={`${iconClassName} ${colorClass}`} />;
-        case "share":
-            return <Share className={`${iconClassName} ${colorClass}`} />;
-        case "message":
-            return <MessageSquare className={`${iconClassName} ${colorClass}`} />;
-        default:
-            return null;
-    }
-};
 
 const Certifications = () => {
     const [selectedCert, setSelectedCert] = useState<number | null>(null);
@@ -71,29 +83,32 @@ const Certifications = () => {
                 </motion.h2>
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-                    {certs.map((cert, idx) => (
-                        <motion.div
-                            key={idx}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: idx * 0.1 }}
-                            className="aspect-square bg-card border border-white/5 rounded-3xl p-8 flex flex-col items-center justify-center hover:bg-white/5 transition-colors group relative overflow-hidden"
-                        >
-                            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                            <CertIcon iconType={cert.iconType} colorClass={cert.iconColor} />
-                            <h3 className="text-xl font-bold text-center text-foreground z-10">{cert.title}</h3>
-                            <p className="text-sm text-muted-foreground mt-2">{cert.issuer}</p>
-                            <div className="w-16 h-1 bg-gradient-to-r from-primary to-secondary mt-4 mb-6 rounded-full"></div>
-
-                            <button 
-                                onClick={() => setSelectedCert(idx)}
-                                className="z-20 px-4 py-2 text-xs font-bold uppercase tracking-wider border border-primary/30 rounded-full hover:bg-primary hover:text-white transition-all text-primary"
+                    {certs.map((cert, idx) => {
+                        const IconComponent = cert.icon;
+                        return (
+                            <motion.div
+                                key={idx}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: idx * 0.1 }}
+                                className="aspect-square bg-card border border-white/5 rounded-3xl p-8 flex flex-col items-center justify-center hover:bg-white/5 transition-colors group relative overflow-hidden"
                             >
-                                View Certificate
-                            </button>
-                        </motion.div>
-                    ))}
+                                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                <IconComponent className={`w-10 h-10 mb-4 ${cert.iconColor}`} />
+                                <h3 className="text-xl font-bold text-center text-foreground z-10">{cert.title}</h3>
+                                <p className="text-sm text-muted-foreground mt-2">{cert.issuer}</p>
+                                <div className="w-16 h-1 bg-gradient-to-r from-primary to-secondary mt-4 mb-6 rounded-full"></div>
+
+                                <button 
+                                    onClick={() => setSelectedCert(idx)}
+                                    className="z-20 px-4 py-2 text-xs font-bold uppercase tracking-wider border border-primary/30 rounded-full hover:bg-primary hover:text-white transition-all text-primary"
+                                >
+                                    View Certificate
+                                </button>
+                            </motion.div>
+                        );
+                    })}
                 </div>
             </div>
 
