@@ -12,38 +12,41 @@ const creatives = [
         title: "Nike Ad",
         subtitle: "Advertising Design",
         image: nikeAd,
+        rotate: false,
     },
     {
         title: "Self Portrait",
         subtitle: "Digital Art & Photography",
         image: selfPortrait,
+        rotate: false,
     },
     {
         title: "Illustrator Work",
         subtitle: "Vector Illustration",
         image: illustratorLemons,
+        rotate: false,
     },
     {
         title: "Calvin Klein Ad",
         subtitle: "Transit Shelter Campaign",
         image: calvinKleinAd,
+        rotate: true,
     },
 ];
 
 const CreativeExplorations = () => {
-    const [selectedCreative, setSelectedCreative] = useState<number | null>(null);
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [lightboxOpen, setLightboxOpen] = useState(false);
 
     const goToPrevious = () => {
-        if (selectedCreative !== null) {
-            setSelectedCreative(selectedCreative === 0 ? creatives.length - 1 : selectedCreative - 1);
-        }
+        setCurrentIndex(currentIndex === 0 ? creatives.length - 1 : currentIndex - 1);
     };
 
     const goToNext = () => {
-        if (selectedCreative !== null) {
-            setSelectedCreative(selectedCreative === creatives.length - 1 ? 0 : selectedCreative + 1);
-        }
+        setCurrentIndex(currentIndex === creatives.length - 1 ? 0 : currentIndex + 1);
     };
+
+    const currentCreative = creatives[currentIndex];
 
     return (
         <section className="py-24 px-6 bg-background relative">
@@ -57,44 +60,83 @@ const CreativeExplorations = () => {
                     CREATIVE <span className="text-secondary">EXPLORATIONS</span>
                 </motion.h2>
 
-                <div className="grid md:grid-cols-3 gap-6">
-                    {creatives.map((creative, idx) => (
-                        <motion.div
-                            key={idx}
-                            className={`group relative overflow-hidden rounded-3xl cursor-pointer ${
-                                idx === 1 ? "mt-0 md:mt-12" : idx === 2 ? "mt-0 md:mt-24" : ""
-                            } ${idx === 3 ? "h-[600px]" : "h-[400px]"}`}
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: idx * 0.2 }}
-                            onClick={() => setSelectedCreative(idx)}
-                        >
-                            <img
-                                src={creative.image}
-                                alt={creative.title}
-                                className={`absolute inset-0 w-full h-full object-contain transition-transform duration-500 group-hover:scale-105 p-4 ${
-                                    idx === 3 ? "rotate-90" : ""
-                                }`}
-                            />
-                            <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-6 text-center">
-                                <h3 className="text-2xl font-bold text-white mb-2">{creative.title}</h3>
-                                <p className="text-muted-foreground text-sm">{creative.subtitle}</p>
-                            </div>
-                        </motion.div>
-                    ))}
+                {/* Carousel Container */}
+                <div className="relative flex items-center justify-center">
+                    {/* Previous Arrow */}
+                    <button
+                        onClick={goToPrevious}
+                        className="absolute left-0 md:left-8 z-10 p-3 bg-white/10 rounded-full hover:bg-white/20 transition-colors"
+                    >
+                        <ChevronLeft className="w-8 h-8 text-foreground" />
+                    </button>
+
+                    {/* Creative Display */}
+                    <div className="w-full max-w-4xl mx-16">
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={currentIndex}
+                                initial={{ opacity: 0, x: 50 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: -50 }}
+                                transition={{ duration: 0.3 }}
+                                className="relative overflow-hidden rounded-3xl cursor-pointer group"
+                                onClick={() => setLightboxOpen(true)}
+                            >
+                                <div className={`flex items-center justify-center ${currentCreative.rotate ? "h-[600px]" : "h-[500px]"}`}>
+                                    <img
+                                        src={currentCreative.image}
+                                        alt={currentCreative.title}
+                                        className={`max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105 ${
+                                            currentCreative.rotate ? "rotate-90" : ""
+                                        }`}
+                                    />
+                                </div>
+                                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-6 text-center">
+                                    <h3 className="text-2xl font-bold text-white mb-2">{currentCreative.title}</h3>
+                                    <p className="text-muted-foreground text-sm">{currentCreative.subtitle}</p>
+                                </div>
+                            </motion.div>
+                        </AnimatePresence>
+
+                        {/* Title & Subtitle */}
+                        <div className="text-center mt-6">
+                            <h3 className="text-2xl font-bold text-foreground">{currentCreative.title}</h3>
+                            <p className="text-muted-foreground">{currentCreative.subtitle}</p>
+                        </div>
+
+                        {/* Dot indicators */}
+                        <div className="flex justify-center gap-3 mt-6">
+                            {creatives.map((_, idx) => (
+                                <button
+                                    key={idx}
+                                    onClick={() => setCurrentIndex(idx)}
+                                    className={`w-3 h-3 rounded-full transition-colors ${
+                                        idx === currentIndex ? 'bg-primary' : 'bg-white/30 hover:bg-white/50'
+                                    }`}
+                                />
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Next Arrow */}
+                    <button
+                        onClick={goToNext}
+                        className="absolute right-0 md:right-8 z-10 p-3 bg-white/10 rounded-full hover:bg-white/20 transition-colors"
+                    >
+                        <ChevronRight className="w-8 h-8 text-foreground" />
+                    </button>
                 </div>
             </div>
 
             {/* Lightbox Modal */}
             <AnimatePresence>
-                {selectedCreative !== null && (
+                {lightboxOpen && (
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-                        onClick={() => setSelectedCreative(null)}
+                        onClick={() => setLightboxOpen(false)}
                     >
                         {/* Previous Arrow */}
                         <button
@@ -119,7 +161,7 @@ const CreativeExplorations = () => {
                         </button>
 
                         <motion.div
-                            key={selectedCreative}
+                            key={currentIndex}
                             initial={{ scale: 0.9, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
                             exit={{ scale: 0.9, opacity: 0 }}
@@ -128,19 +170,21 @@ const CreativeExplorations = () => {
                             onClick={(e) => e.stopPropagation()}
                         >
                             <button
-                                onClick={() => setSelectedCreative(null)}
+                                onClick={() => setLightboxOpen(false)}
                                 className="absolute -top-12 right-16 z-10 p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors"
                             >
                                 <X className="w-6 h-6 text-white" />
                             </button>
                             <img
-                                src={creatives[selectedCreative].image}
-                                alt={creatives[selectedCreative].title}
-                                className="w-full h-auto max-h-[85vh] object-contain rounded-lg"
+                                src={currentCreative.image}
+                                alt={currentCreative.title}
+                                className={`w-full h-auto max-h-[85vh] object-contain rounded-lg ${
+                                    currentCreative.rotate ? "rotate-90" : ""
+                                }`}
                             />
                             <div className="text-center mt-4">
-                                <h3 className="text-2xl font-bold text-white">{creatives[selectedCreative].title}</h3>
-                                <p className="text-muted-foreground">{creatives[selectedCreative].subtitle}</p>
+                                <h3 className="text-2xl font-bold text-white">{currentCreative.title}</h3>
+                                <p className="text-muted-foreground">{currentCreative.subtitle}</p>
                             </div>
 
                             {/* Dot indicators */}
@@ -148,9 +192,9 @@ const CreativeExplorations = () => {
                                 {creatives.map((_, idx) => (
                                     <button
                                         key={idx}
-                                        onClick={() => setSelectedCreative(idx)}
+                                        onClick={() => setCurrentIndex(idx)}
                                         className={`w-2 h-2 rounded-full transition-colors ${
-                                            idx === selectedCreative ? 'bg-primary' : 'bg-white/30 hover:bg-white/50'
+                                            idx === currentIndex ? 'bg-primary' : 'bg-white/30 hover:bg-white/50'
                                         }`}
                                     />
                                 ))}
