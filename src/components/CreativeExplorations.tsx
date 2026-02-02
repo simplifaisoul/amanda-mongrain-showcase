@@ -6,6 +6,7 @@ import nikeAd from "@/assets/creatives/nike-ad.jpg";
 import selfPortrait from "@/assets/creatives/self-portrait.jpg";
 import illustratorLemons from "@/assets/creatives/illustrator-lemons.jpg";
 import calvinKleinAd from "@/assets/creatives/calvin-klein-ad.jpg";
+import magazineAd from "@/assets/creatives/magazine-ad.jpg";
 
 const creatives = [
     {
@@ -31,6 +32,12 @@ const creatives = [
         subtitle: "Transit Shelter Campaign",
         image: calvinKleinAd,
         rotate: true,
+    },
+    {
+        title: "Magazine Ad",
+        subtitle: "Print Design",
+        image: magazineAd,
+        rotate: false,
     },
 ];
 
