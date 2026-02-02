@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X } from "lucide-react";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 import nikeAd from "@/assets/creatives/nike-ad.jpg";
 import selfPortrait from "@/assets/creatives/self-portrait.jpg";
@@ -26,6 +26,18 @@ const creatives = [
 
 const CreativeExplorations = () => {
     const [selectedCreative, setSelectedCreative] = useState<number | null>(null);
+
+    const goToPrevious = () => {
+        if (selectedCreative !== null) {
+            setSelectedCreative(selectedCreative === 0 ? creatives.length - 1 : selectedCreative - 1);
+        }
+    };
+
+    const goToNext = () => {
+        if (selectedCreative !== null) {
+            setSelectedCreative(selectedCreative === creatives.length - 1 ? 0 : selectedCreative + 1);
+        }
+    };
 
     return (
         <section className="py-24 px-6 bg-background relative">
@@ -59,7 +71,7 @@ const CreativeExplorations = () => {
                             />
                             <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-6 text-center">
                                 <h3 className="text-2xl font-bold text-white mb-2">{creative.title}</h3>
-                                <p className="text-gray-300 text-sm">{creative.subtitle}</p>
+                                <p className="text-muted-foreground text-sm">{creative.subtitle}</p>
                             </div>
                         </motion.div>
                     ))}
@@ -76,17 +88,40 @@ const CreativeExplorations = () => {
                         className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4"
                         onClick={() => setSelectedCreative(null)}
                     >
+                        {/* Previous Arrow */}
+                        <button
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                goToPrevious();
+                            }}
+                            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-3 bg-white/10 rounded-full hover:bg-white/20 transition-colors"
+                        >
+                            <ChevronLeft className="w-8 h-8 text-white" />
+                        </button>
+
+                        {/* Next Arrow */}
+                        <button
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                goToNext();
+                            }}
+                            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-3 bg-white/10 rounded-full hover:bg-white/20 transition-colors"
+                        >
+                            <ChevronRight className="w-8 h-8 text-white" />
+                        </button>
+
                         <motion.div
+                            key={selectedCreative}
                             initial={{ scale: 0.9, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
                             exit={{ scale: 0.9, opacity: 0 }}
                             transition={{ type: "spring", damping: 25 }}
-                            className="relative max-w-5xl w-full"
+                            className="relative max-w-5xl w-full px-16"
                             onClick={(e) => e.stopPropagation()}
                         >
                             <button
                                 onClick={() => setSelectedCreative(null)}
-                                className="absolute -top-12 right-0 z-10 p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors"
+                                className="absolute -top-12 right-16 z-10 p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors"
                             >
                                 <X className="w-6 h-6 text-white" />
                             </button>
@@ -97,7 +132,20 @@ const CreativeExplorations = () => {
                             />
                             <div className="text-center mt-4">
                                 <h3 className="text-2xl font-bold text-white">{creatives[selectedCreative].title}</h3>
-                                <p className="text-gray-400">{creatives[selectedCreative].subtitle}</p>
+                                <p className="text-muted-foreground">{creatives[selectedCreative].subtitle}</p>
+                            </div>
+
+                            {/* Dot indicators */}
+                            <div className="flex justify-center gap-2 mt-4">
+                                {creatives.map((_, idx) => (
+                                    <button
+                                        key={idx}
+                                        onClick={() => setSelectedCreative(idx)}
+                                        className={`w-2 h-2 rounded-full transition-colors ${
+                                            idx === selectedCreative ? 'bg-primary' : 'bg-white/30 hover:bg-white/50'
+                                        }`}
+                                    />
+                                ))}
                             </div>
                         </motion.div>
                     </motion.div>
