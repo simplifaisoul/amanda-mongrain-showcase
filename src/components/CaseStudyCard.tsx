@@ -116,7 +116,7 @@ const CaseStudyCard = ({ study, index }: { study: CaseStudyProps; index: number 
             >
                 {/* Front of Card */}
                 <div 
-                    className="absolute inset-0 backface-hidden bg-card rounded-3xl overflow-hidden shadow-2xl border border-border/50"
+                    className="absolute inset-0 backface-hidden bg-card rounded-3xl overflow-hidden shadow-2xl"
                     style={{ backfaceVisibility: "hidden" }}
                 >
                     {/* Image Carousel */}
@@ -156,7 +156,7 @@ const CaseStudyCard = ({ study, index }: { study: CaseStudyProps; index: number 
 
                 {/* Back of Card */}
                 <div 
-                    className="absolute inset-0 backface-hidden bg-card rounded-3xl overflow-hidden shadow-2xl border border-border/50"
+                    className="absolute inset-0 backface-hidden bg-card rounded-3xl overflow-hidden shadow-2xl"
                     style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
                 >
                     {/* Image Carousel on Back */}
