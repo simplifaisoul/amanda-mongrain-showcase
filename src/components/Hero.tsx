@@ -86,13 +86,13 @@ const Hero = () => {
             <img
               src="/lovable-uploads/7021278e-973d-4000-9250-907a352662b0.jpg"
               alt="Amanda Mongrain"
-              className="w-full h-auto object-contain rounded-xl border border-border shadow-lg"
+              className="w-full h-auto object-contain rounded-xl shadow-lg"
             />
           </motion.div>
 
           {/* Testimonial Quote */}
           <motion.figure
-            className="bg-card p-6 rounded-xl border border-border"
+            className="bg-card p-6 rounded-xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
