@@ -39,12 +39,12 @@ const Hero = () => {
 
           {/* My Philosophy */}
           <motion.div
-            className="border-l-2 border-primary/40 pl-4"
+            className="border-l-2 border-secondary/40 pl-4"
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4 }}
           >
-            <p className="text-xs uppercase tracking-widest text-primary/70 font-medium mb-2">
+            <p className="text-xs uppercase tracking-widest text-secondary font-medium mb-2">
               My Philosophy
             </p>
             <p className="text-sm text-muted-foreground leading-relaxed italic">
