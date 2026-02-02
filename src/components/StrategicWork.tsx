@@ -216,13 +216,13 @@ const StrategicWork = () => {
         {
             id: 5,
             hook: "Ontario One Call",
-            description: "\"Call Before You Dig\" – A strategic RFP response to reframe a public safety organization as a community protector and drive a 15% increase in locate requests.",
+            description: "\"Call Before You Dig\" – A comprehensive $1.25M RFP response to reframe a public safety organization as a community protector and drive a 5% annual increase in awareness.",
             role: "RFP Strategist",
             sections: [
                 {
                     title: "The Challenge",
                     icon: <Target className="w-4 h-4" />,
-                    content: "The Problem: Ontario One Call (OOC) was perceived as a \"service provider\" rather than a safety authority, leading contractors and homeowners to skip locates and underestimate the risks of digging. The Goal: Shift the brand perception from a suggestion to a rule and increase locate requests by 15%."
+                    content: "The Problem: Ontario One Call (OOC) faced low public awareness (27% in 2023) and was perceived as a \"service provider\" rather than a safety authority, leading to skipped locates and increased damages. The Goal: Develop a comprehensive campaign within a $1,250,000 budget ceiling to increase public and industry awareness by 5% annually, and significantly reduce damages by increasing locate requests."
                 },
                 {
                     title: "The Insight",
@@ -239,16 +239,17 @@ const StrategicWork = () => {
                     icon: <Rocket className="w-4 h-4" />,
                     content: [
                         "Omnichannel Campaign: Integrated digital (SEM, Geofencing), traditional (Radio, Billboards), and experiential (Hardware store partnerships) tactics.",
-                        "Persona-Driven Creative: Tailored messaging for contractors (efficiency/authority) and homeowners (safety/community)."
+                        "Persona-Driven Creative: Tailored messaging for contractors (efficiency/authority) and homeowners (safety/community).",
+                        "Mandatory Compliance: Ensured all proposed materials would meet AODA/WCAG 2.1 Level A and AA accessibility standards and include French translation/adaptation as required by the brief."
                     ]
                 },
                 {
                     title: "Success Benchmarks",
                     icon: <BarChart3 className="w-4 h-4" />,
                     content: [
-                        "15% Increase in total locate requests.",
-                        "10% Decrease in underground infrastructure damages.",
-                        "20% Lift in organic website traffic via educational content."
+                        "5% Annual Increase in Public and Industry Awareness.",
+                        "Significant Increase in total locate requests.",
+                        "Reduction in underground infrastructure damages (targeting below 19 damages per working day)."
                     ]
                 }
             ],
