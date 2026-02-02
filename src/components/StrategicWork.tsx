@@ -125,48 +125,6 @@ const StrategicWork = () => {
         },
         {
             id: 3,
-            hook: "Mighty Maestro",
-            description: "A strategic social media growth pitch designed to double class attendance for a local fitness studio by targeting Gen Z women with an inclusive, community-first approach.",
-            sections: [
-                {
-                    title: "The Challenge",
-                    icon: <Target className="w-4 h-4" />,
-                    content: "The Problem: Mighty Maestro Fitness (Ottawa) struggled with low class attendance (5-10/session). The Goal: Develop a 2-month integrated strategy to increase awareness by 30% and scale attendance to 20-25 participants per class."
-                },
-                {
-                    title: "The Insight",
-                    icon: <Lightbulb className="w-4 h-4" />,
-                    content: "\"The First Step is the Hardest.\" Research into the Ottawa Gen Z demographic revealed that \"gym anxiety\" and toxic masculinity in traditional spaces were the primary barriers. The audience wasn't looking for a \"body transformation,\" they were looking for belonging."
-                },
-                {
-                    title: "The Strategy",
-                    icon: <Rocket className="w-4 h-4" />,
-                    content: "Concept: \"Step, Sweat, Smile, Repeat.\" I developed a circular content framework designed to lower the psychological barrier to entry. Instead of marketing \"fitness,\" we marketed a community loop that rewards showing up over perfection."
-                },
-                {
-                    title: "The Execution",
-                    icon: <Rocket className="w-4 h-4" />,
-                    content: [
-                        "Thematic Pillars: A 4-week rotating content calendar (Step/Sweat/Smile/Repeat) to build narrative momentum.",
-                        "Engagement Funnel: Used interactive Instagram Stories (Polls, Mystery Workouts) to convert \"passive followers\" into \"active participants.\"",
-                        "Local SEO: Targeted high-intent keywords like \"Safe Fitness Ottawa\" and \"Affordable Community Gym\" to capture local search traffic."
-                    ]
-                },
-                {
-                    title: "Strategic Goals",
-                    icon: <BarChart3 className="w-4 h-4" />,
-                    content: [
-                        "Scale Attendance: Design a funnel to move the average class size from 10 to 25 participants.",
-                        "Brand Awareness: Establish Mighty Maestro as the #1 \"Safe Space\" for fitness in the Ottawa student community.",
-                        "Organic Growth: Implement an SEO-first content strategy to drive consistent, non-paid web traffic."
-                    ]
-                }
-            ],
-            pdfLink: "https://drive.google.com/file/d/1TAZjK0JHLTi5mN_Hp-cdxzwDwv8G22_M/view",
-            images: [mightyMaestroImg, mightyMaestroPersonaImg, mightyMaestroStepImg, mightyMaestroSweatImg, mightyMaestroSmileImg, mightyMaestroRepeatImg]
-        },
-        {
-            id: 4,
             hook: "Royal Canadian Mint",
             description: "\"Whispers of the Past\" – An IMC plan to drive awareness and sales for the Gibraltar Point Lighthouse Haunted Canada Coin, targeting paranormal enthusiasts and collectors.",
             sections: [
@@ -207,6 +165,48 @@ const StrategicWork = () => {
             ],
             pdfLink: "https://drive.google.com/file/d/17d7cZUbiKvQZ4GUKZU4a0tOgmUzw1PO9/view",
             images: [rcmCoverImg, rcmPersonaImg, rcmCoinImg, rcmLaptopImg, rcmWebsiteImg, rcmGoogleTabletImg, rcmGoogleAdImg, rcmWeatherAdImg, rcmWeatherDisplayImg, rcmMobileCoinImg, rcmInstagramPostImg, rcmSocialAdImg, rcmInstagramEventImg, rcmEventPosterImg]
+        },
+        {
+            id: 4,
+            hook: "Mighty Maestro",
+            description: "A strategic social media growth pitch designed to double class attendance for a local fitness studio by targeting Gen Z women with an inclusive, community-first approach.",
+            sections: [
+                {
+                    title: "The Challenge",
+                    icon: <Target className="w-4 h-4" />,
+                    content: "The Problem: Mighty Maestro Fitness (Ottawa) struggled with low class attendance (5-10/session). The Goal: Develop a 2-month integrated strategy to increase awareness by 30% and scale attendance to 20-25 participants per class."
+                },
+                {
+                    title: "The Insight",
+                    icon: <Lightbulb className="w-4 h-4" />,
+                    content: "\"The First Step is the Hardest.\" Research into the Ottawa Gen Z demographic revealed that \"gym anxiety\" and toxic masculinity in traditional spaces were the primary barriers. The audience wasn't looking for a \"body transformation,\" they were looking for belonging."
+                },
+                {
+                    title: "The Strategy",
+                    icon: <Rocket className="w-4 h-4" />,
+                    content: "Concept: \"Step, Sweat, Smile, Repeat.\" I developed a circular content framework designed to lower the psychological barrier to entry. Instead of marketing \"fitness,\" we marketed a community loop that rewards showing up over perfection."
+                },
+                {
+                    title: "The Execution",
+                    icon: <Rocket className="w-4 h-4" />,
+                    content: [
+                        "Thematic Pillars: A 4-week rotating content calendar (Step/Sweat/Smile/Repeat) to build narrative momentum.",
+                        "Engagement Funnel: Used interactive Instagram Stories (Polls, Mystery Workouts) to convert \"passive followers\" into \"active participants.\"",
+                        "Local SEO: Targeted high-intent keywords like \"Safe Fitness Ottawa\" and \"Affordable Community Gym\" to capture local search traffic."
+                    ]
+                },
+                {
+                    title: "Strategic Goals",
+                    icon: <BarChart3 className="w-4 h-4" />,
+                    content: [
+                        "Scale Attendance: Design a funnel to move the average class size from 10 to 25 participants.",
+                        "Brand Awareness: Establish Mighty Maestro as the #1 \"Safe Space\" for fitness in the Ottawa student community.",
+                        "Organic Growth: Implement an SEO-first content strategy to drive consistent, non-paid web traffic."
+                    ]
+                }
+            ],
+            pdfLink: "https://drive.google.com/file/d/1TAZjK0JHLTi5mN_Hp-cdxzwDwv8G22_M/view",
+            images: [mightyMaestroImg, mightyMaestroPersonaImg, mightyMaestroStepImg, mightyMaestroSweatImg, mightyMaestroSmileImg, mightyMaestroRepeatImg]
         },
         {
             id: 5,
