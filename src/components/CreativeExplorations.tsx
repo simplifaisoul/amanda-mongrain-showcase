@@ -30,7 +30,7 @@ const creatives = [
         title: "Calvin Klein Ad",
         subtitle: "Transit Shelter Campaign",
         image: calvinKleinAd,
-        rotate: true,
+        rotate: false,
     },
 ];
 
