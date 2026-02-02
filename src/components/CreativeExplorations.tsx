@@ -57,21 +57,23 @@ const CreativeExplorations = () => {
                     CREATIVE <span className="text-secondary">EXPLORATIONS</span>
                 </motion.h2>
 
-                <div className="flex flex-col gap-8 max-w-4xl mx-auto">
+                <div className="grid md:grid-cols-3 gap-6">
                     {creatives.map((creative, idx) => (
                         <motion.div
                             key={idx}
-                            className="group relative overflow-hidden rounded-3xl cursor-pointer"
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
+                            className={`group relative overflow-hidden rounded-3xl cursor-pointer ${
+                                idx === 1 ? "mt-0 md:mt-12" : idx === 2 ? "mt-0 md:mt-24" : ""
+                            } ${idx === 3 ? "h-[600px]" : "h-[400px]"}`}
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
                             viewport={{ once: true }}
-                            transition={{ delay: idx * 0.15 }}
+                            transition={{ delay: idx * 0.2 }}
                             onClick={() => setSelectedCreative(idx)}
                         >
                             <img
                                 src={creative.image}
                                 alt={creative.title}
-                                className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-[1.02] p-4"
+                                className="absolute inset-0 w-full h-full object-contain transition-transform duration-500 group-hover:scale-105 p-4"
                             />
                             <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-6 text-center">
                                 <h3 className="text-2xl font-bold text-white mb-2">{creative.title}</h3>
