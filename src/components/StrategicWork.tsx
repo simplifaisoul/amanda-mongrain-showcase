@@ -169,7 +169,8 @@ const StrategicWork = () => {
         {
             id: 4,
             hook: "Mighty Maestro",
-            description: "Role: Account Lead & Creative Strategist (Primary Client Point of Contact)",
+            description: "\"Step, Sweat, Smile, Repeat\" – A strategic social media growth pitch to double class attendance by positioning the studio as a safe, community-first fitness space for Gen Z women.",
+            role: "Account Lead & Creative Strategist (Primary Client Point of Contact)",
             sections: [
                 {
                     title: "The Challenge",
