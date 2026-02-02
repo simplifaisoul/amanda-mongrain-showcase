@@ -7,40 +7,28 @@ import googleAnalyticsCert from "@/assets/certifications/google-analytics-cert.j
 import hubspotCert from "@/assets/certifications/hubspot-social-media-cert.png";
 import hootsuiteCert from "@/assets/certifications/hootsuite-cert.jpg";
 
-// Inline SVG icons using simple shapes for maximum browser compatibility
+// Simple filled SVG icons for maximum compatibility
 const FolderIcon = ({ className }: { className?: string }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className={className}>
-        <rect x="2" y="6" width="20" height="14" rx="2" fill="none" stroke="currentColor" strokeWidth="2"/>
-        <line x1="2" y1="10" x2="22" y2="10" stroke="currentColor" strokeWidth="2"/>
-        <line x1="8" y1="6" x2="10" y2="3" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-        <line x1="10" y1="3" x2="2" y2="3" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-        <line x1="2" y1="3" x2="2" y2="6" stroke="currentColor" strokeWidth="2"/>
+    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" className={className} fill="currentColor">
+        <path d="M10 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/>
     </svg>
 );
 
 const ChartIcon = ({ className }: { className?: string }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className={className}>
-        <line x1="18" y1="20" x2="18" y2="10" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-        <line x1="12" y1="20" x2="12" y2="4" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-        <line x1="6" y1="20" x2="6" y2="14" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" className={className} fill="currentColor">
+        <path d="M5 9.2h3V19H5V9.2zM10.6 5h2.8v14h-2.8V5zm5.6 8H19v6h-2.8v-6z"/>
     </svg>
 );
 
 const ShareIcon = ({ className }: { className?: string }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className={className}>
-        <circle cx="18" cy="5" r="3" fill="none" stroke="currentColor" strokeWidth="2"/>
-        <circle cx="6" cy="12" r="3" fill="none" stroke="currentColor" strokeWidth="2"/>
-        <circle cx="18" cy="19" r="3" fill="none" stroke="currentColor" strokeWidth="2"/>
-        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" stroke="currentColor" strokeWidth="2"/>
-        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" stroke="currentColor" strokeWidth="2"/>
+    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" className={className} fill="currentColor">
+        <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/>
     </svg>
 );
 
 const MessageIcon = ({ className }: { className?: string }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className={className}>
-        <rect x="2" y="4" width="20" height="14" rx="2" fill="none" stroke="currentColor" strokeWidth="2"/>
-        <line x1="6" y1="9" x2="18" y2="9" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-        <line x1="6" y1="13" x2="14" y2="13" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" className={className} fill="currentColor">
+        <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
     </svg>
 );
 
