@@ -214,6 +214,47 @@ const StrategicWork = () => {
         },
         {
             id: 5,
+            hook: "Ontario One Call",
+            description: "\"Call Before You Dig\" – A strategic RFP response to reframe a public safety organization as a community protector and drive a 15% increase in locate requests.",
+            sections: [
+                {
+                    title: "The Challenge",
+                    icon: <Target className="w-4 h-4" />,
+                    content: "The Problem: Ontario One Call (OOC) was perceived as a \"service provider\" rather than a safety authority, leading contractors and homeowners to skip locates and underestimate the risks of digging. The Goal: Shift the brand perception from a suggestion to a rule and increase locate requests by 15%."
+                },
+                {
+                    title: "The Insight",
+                    icon: <Lightbulb className="w-4 h-4" />,
+                    content: "\"Risk Underestimation.\" Research revealed that people don't skip locates because they don't care; they skip them because they don't believe a disaster will happen to them. The strategy shifted from \"Call us\" to \"You are the first line of safety.\""
+                },
+                {
+                    title: "The Strategy",
+                    icon: <Rocket className="w-4 h-4" />,
+                    content: "The Big Idea: \"Call Before You Dig.\" I architected a comprehensive RFP response that reframed OOC as a community protector. The strategy focused on the personal and community consequences of skipping a locate, turning a \"chore\" into a \"responsibility.\""
+                },
+                {
+                    title: "The Execution",
+                    icon: <Rocket className="w-4 h-4" />,
+                    content: [
+                        "Omnichannel Campaign: Integrated digital (SEM, Geofencing), traditional (Radio, Billboards), and experiential (Hardware store partnerships) tactics.",
+                        "Persona-Driven Creative: Tailored messaging for contractors (efficiency/authority) and homeowners (safety/community)."
+                    ]
+                },
+                {
+                    title: "Success Benchmarks",
+                    icon: <BarChart3 className="w-4 h-4" />,
+                    content: [
+                        "15% Increase in total locate requests.",
+                        "10% Decrease in underground infrastructure damages.",
+                        "20% Lift in organic website traffic via educational content."
+                    ]
+                }
+            ],
+            pdfLink: "https://drive.google.com/file/d/1MAjvj_e06kJNYBoDI-RNkJarjWU4xGEt/view",
+            images: []
+        },
+        {
+            id: 6,
             hook: "DAVIDsTEA",
             description: "A comprehensive Strategic Procurement Brief simulating a national brand revitalization project with a hypothetical annual budget of $300,000 to $500,000.",
             role: "Strategic Architect (Market Analysis, Brief Writing, KPI Definition)",
