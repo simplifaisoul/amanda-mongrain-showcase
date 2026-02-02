@@ -30,7 +30,7 @@ const creatives = [
         title: "Calvin Klein Ad",
         subtitle: "Transit Shelter Campaign",
         image: calvinKleinAd,
-        rotate: false,
+        rotate: true,
     },
 ];
 
@@ -82,12 +82,12 @@ const CreativeExplorations = () => {
                                 className="relative overflow-hidden rounded-3xl cursor-pointer group"
                                 onClick={() => setLightboxOpen(true)}
                             >
-                                <div className={`flex items-center justify-center ${currentCreative.rotate ? "h-[600px]" : "h-[500px]"}`}>
+                                <div className={`flex items-center justify-center ${currentCreative.rotate ? "h-[400px]" : "h-[500px]"}`}>
                                     <img
                                         src={currentCreative.image}
                                         alt={currentCreative.title}
-                                        className={`max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105 ${
-                                            currentCreative.rotate ? "rotate-90" : ""
+                                        className={`object-contain transition-transform duration-500 group-hover:scale-105 ${
+                                            currentCreative.rotate ? "rotate-90 max-w-[350px] max-h-[350px]" : "max-w-full max-h-full"
                                         }`}
                                     />
                                 </div>
@@ -175,13 +175,15 @@ const CreativeExplorations = () => {
                             >
                                 <X className="w-6 h-6 text-white" />
                             </button>
-                            <img
-                                src={currentCreative.image}
-                                alt={currentCreative.title}
-                                className={`w-full h-auto max-h-[85vh] object-contain rounded-lg ${
-                                    currentCreative.rotate ? "rotate-90" : ""
-                                }`}
-                            />
+                            <div className="flex items-center justify-center">
+                                <img
+                                    src={currentCreative.image}
+                                    alt={currentCreative.title}
+                                    className={`object-contain rounded-lg ${
+                                        currentCreative.rotate ? "rotate-90 max-w-[500px] max-h-[500px]" : "w-full h-auto max-h-[85vh]"
+                                    }`}
+                                />
+                            </div>
                             <div className="text-center mt-4">
                                 <h3 className="text-2xl font-bold text-white">{currentCreative.title}</h3>
                                 <p className="text-muted-foreground">{currentCreative.subtitle}</p>
