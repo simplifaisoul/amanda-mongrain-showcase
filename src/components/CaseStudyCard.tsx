@@ -12,6 +12,7 @@ export interface CaseStudyProps {
     id: number;
     hook: string;
     description: string;
+    role?: string;
     sections: CaseStudySection[];
     pdfLink: string;
     images?: string[];
@@ -139,9 +140,14 @@ const CaseStudyCard = ({ study, index }: { study: CaseStudyProps; index: number 
                         <h3 className="text-2xl md:text-3xl font-bold text-foreground leading-tight mb-4">
                             {study.hook}
                         </h3>
-                        <p className="text-base md:text-lg text-foreground/70 leading-relaxed mb-6">
+                        <p className="text-base md:text-lg text-foreground/70 leading-relaxed mb-4">
                             {study.description}
                         </p>
+                        {study.role && (
+                            <p className="text-sm text-primary font-medium mb-6">
+                                {study.role}
+                            </p>
+                        )}
                         
                         {/* Flip Button */}
                         <button
