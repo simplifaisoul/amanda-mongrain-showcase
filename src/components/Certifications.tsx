@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Briefcase, TrendingUp, Megaphone, CalendarClock, X } from "lucide-react";
+import { FolderKanban, TrendingUp, Users, Clock, X } from "lucide-react";
 
 import projectManagementCert from "@/assets/certifications/linkedin-project-management-cert.jpg";
 import googleAnalyticsCert from "@/assets/certifications/google-analytics-cert.jpg";
@@ -13,7 +13,7 @@ const Certifications = () => {
     const certs = [
         { 
             title: "Project Management", 
-            icon: <Briefcase className="w-10 h-10 mb-4 text-primary" />,
+            icon: <FolderKanban className="w-10 h-10 mb-4 text-primary" />,
             image: projectManagementCert,
             issuer: "LinkedIn Learning",
             issueDate: "December 9, 2025",
@@ -30,7 +30,7 @@ const Certifications = () => {
         },
         { 
             title: "Social Media Marketing", 
-            icon: <Megaphone className="w-10 h-10 mb-4 text-primary" />,
+            icon: <Users className="w-10 h-10 mb-4 text-primary" />,
             image: hubspotCert,
             issuer: "HubSpot Academy",
             issueDate: "December 3, 2025",
@@ -39,7 +39,7 @@ const Certifications = () => {
         },
         { 
             title: "Hootsuite Platform", 
-            icon: <CalendarClock className="w-10 h-10 mb-4 text-secondary" />,
+            icon: <Clock className="w-10 h-10 mb-4 text-secondary" />,
             image: hootsuiteCert,
             issuer: "Hootsuite Academy",
             issueDate: "February 19, 2025",
