@@ -42,6 +42,7 @@ const StrategicWork = () => {
             id: 1,
             hook: "Ottawa 67's",
             description: "\"Break the Ice\" – A strategic IMC proposal to transform Friday-night hockey games into must-attend social destinations for young professionals.",
+            role: "Creative Strategist & IMC Planner",
             sections: [
                 {
                     title: "The Challenge",
@@ -84,6 +85,7 @@ const StrategicWork = () => {
             id: 2,
             hook: "Place D'Orleans",
             description: "\"More Holiday\" – A seasonal IMC campaign to reposition an Ottawa shopping center as the stress-free alternative, targeting 120,000 visitors and a 6% sales lift.",
+            role: "Researcher & Digital Strategist",
             sections: [
                 {
                     title: "The Challenge",
@@ -127,6 +129,7 @@ const StrategicWork = () => {
             id: 3,
             hook: "Royal Canadian Mint",
             description: "\"Whispers of the Past\" – An IMC plan to drive awareness and sales for the Gibraltar Point Lighthouse Haunted Canada Coin, targeting paranormal enthusiasts and collectors.",
+            role: "Strategist & Creative Designer",
             sections: [
                 {
                     title: "The Challenge",
@@ -212,7 +215,8 @@ const StrategicWork = () => {
         {
             id: 5,
             hook: "DAVIDsTEA",
-            description: "RFP: DAVIDsTEA Brand Revitalization. Role: Strategic Architect (Market Analysis, Brief Writing, KPI Definition)",
+            description: "A comprehensive Strategic Procurement Brief simulating a national brand revitalization project with a hypothetical annual budget of $300,000 to $500,000.",
+            role: "Strategic Architect (Market Analysis, Brief Writing, KPI Definition)",
             sections: [
                 {
                     title: "The Challenge",
