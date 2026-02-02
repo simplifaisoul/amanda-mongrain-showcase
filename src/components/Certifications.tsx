@@ -7,45 +7,56 @@ import googleAnalyticsCert from "@/assets/certifications/google-analytics-cert.j
 import hubspotCert from "@/assets/certifications/hubspot-social-media-cert.png";
 import hootsuiteCert from "@/assets/certifications/hootsuite-cert.jpg";
 
+const iconClassName = "w-10 h-10 mb-4";
+
+const certs = [
+    { 
+        title: "Project Management", 
+        iconType: "folder" as const,
+        iconColor: "text-primary",
+        image: projectManagementCert,
+        issuer: "LinkedIn Learning",
+    },
+    { 
+        title: "Google Analytics", 
+        iconType: "chart" as const,
+        iconColor: "text-secondary",
+        image: googleAnalyticsCert,
+        issuer: "Google",
+    },
+    { 
+        title: "Social Media Marketing", 
+        iconType: "share" as const,
+        iconColor: "text-primary",
+        image: hubspotCert,
+        issuer: "HubSpot Academy",
+    },
+    { 
+        title: "Hootsuite Platform", 
+        iconType: "message" as const,
+        iconColor: "text-secondary",
+        image: hootsuiteCert,
+        issuer: "Hootsuite Academy",
+    },
+];
+
+const CertIcon = ({ iconType, colorClass }: { iconType: string; colorClass: string }) => {
+    switch (iconType) {
+        case "folder":
+            return <Folder className={`${iconClassName} ${colorClass}`} />;
+        case "chart":
+            return <BarChart2 className={`${iconClassName} ${colorClass}`} />;
+        case "share":
+            return <Share className={`${iconClassName} ${colorClass}`} />;
+        case "message":
+            return <MessageSquare className={`${iconClassName} ${colorClass}`} />;
+        default:
+            return null;
+    }
+};
+
 const Certifications = () => {
     const [selectedCert, setSelectedCert] = useState<number | null>(null);
-
-    const certs = [
-        { 
-            title: "Project Management", 
-            icon: <Folder className="w-10 h-10 mb-4 text-primary" />,
-            image: projectManagementCert,
-            issuer: "LinkedIn Learning",
-            issueDate: "December 9, 2025",
-            certificateId: "02f8e573c989929373c9fec96c4c913f2d38586dca29f56f3293e8c7ff41b0a0"
-        },
-        { 
-            title: "Google Analytics", 
-            icon: <BarChart2 className="w-10 h-10 mb-4 text-secondary" />,
-            image: googleAnalyticsCert,
-            issuer: "Google",
-            issueDate: "October 20, 2025",
-            expiryDate: "October 20, 2026",
-            certificateId: "163711700"
-        },
-        { 
-            title: "Social Media Marketing", 
-            icon: <Share className="w-10 h-10 mb-4 text-primary" />,
-            image: hubspotCert,
-            issuer: "HubSpot Academy",
-            issueDate: "December 3, 2025",
-            expiryDate: "January 2, 2028",
-            certificateId: "8f8a5c7d640d4f62a3184b585908e87d"
-        },
-        { 
-            title: "Hootsuite Platform", 
-            icon: <MessageSquare className="w-10 h-10 mb-4 text-secondary" />,
-            image: hootsuiteCert,
-            issuer: "Hootsuite Academy",
-            issueDate: "February 19, 2025",
-            certificateId: "134199095"
-        },
-    ];
 
     return (
         <section className="py-24 px-6 bg-background overflow-hidden">
@@ -70,7 +81,7 @@ const Certifications = () => {
                             className="aspect-square bg-card border border-white/5 rounded-3xl p-8 flex flex-col items-center justify-center hover:bg-white/5 transition-colors group relative overflow-hidden"
                         >
                             <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                            {cert.icon}
+                            <CertIcon iconType={cert.iconType} colorClass={cert.iconColor} />
                             <h3 className="text-xl font-bold text-center text-foreground z-10">{cert.title}</h3>
                             <p className="text-sm text-muted-foreground mt-2">{cert.issuer}</p>
                             <div className="w-16 h-1 bg-gradient-to-r from-primary to-secondary mt-4 mb-6 rounded-full"></div>
