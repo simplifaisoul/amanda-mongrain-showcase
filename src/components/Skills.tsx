@@ -33,13 +33,13 @@ const Skills = () => {
       delay: 0.25 
     },
     { 
-      title: "Client Relations & Project Management", 
-      description: "Bridging the gap between client business goals and creative execution. Experienced in managing project timelines, cross-functional team collaboration, and ensuring every deliverable is on-strategy and on-budget.",
+      title: "Client & Project Management", 
+      description: "Managing the bridge between client goals and creative execution to ensure projects stay on-strategy and on-budget.",
       delay: 0.3 
     },
     { 
-      title: "Multi-Channel Digital Strategy", 
-      description: "Architecting cohesive brand experiences across the digital ecosystem. From SEO-driven content to paid social funnels, I ensure a brand's message is optimized for the specific strengths of every digital platform.",
+      title: "Digital Ecosystem Strategy", 
+      description: "Architecting cohesive brand experiences across SEO, paid social, and web to optimize impact on every platform.",
       delay: 0.35 
     },
   ];
