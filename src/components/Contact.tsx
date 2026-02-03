@@ -50,7 +50,7 @@ const Contact = () => {
             </Button>
           </a>
 
-          <a href="/Amanda-Mongrain-Resume.pdf" target="_blank" rel="noopener noreferrer">
+          <a href="https://docs.google.com/document/d/1sTszr7E7bKvWVja96W72ICVirEEMTVAD/edit?usp=sharing&ouid=103657833264329754570&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer">
             <Button variant="outline" size="lg" className="h-16 px-8 text-lg border-2 border-white/20 text-foreground hover:bg-white hover:text-black transition-all w-64 justify-start group">
               <FileText className="mr-4 w-6 h-6 group-hover:scale-110 transition-transform" />
               Resume
