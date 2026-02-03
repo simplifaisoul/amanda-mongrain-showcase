@@ -23,7 +23,7 @@ const creatives = [
     },
     {
         title: "Illustrator Work",
-        subtitle: "Vector Illustration",
+        subtitle: "Adobe Illustrator",
         image: illustratorLemons,
         rotate: false,
     },
