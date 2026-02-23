@@ -30,13 +30,7 @@ const Index = () => {
 
       <SectionDivider />
 
-      <motion.footer
-        className="py-16 px-6 bg-card relative overflow-hidden border-t border-border/30"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      >
+      <footer className="py-16 px-6 bg-card relative overflow-hidden border-t border-border/30">
         <div className="absolute inset-0 bg-background/50 backdrop-blur-3xl z-0" />
         <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center gap-4">
           <p className="text-sm tracking-[0.3em] uppercase text-muted-foreground">
@@ -44,7 +38,7 @@ const Index = () => {
           </p>
           <div className="w-12 h-px bg-primary/40" />
         </div>
-      </motion.footer>
+      </footer>
 
       <ScrollToTop />
     </div>
