@@ -60,9 +60,10 @@ const CreativeExplorations = () => {
             <div className="max-w-7xl mx-auto">
                 <motion.h2
                     className="text-4xl md:text-6xl font-black text-right mb-20 text-foreground"
-                    initial={{ opacity: 0, x: 20 }}
+                    initial={{ opacity: 0, x: 30 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
+                    transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
                 >
                     CREATIVE <span className="text-secondary">EXPLORATIONS</span>
                 </motion.h2>
