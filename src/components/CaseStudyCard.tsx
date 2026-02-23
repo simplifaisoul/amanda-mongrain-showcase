@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { ExternalLink, ChevronLeft, ChevronRight, RotateCcw } from "lucide-react";
 
 interface CaseStudySection {
@@ -78,10 +78,22 @@ const ImageCarousel = ({
 
 const CaseStudyCard = ({ study, index }: { study: CaseStudyProps; index: number }) => {
     const [isFlipped, setIsFlipped] = useState(false);
-    
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const backContentRef = useRef<HTMLDivElement>(null);
+    const cardRef = useRef<HTMLDivElement>(null);
 
     const images = study.images || [];
+
+    // Scroll back content to top and scroll card into view when flipped
+    useEffect(() => {
+        if (isFlipped) {
+            backContentRef.current?.scrollTo({ top: 0 });
+            // Small delay to let flip animation start, then scroll card into view
+            setTimeout(() => {
+                cardRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+            }, 100);
+        }
+    }, [isFlipped]);
 
     const nextImage = (e: React.MouseEvent) => {
         e.stopPropagation();
@@ -104,7 +116,8 @@ const CaseStudyCard = ({ study, index }: { study: CaseStudyProps; index: number 
 
     return (
         <motion.div
-            className="perspective-1000 h-[700px] md:h-[750px]"
+            ref={cardRef}
+            className="perspective-1000 h-[750px] md:h-[750px] scroll-mt-20"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -198,7 +211,7 @@ const CaseStudyCard = ({ study, index }: { study: CaseStudyProps; index: number 
                         </div>
 
                         {/* Scrollable Content Sections */}
-                        <div className="flex-1 overflow-y-auto min-h-0 grid gap-2.5 content-start">
+                        <div ref={backContentRef} className="flex-1 overflow-y-auto min-h-0 grid gap-2.5 content-start">
                             {study.sections.map((section, i) => (
                                 <div
                                     key={i}
