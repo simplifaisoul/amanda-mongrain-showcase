@@ -28,7 +28,6 @@ const Index = () => {
         <Contact />
       </main>
 
-      <SectionDivider />
 
       <footer className="py-16 px-6 bg-card relative overflow-hidden border-t border-border/30">
         <div className="absolute inset-0 bg-background/50 backdrop-blur-3xl z-0" />

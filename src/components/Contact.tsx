@@ -13,7 +13,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-32 px-6 bg-background relative overflow-hidden flex items-center justify-center min-h-[60vh]">
+    <section id="contact" className="py-32 px-6 bg-background relative overflow-hidden flex items-center justify-center">
 
       {/* Background Glow */}
       <motion.div
