@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { ExternalLink, Target, Lightbulb, Rocket, BarChart3, ChevronDown, ChevronLeft, ChevronRight, Eye } from "lucide-react";
+import { ExternalLink, Target, Lightbulb, Rocket, BarChart3, ChevronDown, ChevronLeft, ChevronRight, Layers } from "lucide-react";
 
 interface CaseStudySection {
     title: string;
@@ -162,7 +162,7 @@ const CaseStudyCard = ({ study, index }: { study: CaseStudyProps; index: number 
                     className="w-full flex items-center justify-between gap-3 bg-muted/50 hover:bg-muted/80 text-foreground py-3.5 px-5 rounded-xl transition-all duration-300 group/btn"
                 >
                     <span className="flex items-center gap-2 text-sm font-semibold">
-                        <Eye className="w-4 h-4 text-primary" />
+                        <Layers className="w-4 h-4 text-primary" />
                         {isExpanded ? 'Hide Details' : 'View Full Breakdown'}
                     </span>
                     <motion.div
