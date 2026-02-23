@@ -13,23 +13,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-32 px-6 bg-background relative overflow-hidden flex items-center justify-center">
-
-      {/* Background Glow */}
-      <motion.div
-        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[100px] pointer-events-none"
-        initial={{ scale: 0.4, opacity: 0 }}
-        whileInView={{ scale: 1, opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-      />
-      <motion.div
-        className="absolute top-1/3 right-1/4 w-[200px] h-[200px] bg-secondary/10 rounded-full blur-[80px] pointer-events-none"
-        initial={{ scale: 0, opacity: 0 }}
-        whileInView={{ scale: 1, opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1.8, delay: 0.3, ease: "easeOut" }}
-      />
+    <section id="contact" className="py-32 px-6 bg-background relative flex items-center justify-center" style={{ contain: 'paint' }}>
 
       <div className="max-w-4xl w-full mx-auto relative z-10 text-center">
         <motion.h2
