@@ -342,8 +342,8 @@ const StrategicWork = () => {
                     Real-world marketing challenges solved with strategic thinking and creative execution.
                 </motion.p>
 
-                <motion.div
-                    className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+            <motion.div
+                    className="grid grid-cols-1 lg:grid-cols-2 gap-6"
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
