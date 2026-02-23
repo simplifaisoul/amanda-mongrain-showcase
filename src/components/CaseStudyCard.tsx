@@ -108,11 +108,13 @@ const CaseStudyCard = ({ study, index }: { study: CaseStudyProps; index: number 
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
+            transition={{ duration: 0.6, delay: index * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+            whileHover={{ y: -6, transition: { duration: 0.3 } }}
         >
             <motion.div
-                className="relative w-full h-full transition-transform duration-700 preserve-3d"
+                className="relative w-full h-full preserve-3d"
                 animate={{ rotateY: isFlipped ? 180 : 0 }}
+                transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
                 style={{ transformStyle: "preserve-3d" }}
             >
                 {/* Front of Card */}
@@ -150,13 +152,22 @@ const CaseStudyCard = ({ study, index }: { study: CaseStudyProps; index: number 
                         )}
                         
                         {/* Flip Button */}
-                        <button
+                        <motion.button
                             onClick={handleFlip}
-                            className="w-full flex items-center justify-center gap-3 bg-primary text-primary-foreground py-5 rounded-2xl transition-all hover:scale-[1.02] hover:bg-primary/90 shadow-lg group"
+                            className="w-full flex items-center justify-center gap-3 bg-primary text-primary-foreground py-5 rounded-2xl shadow-lg group relative overflow-hidden"
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                            transition={{ type: "spring", stiffness: 400, damping: 17 }}
                         >
-                            <span className="text-lg font-bold tracking-wide">View Full Details</span>
-                            <RotateCcw className="w-6 h-6 group-hover:rotate-180 transition-transform duration-500" />
-                        </button>
+                            <span className="text-lg font-bold tracking-wide relative z-10">View Full Details</span>
+                            <RotateCcw className="w-6 h-6 group-hover:rotate-180 transition-transform duration-500 relative z-10" />
+                            <motion.span
+                                className="absolute inset-0 bg-secondary/20"
+                                initial={{ x: "-100%" }}
+                                whileHover={{ x: 0 }}
+                                transition={{ duration: 0.3 }}
+                            />
+                        </motion.button>
                     </div>
                 </div>
 
