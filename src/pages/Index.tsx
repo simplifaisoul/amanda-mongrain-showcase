@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import Skills from "@/components/Skills";
@@ -28,9 +27,7 @@ const Index = () => {
         <Contact />
       </main>
 
-
       <footer className="py-16 px-6 bg-card relative overflow-hidden border-t border-border/30">
-        <div className="absolute inset-0 bg-background/50 backdrop-blur-3xl z-0" />
         <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center gap-4">
           <p className="text-sm tracking-[0.3em] uppercase text-muted-foreground">
             © 2026 Amanda Mongrain
