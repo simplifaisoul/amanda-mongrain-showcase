@@ -89,8 +89,12 @@ const Skills = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="p-6 rounded-lg bg-background border border-primary/40 cursor-default"
+              whileHover={{ y: -4, borderColor: "hsl(330 65% 55% / 0.7)", transition: { duration: 0.25 } }}
+              className="p-6 rounded-lg bg-background border border-primary/40 cursor-default group relative overflow-hidden"
             >
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+              />
               <motion.div
                 className="w-8 h-0.5 bg-primary/60 mb-4"
                 initial={{ scaleX: 0 }}

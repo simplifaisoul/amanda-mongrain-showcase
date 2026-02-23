@@ -71,12 +71,14 @@ const CreativeExplorations = () => {
                 {/* Carousel Container */}
                 <div className="relative flex items-center justify-center">
                     {/* Previous Arrow */}
-                    <button
+                    <motion.button
                         onClick={goToPrevious}
-                        className="absolute left-0 md:left-8 z-10 p-3 bg-white/10 rounded-full hover:bg-white/20 transition-colors"
+                        className="absolute left-0 md:left-8 z-10 p-3 bg-muted/30 backdrop-blur-sm rounded-full hover:bg-muted/50 transition-colors border border-border/20"
+                        whileHover={{ scale: 1.1, x: -2 }}
+                        whileTap={{ scale: 0.95 }}
                     >
                         <ChevronLeft className="w-8 h-8 text-foreground" />
-                    </button>
+                    </motion.button>
 
                     {/* Creative Display */}
                     <div className="w-full max-w-4xl mx-16">
@@ -127,12 +129,14 @@ const CreativeExplorations = () => {
                     </div>
 
                     {/* Next Arrow */}
-                    <button
+                    <motion.button
                         onClick={goToNext}
-                        className="absolute right-0 md:right-8 z-10 p-3 bg-white/10 rounded-full hover:bg-white/20 transition-colors"
+                        className="absolute right-0 md:right-8 z-10 p-3 bg-muted/30 backdrop-blur-sm rounded-full hover:bg-muted/50 transition-colors border border-border/20"
+                        whileHover={{ scale: 1.1, x: 2 }}
+                        whileTap={{ scale: 0.95 }}
                     >
                         <ChevronRight className="w-8 h-8 text-foreground" />
-                    </button>
+                    </motion.button>
                 </div>
             </div>
 
