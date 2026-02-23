@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { ExternalLink, Target, Lightbulb, Rocket, BarChart3, ChevronDown, ChevronUp, ChevronLeft, ChevronRight, RotateCcw } from "lucide-react";
+import { ExternalLink, ChevronLeft, ChevronRight, RotateCcw } from "lucide-react";
 
 interface CaseStudySection {
     title: string;
@@ -78,7 +78,7 @@ const ImageCarousel = ({
 
 const CaseStudyCard = ({ study, index }: { study: CaseStudyProps; index: number }) => {
     const [isFlipped, setIsFlipped] = useState(false);
-    const [isExpanded, setIsExpanded] = useState(false);
+    
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     const images = study.images || [];
@@ -165,20 +165,8 @@ const CaseStudyCard = ({ study, index }: { study: CaseStudyProps; index: number 
                     className="absolute inset-0 backface-hidden bg-card rounded-3xl overflow-hidden shadow-2xl"
                     style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
                 >
-                    {/* Image Carousel on Back */}
-                    {images.length > 0 && (
-                        <ImageCarousel 
-                            images={images}
-                            currentIndex={currentImageIndex}
-                            onNext={nextImage}
-                            onPrev={prevImage}
-                            onDotClick={handleDotClick}
-                            alt={study.hook}
-                        />
-                    )}
-                    
-                    {/* Back Content - Scrollable */}
-                    <div className="p-6 md:p-8 h-[calc(100%-20rem)] md:h-[calc(100%-22rem)] overflow-y-auto">
+                    {/* Back Content - Full height scrollable */}
+                    <div className="p-6 md:p-8 h-full overflow-y-auto">
                         {/* Header */}
                         <div className="flex items-start justify-between mb-5">
                             <div className="flex-1 pr-4">
@@ -201,9 +189,9 @@ const CaseStudyCard = ({ study, index }: { study: CaseStudyProps; index: number 
                             </button>
                         </div>
 
-                        {/* Content Sections */}
+                        {/* All Content Sections - no collapse */}
                         <div className="grid gap-3">
-                            {study.sections.slice(0, isExpanded ? undefined : 3).map((section, i) => (
+                            {study.sections.map((section, i) => (
                                 <div
                                     key={i}
                                     className="bg-background/50 rounded-xl p-4 border border-border/30"
@@ -231,22 +219,6 @@ const CaseStudyCard = ({ study, index }: { study: CaseStudyProps; index: number 
                                 </div>
                             ))}
                         </div>
-
-                        {/* Expand/Collapse Button */}
-                        {study.sections.length > 3 && (
-                            <button
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    setIsExpanded(!isExpanded);
-                                }}
-                                className="w-full mt-3 flex items-center justify-center gap-2 text-primary hover:text-primary/80 transition-colors py-2.5 rounded-xl bg-primary/5 hover:bg-primary/10"
-                            >
-                                <span className="text-sm font-semibold">
-                                    {isExpanded ? 'Show Less' : `Show ${study.sections.length - 3} More Sections`}
-                                </span>
-                                {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
-                            </button>
-                        )}
 
                         {/* CTA */}
                         <div className="mt-4 pt-4 border-t border-border/30">
