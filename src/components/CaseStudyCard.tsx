@@ -152,10 +152,10 @@ const CaseStudyCard = ({ study, index }: { study: CaseStudyProps; index: number 
                         {/* Flip Button */}
                         <button
                             onClick={handleFlip}
-                            className="w-full flex items-center justify-center gap-3 bg-primary/10 hover:bg-primary/20 text-primary py-4 rounded-2xl transition-all hover:scale-[1.02] group"
+                            className="w-full flex items-center justify-center gap-3 bg-primary text-primary-foreground py-5 rounded-2xl transition-all hover:scale-[1.02] hover:bg-primary/90 shadow-lg group"
                         >
-                            <span className="text-base font-semibold">View Full Details</span>
-                            <RotateCcw className="w-5 h-5 group-hover:rotate-180 transition-transform duration-500" />
+                            <span className="text-lg font-bold tracking-wide">View Full Details</span>
+                            <RotateCcw className="w-6 h-6 group-hover:rotate-180 transition-transform duration-500" />
                         </button>
                     </div>
                 </div>
