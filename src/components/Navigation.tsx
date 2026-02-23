@@ -43,7 +43,7 @@ const Navigation = () => {
                 onClick={() => scrollToSection("projects")}
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
-                Projects
+                Case Studies
               </button>
               <button
                 onClick={() => scrollToSection("skills")}
@@ -86,7 +86,7 @@ const Navigation = () => {
                 onClick={() => scrollToSection("projects")}
                 className="text-xl text-foreground hover:text-primary transition-colors"
               >
-                Projects
+                Case Studies
               </button>
               <button
                 onClick={() => scrollToSection("skills")}
