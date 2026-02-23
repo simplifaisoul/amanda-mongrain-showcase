@@ -60,7 +60,7 @@ const Skills = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: q.delay }}
-              className="p-6 rounded-lg bg-background border border-primary/40 hover:border-primary transition-colors"
+              className="p-6 rounded-lg bg-background border border-primary/40 hover:border-primary transition-colors cursor-default"
             >
               <h3 className="text-base font-semibold text-foreground mb-2">
                 {q.title}
