@@ -18,24 +18,41 @@ const Hero = () => {
           <div className="space-y-4">
             <motion.p
               className="text-xs md:text-sm uppercase tracking-[0.25em] text-primary/80 font-medium"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
               Marketing Strategist & Creative Storyteller
             </motion.p>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground tracking-tight leading-[1.1]">
-              Amanda
+              <motion.span
+                className="inline-block"
+                initial={{ opacity: 0, y: 40, rotateX: -40 }}
+                animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                transition={{ delay: 0.15, duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+              >
+                Amanda
+              </motion.span>
               <br />
-              <span className="text-primary">
+              <motion.span
+                className="text-primary inline-block"
+                initial={{ opacity: 0, y: 40, rotateX: -40 }}
+                animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                transition={{ delay: 0.3, duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+              >
                 Mongrain
-              </span>
+              </motion.span>
             </h1>
           </div>
 
-          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-md">
+          <motion.p
+            className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-md"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+          >
             Building brand strategies from the ground up to connect people with purpose.
-          </p>
+          </motion.p>
 
           {/* My Philosophy */}
           <motion.div
@@ -55,22 +72,26 @@ const Hero = () => {
           {/* CTA Buttons */}
           <motion.div
             className="flex flex-wrap gap-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7, duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
-            <a
+            <motion.a
               href="#projects"
               className="px-6 py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 transition-all duration-200"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.97 }}
             >
               View Work
-            </a>
-            <a
+            </motion.a>
+            <motion.a
               href="#contact"
               className="px-6 py-3 border-2 border-secondary text-foreground font-medium rounded-lg hover:bg-secondary/10 transition-all duration-200"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.97 }}
             >
               Get In Touch
-            </a>
+            </motion.a>
           </motion.div>
         </motion.div>
 

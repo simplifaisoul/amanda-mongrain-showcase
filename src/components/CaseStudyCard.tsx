@@ -150,13 +150,21 @@ const CaseStudyCard = ({ study, index }: { study: CaseStudyProps; index: number 
                         )}
                         
                         {/* Flip Button */}
-                        <button
+                        <motion.button
                             onClick={handleFlip}
-                            className="w-full flex items-center justify-center gap-3 bg-primary text-primary-foreground py-5 rounded-2xl transition-all hover:scale-[1.02] hover:bg-primary/90 shadow-lg group"
+                            className="w-full flex items-center justify-center gap-3 bg-primary text-primary-foreground py-5 rounded-2xl shadow-lg group overflow-hidden relative"
+                            whileHover={{ scale: 1.02, y: -2 }}
+                            whileTap={{ scale: 0.98 }}
                         >
-                            <span className="text-lg font-bold tracking-wide">View Full Details</span>
-                            <RotateCcw className="w-6 h-6 group-hover:rotate-180 transition-transform duration-500" />
-                        </button>
+                            <span className="text-lg font-bold tracking-wide relative z-10">View Full Details</span>
+                            <RotateCcw className="w-6 h-6 group-hover:rotate-180 transition-transform duration-500 relative z-10" />
+                            <motion.div
+                                className="absolute inset-0 bg-primary/80"
+                                initial={{ x: "-100%" }}
+                                whileHover={{ x: 0 }}
+                                transition={{ duration: 0.3 }}
+                            />
+                        </motion.button>
                     </div>
                 </div>
 

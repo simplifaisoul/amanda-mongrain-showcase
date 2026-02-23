@@ -71,12 +71,14 @@ const CreativeExplorations = () => {
                 {/* Carousel Container */}
                 <div className="relative flex items-center justify-center">
                     {/* Previous Arrow */}
-                    <button
+                    <motion.button
                         onClick={goToPrevious}
-                        className="absolute left-0 md:left-8 z-10 p-3 bg-white/10 rounded-full hover:bg-white/20 transition-colors"
+                        className="absolute left-0 md:left-8 z-10 p-3 bg-muted/30 rounded-full hover:bg-muted/50 transition-colors border border-border/30"
+                        whileHover={{ scale: 1.15, x: -3 }}
+                        whileTap={{ scale: 0.9 }}
                     >
                         <ChevronLeft className="w-8 h-8 text-foreground" />
-                    </button>
+                    </motion.button>
 
                     {/* Creative Display */}
                     <div className="w-full max-w-4xl mx-16">
@@ -115,24 +117,32 @@ const CreativeExplorations = () => {
                         {/* Dot indicators */}
                         <div className="flex justify-center gap-3 mt-6">
                             {creatives.map((_, idx) => (
-                                <button
+                                <motion.button
                                     key={idx}
                                     onClick={() => setCurrentIndex(idx)}
-                                    className={`w-3 h-3 rounded-full transition-colors ${
-                                        idx === currentIndex ? 'bg-primary' : 'bg-white/30 hover:bg-white/50'
+                                    className={`rounded-full transition-colors ${
+                                        idx === currentIndex ? 'bg-primary' : 'bg-foreground/20 hover:bg-foreground/40'
                                     }`}
+                                    animate={{ 
+                                        width: idx === currentIndex ? 24 : 12,
+                                        height: 12,
+                                    }}
+                                    whileHover={{ scale: 1.2 }}
+                                    transition={{ duration: 0.3 }}
                                 />
                             ))}
                         </div>
                     </div>
 
                     {/* Next Arrow */}
-                    <button
+                    <motion.button
                         onClick={goToNext}
-                        className="absolute right-0 md:right-8 z-10 p-3 bg-white/10 rounded-full hover:bg-white/20 transition-colors"
+                        className="absolute right-0 md:right-8 z-10 p-3 bg-muted/30 rounded-full hover:bg-muted/50 transition-colors border border-border/30"
+                        whileHover={{ scale: 1.15, x: 3 }}
+                        whileTap={{ scale: 0.9 }}
                     >
                         <ChevronRight className="w-8 h-8 text-foreground" />
-                    </button>
+                    </motion.button>
                 </div>
             </div>
 

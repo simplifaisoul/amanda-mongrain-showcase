@@ -32,7 +32,16 @@ const Contact = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
-          Let's Work <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Together</span>
+          Let's Work{" "}
+          <motion.span
+            className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary inline-block"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3, duration: 0.5, type: "spring", stiffness: 200 }}
+          >
+            Together
+          </motion.span>
         </motion.h2>
 
         <motion.p
