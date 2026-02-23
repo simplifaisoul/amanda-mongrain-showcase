@@ -1,6 +1,6 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useState } from "react";
-import { ExternalLink, Target, Lightbulb, Rocket, BarChart3, ChevronDown, ChevronLeft, ChevronRight, Layers } from "lucide-react";
+import { ExternalLink, Target, Lightbulb, Rocket, BarChart3, ChevronDown, ChevronUp, ChevronLeft, ChevronRight, RotateCcw } from "lucide-react";
 
 interface CaseStudySection {
     title: string;
@@ -36,49 +36,36 @@ const ImageCarousel = ({
     const hasMultipleImages = images.length > 1;
 
     return (
-        <div className="relative h-56 md:h-72 overflow-hidden bg-muted/20 flex items-center justify-center p-4 rounded-2xl">
-            <AnimatePresence mode="wait">
-                <motion.img 
-                    key={currentIndex}
-                    src={images[currentIndex]} 
-                    alt={alt}
-                    className="max-w-full max-h-full object-contain rounded-lg"
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
-                    transition={{ duration: 0.25 }}
-                />
-            </AnimatePresence>
+        <div className="h-64 md:h-80 overflow-hidden bg-muted/30 flex items-center justify-center p-4 relative">
+            <img 
+                src={images[currentIndex]} 
+                alt={alt}
+                className="max-w-full max-h-full object-contain rounded-lg"
+            />
             
             {hasMultipleImages && (
                 <>
                     <button
                         onClick={onPrev}
-                        className="absolute left-2 top-1/2 -translate-y-1/2 bg-background/80 hover:bg-background text-foreground p-2 rounded-full shadow-md transition-all hover:scale-110 z-10 backdrop-blur-sm"
+                        className="absolute left-3 top-1/2 -translate-y-1/2 bg-background/90 hover:bg-background text-foreground p-2.5 rounded-full shadow-lg transition-all hover:scale-110 z-10"
                         aria-label="Previous image"
                     >
-                        <ChevronLeft className="w-4 h-4" />
+                        <ChevronLeft className="w-5 h-5" />
                     </button>
                     <button
                         onClick={onNext}
-                        className="absolute right-2 top-1/2 -translate-y-1/2 bg-background/80 hover:bg-background text-foreground p-2 rounded-full shadow-md transition-all hover:scale-110 z-10 backdrop-blur-sm"
+                        className="absolute right-3 top-1/2 -translate-y-1/2 bg-background/90 hover:bg-background text-foreground p-2.5 rounded-full shadow-lg transition-all hover:scale-110 z-10"
                         aria-label="Next image"
                     >
-                        <ChevronRight className="w-4 h-4" />
+                        <ChevronRight className="w-5 h-5" />
                     </button>
                     
-                    {/* Image counter pill */}
-                    <div className="absolute bottom-3 right-3 bg-background/70 backdrop-blur-sm px-3 py-1 rounded-full text-xs text-muted-foreground font-medium">
-                        {currentIndex + 1} / {images.length}
-                    </div>
-
-                    {/* Dot indicators */}
-                    <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+                    <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 bg-background/70 px-3 py-1.5 rounded-full">
                         {images.map((_, i) => (
                             <button
                                 key={i}
                                 onClick={(e) => onDotClick(e, i)}
-                                className={`h-1.5 rounded-full transition-all duration-300 ${i === currentIndex ? 'bg-primary w-6' : 'bg-foreground/20 w-1.5 hover:bg-foreground/40'}`}
+                                className={`w-2.5 h-2.5 rounded-full transition-all ${i === currentIndex ? 'bg-primary w-7' : 'bg-foreground/30 hover:bg-foreground/50'}`}
                                 aria-label={`Go to image ${i + 1}`}
                             />
                         ))}
@@ -90,6 +77,7 @@ const ImageCarousel = ({
 };
 
 const CaseStudyCard = ({ study, index }: { study: CaseStudyProps; index: number }) => {
+    const [isFlipped, setIsFlipped] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -110,133 +98,172 @@ const CaseStudyCard = ({ study, index }: { study: CaseStudyProps; index: number 
         setCurrentImageIndex(index);
     };
 
+    const handleFlip = () => {
+        setIsFlipped(!isFlipped);
+    };
+
     return (
         <motion.div
-            className="group bg-card rounded-3xl overflow-hidden border border-border/40 hover:border-primary/30 transition-all duration-500 shadow-lg hover:shadow-2xl"
+            className="perspective-1000 h-[700px] md:h-[750px]"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: index * 0.08, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{ duration: 0.6, delay: index * 0.1 }}
         >
-            {/* Image Carousel */}
-            {images.length > 0 && (
-                <div className="p-3 pb-0">
-                    <ImageCarousel 
-                        images={images}
-                        currentIndex={currentImageIndex}
-                        onNext={nextImage}
-                        onPrev={prevImage}
-                        onDotClick={handleDotClick}
-                        alt={study.hook}
-                    />
-                </div>
-            )}
-            
-            {/* Card Content */}
-            <div className="p-6 md:p-8">
-                {/* Header */}
-                <div className="flex items-start justify-between gap-4 mb-4">
-                    <div className="flex-1">
-                        <span className="inline-block bg-primary/15 text-primary px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase mb-3">
+            <motion.div
+                className="relative w-full h-full transition-transform duration-700 preserve-3d"
+                animate={{ rotateY: isFlipped ? 180 : 0 }}
+                style={{ transformStyle: "preserve-3d" }}
+            >
+                {/* Front of Card */}
+                <div 
+                    className="absolute inset-0 backface-hidden bg-card rounded-3xl overflow-hidden shadow-2xl"
+                    style={{ backfaceVisibility: "hidden" }}
+                >
+                    {/* Image Carousel */}
+                    {images.length > 0 && (
+                        <ImageCarousel 
+                            images={images}
+                            currentIndex={currentImageIndex}
+                            onNext={nextImage}
+                            onPrev={prevImage}
+                            onDotClick={handleDotClick}
+                            alt={study.hook}
+                        />
+                    )}
+                    
+                    {/* Front Content */}
+                    <div className="p-6 md:p-8">
+                        <span className="inline-block bg-primary/20 text-primary px-4 py-1.5 rounded-full text-sm font-bold tracking-wider uppercase mb-4">
                             Case Study {study.id}
                         </span>
-                        <h3 className="text-2xl md:text-3xl font-bold text-foreground leading-tight">
+                        <h3 className="text-2xl md:text-3xl font-bold text-foreground leading-tight mb-4">
                             {study.hook}
                         </h3>
+                        <p className="text-base md:text-lg text-foreground/70 leading-relaxed mb-4">
+                            {study.description}
+                        </p>
+                        {study.role && (
+                            <p className="text-sm text-primary font-medium mb-6">
+                                {study.role}
+                            </p>
+                        )}
+                        
+                        {/* Flip Button */}
+                        <button
+                            onClick={handleFlip}
+                            className="w-full flex items-center justify-center gap-3 bg-primary text-primary-foreground py-5 rounded-2xl transition-all hover:scale-[1.02] hover:bg-primary/90 shadow-lg group"
+                        >
+                            <span className="text-lg font-bold tracking-wide">View Full Details</span>
+                            <RotateCcw className="w-6 h-6 group-hover:rotate-180 transition-transform duration-500" />
+                        </button>
                     </div>
                 </div>
 
-                <p className="text-base text-muted-foreground leading-relaxed mb-3">
-                    {study.description}
-                </p>
-
-                {study.role && (
-                    <p className="text-sm text-primary font-medium mb-5">
-                        {study.role}
-                    </p>
-                )}
-
-                {/* Expand/Collapse Toggle */}
-                <button
-                    onClick={() => setIsExpanded(!isExpanded)}
-                    className="w-full flex items-center justify-between gap-3 bg-muted/50 hover:bg-muted/80 text-foreground py-3.5 px-5 rounded-xl transition-all duration-300 group/btn"
+                {/* Back of Card */}
+                <div 
+                    className="absolute inset-0 backface-hidden bg-card rounded-3xl overflow-hidden shadow-2xl"
+                    style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
                 >
-                    <span className="flex items-center gap-2 text-sm font-semibold">
-                        <Layers className="w-4 h-4 text-primary" />
-                        {isExpanded ? 'Hide Details' : 'View Full Breakdown'}
-                    </span>
-                    <motion.div
-                        animate={{ rotate: isExpanded ? 180 : 0 }}
-                        transition={{ duration: 0.3 }}
-                    >
-                        <ChevronDown className="w-4 h-4 text-muted-foreground" />
-                    </motion.div>
-                </button>
-
-                {/* Expandable Details */}
-                <AnimatePresence>
-                    {isExpanded && (
-                        <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-                            className="overflow-hidden"
-                        >
-                            <div className="pt-5 space-y-3">
-                                {study.sections.map((section, i) => (
-                                    <motion.div
-                                        key={i}
-                                        initial={{ opacity: 0, y: 12 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: i * 0.06, duration: 0.35 }}
-                                        className="bg-background/60 rounded-xl p-4 border border-border/20"
-                                    >
-                                        <div className="flex items-center gap-2.5 mb-2.5">
-                                            <div className="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
-                                                {section.icon}
-                                            </div>
-                                            <h4 className="font-bold text-foreground text-sm uppercase tracking-wide">
-                                                {section.title}
-                                            </h4>
-                                        </div>
-                                        {Array.isArray(section.content) ? (
-                                            <ul className="space-y-2 ml-9">
-                                                {section.content.map((item, j) => (
-                                                    <li key={j} className="flex items-start gap-2.5 text-sm text-muted-foreground leading-relaxed">
-                                                        <span className="w-1.5 h-1.5 rounded-full bg-primary/60 mt-1.5 flex-shrink-0" />
-                                                        {item}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        ) : (
-                                            <p className="text-sm text-muted-foreground leading-relaxed ml-9">{section.content}</p>
-                                        )}
-                                    </motion.div>
-                                ))}
-
-                                {/* CTA */}
-                                <motion.div 
-                                    className="pt-3"
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    transition={{ delay: 0.3 }}
-                                >
-                                    <a
-                                        href={study.pdfLink}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-xl font-semibold text-sm hover:bg-primary/90 transition-all hover:scale-[1.02] shadow-lg"
-                                    >
-                                        <ExternalLink className="w-4 h-4" />
-                                        View Full Case Study
-                                    </a>
-                                </motion.div>
-                            </div>
-                        </motion.div>
+                    {/* Image Carousel on Back */}
+                    {images.length > 0 && (
+                        <ImageCarousel 
+                            images={images}
+                            currentIndex={currentImageIndex}
+                            onNext={nextImage}
+                            onPrev={prevImage}
+                            onDotClick={handleDotClick}
+                            alt={study.hook}
+                        />
                     )}
-                </AnimatePresence>
-            </div>
+                    
+                    {/* Back Content - Scrollable */}
+                    <div className="p-6 md:p-8 h-[calc(100%-20rem)] md:h-[calc(100%-22rem)] overflow-y-auto">
+                        {/* Header */}
+                        <div className="flex items-start justify-between mb-5">
+                            <div className="flex-1 pr-4">
+                                <span className="inline-block bg-primary/20 text-primary px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase mb-2">
+                                    Case Study {study.id}
+                                </span>
+                                <h3 className="text-lg md:text-xl font-bold text-foreground leading-tight">
+                                    {study.hook}
+                                </h3>
+                            </div>
+                            <button 
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    setIsFlipped(false);
+                                }}
+                                className="p-2.5 rounded-full bg-primary/10 hover:bg-primary/20 text-primary transition-colors flex-shrink-0"
+                                aria-label="Flip back"
+                            >
+                                <RotateCcw className="w-5 h-5" />
+                            </button>
+                        </div>
+
+                        {/* Content Sections */}
+                        <div className="grid gap-3">
+                            {study.sections.slice(0, isExpanded ? undefined : 3).map((section, i) => (
+                                <div
+                                    key={i}
+                                    className="bg-background/50 rounded-xl p-4 border border-border/30"
+                                >
+                                    <div className="flex items-center gap-2 mb-2">
+                                        <div className="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                                            {section.icon}
+                                        </div>
+                                        <h4 className="font-bold text-foreground text-sm uppercase tracking-wide">
+                                            {section.title}
+                                        </h4>
+                                    </div>
+                                    {Array.isArray(section.content) ? (
+                                        <ul className="space-y-1.5">
+                                            {section.content.map((item, j) => (
+                                                <li key={j} className="flex items-start gap-2 text-sm text-foreground/80 leading-relaxed">
+                                                    <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                                                    {item}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    ) : (
+                                        <p className="text-sm text-foreground/80 leading-relaxed">{section.content}</p>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* Expand/Collapse Button */}
+                        {study.sections.length > 3 && (
+                            <button
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    setIsExpanded(!isExpanded);
+                                }}
+                                className="w-full mt-3 flex items-center justify-center gap-2 text-primary hover:text-primary/80 transition-colors py-2.5 rounded-xl bg-primary/5 hover:bg-primary/10"
+                            >
+                                <span className="text-sm font-semibold">
+                                    {isExpanded ? 'Show Less' : `Show ${study.sections.length - 3} More Sections`}
+                                </span>
+                                {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                            </button>
+                        )}
+
+                        {/* CTA */}
+                        <div className="mt-4 pt-4 border-t border-border/30">
+                            <a
+                                href={study.pdfLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={(e) => e.stopPropagation()}
+                                className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-xl font-semibold text-sm hover:bg-primary/90 transition-all hover:scale-105 shadow-lg"
+                            >
+                                <ExternalLink className="w-4 h-4" />
+                                View Full Case Study
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </motion.div>
         </motion.div>
     );
 };
