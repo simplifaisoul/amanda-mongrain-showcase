@@ -22,7 +22,7 @@ const Hero = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
             >
-              Marketing Strategist & Creative Storyteller
+              Hey, I'm
             </motion.p>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground tracking-tight leading-[1.1]">
               Amanda
@@ -31,6 +31,14 @@ const Hero = () => {
                 Mongrain
               </span>
             </h1>
+            <motion.p
+              className="text-lg md:text-xl font-medium text-foreground/70"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35 }}
+            >
+              I turn <span className="text-primary italic">insights</span> into <span className="text-primary italic">impact</span>.
+            </motion.p>
           </div>
 
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-md">
