@@ -296,34 +296,65 @@ const StrategicWork = () => {
         }
     ];
 
+    const containerVariants = {
+        hidden: {},
+        visible: {
+            transition: { staggerChildren: 0.12 },
+        },
+    };
+
+    const cardVariants = {
+        hidden: { opacity: 0, y: 40 },
+        visible: { 
+            opacity: 1, y: 0,
+            transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] },
+        },
+    };
+
     return (
         <section id="projects" className="py-32 px-6 bg-background/50">
             <div className="max-w-7xl mx-auto">
                 <motion.h2
                     className="text-4xl md:text-6xl font-black text-foreground mb-6 relative inline-block"
-                    initial={{ opacity: 0, x: -20 }}
+                    initial={{ opacity: 0, x: -30 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
+                    transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
                 >
                     CASE <span className="text-primary">STUDIES</span>
-                    <span className="absolute -bottom-4 left-0 w-1/3 h-2 bg-gradient-to-r from-primary to-transparent"></span>
+                    <motion.span
+                        className="absolute -bottom-4 left-0 w-1/3 h-2 bg-gradient-to-r from-primary to-transparent"
+                        initial={{ scaleX: 0 }}
+                        whileInView={{ scaleX: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.3 }}
+                        style={{ originX: 0 }}
+                    />
                 </motion.h2>
                 
                 <motion.p
                     className="text-muted-foreground text-lg mb-16 max-w-2xl"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: 0.2 }}
+                    transition={{ delay: 0.2, duration: 0.5 }}
                 >
                     Real-world marketing challenges solved with strategic thinking and creative execution.
                 </motion.p>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <motion.div
+                    className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-60px" }}
+                >
                     {caseStudies.map((study, index) => (
-                        <CaseStudyCard key={study.id} study={study} index={index} />
+                        <motion.div key={study.id} variants={cardVariants}>
+                            <CaseStudyCard study={study} index={index} />
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
             </div>
         </section>
     );
