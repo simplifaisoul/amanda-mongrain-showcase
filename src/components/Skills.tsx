@@ -89,17 +89,18 @@ const Skills = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="p-6 rounded-lg bg-background border border-primary/40 cursor-default"
+              whileHover={{ y: -6, borderColor: "hsl(330 65% 55% / 0.8)", transition: { duration: 0.25 } }}
+              className="p-6 rounded-lg bg-background border border-primary/40 cursor-default group"
             >
               <motion.div
-                className="w-8 h-0.5 bg-primary/60 mb-4"
+                className="w-8 h-0.5 bg-primary/60 mb-4 group-hover:w-12 transition-all duration-300"
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.3 + index * 0.05 }}
                 style={{ originX: 0 }}
               />
-              <h3 className="text-base font-semibold text-foreground mb-2">
+              <h3 className="text-base font-semibold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
                 {q.title}
               </h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
