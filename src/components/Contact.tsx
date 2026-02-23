@@ -34,7 +34,7 @@ const Contact = () => {
         >
           Let's Work{" "}
           <motion.span
-            className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary inline-block"
+            className="text-primary inline-block"
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
