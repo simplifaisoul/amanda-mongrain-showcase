@@ -51,7 +51,7 @@ const Contact = () => {
           viewport={{ once: true }}
           transition={{ delay: 0.15, duration: 0.5 }}
         >
-          I'm actively seeking an internship opportunity where I can apply my marketing skills and continue growing as a professional. If you're looking for a passionate and driven team member, let's connect!
+          I'm actively seeking a job opportunity where I can apply my marketing skills and continue growing as a professional. If you're looking for a passionate and driven team member, let's connect!
         </motion.p>
 
         <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
