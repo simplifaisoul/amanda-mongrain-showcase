@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X } from "lucide-react";
+import { X, Award } from "lucide-react";
 
 import projectManagementCert from "@/assets/certifications/linkedin-project-management-cert.jpg";
 import googleAnalyticsCert from "@/assets/certifications/google-analytics-cert.jpg";
@@ -34,18 +34,26 @@ const Certifications = () => {
     const [selectedCert, setSelectedCert] = useState<number | null>(null);
 
     return (
-        <section className="py-24 px-6 bg-background overflow-hidden">
-            <div className="max-w-6xl mx-auto">
-                <motion.h2
-                    className="text-3xl md:text-4xl font-bold text-center mb-16 uppercase tracking-widest text-muted-foreground"
+        <section className="py-28 px-6 bg-background overflow-hidden relative noise-overlay">
+            <div className="absolute bottom-0 left-0 w-80 h-80 bg-secondary/5 rounded-full blur-[100px] pointer-events-none" />
+            
+            <div className="max-w-6xl mx-auto relative z-10">
+                <motion.div
+                    className="text-center mb-16"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                 >
-                    My Certifications
-                </motion.h2>
+                    <div className="flex items-center justify-center gap-3 mb-4">
+                        <Award className="w-6 h-6 text-primary" />
+                        <h2 className="text-3xl md:text-4xl font-bold uppercase tracking-widest text-foreground">
+                            Certifications
+                        </h2>
+                    </div>
+                    <p className="text-muted-foreground">Industry-recognized credentials</p>
+                </motion.div>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 max-w-5xl mx-auto">
                     {certs.map((cert, idx) => (
                         <motion.div
                             key={idx}
@@ -53,32 +61,38 @@ const Certifications = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: idx * 0.1 }}
-                            className="aspect-square bg-card border border-white/5 rounded-3xl p-8 flex flex-col items-center justify-center hover:bg-white/5 transition-colors group relative overflow-hidden"
+                            className="glass rounded-2xl p-8 flex flex-col items-center justify-center group relative overflow-hidden cursor-pointer aspect-square"
+                            onClick={() => setSelectedCert(idx)}
                         >
-                            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                            <h3 className="text-xl font-bold text-center text-foreground z-10">{cert.title}</h3>
-                            <p className="text-sm text-muted-foreground mt-2">{cert.issuer}</p>
-                            <div className="w-16 h-1 bg-gradient-to-r from-primary to-secondary mt-4 mb-6 rounded-full"></div>
-
-                            <button 
-                                onClick={() => setSelectedCert(idx)}
-                                className="z-20 px-4 py-2 text-xs font-bold uppercase tracking-wider border border-primary/30 rounded-full hover:bg-primary hover:text-white transition-all text-primary"
+                            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            
+                            <div className="relative z-10 flex flex-col items-center text-center">
+                                <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                                    <Award className="w-7 h-7 text-primary" />
+                                </div>
+                                <h3 className="text-lg font-bold text-foreground mb-1">{cert.title}</h3>
+                                <p className="text-sm text-muted-foreground mb-4">{cert.issuer}</p>
+                                <div className="w-12 h-0.5 bg-gradient-to-r from-primary to-secondary rounded-full" />
+                            </div>
+                            
+                            <motion.span
+                                className="absolute bottom-6 text-xs font-bold uppercase tracking-wider text-primary opacity-0 group-hover:opacity-100 transition-opacity"
                             >
-                                View Certificate
-                            </button>
+                                View →
+                            </motion.span>
                         </motion.div>
                     ))}
                 </div>
             </div>
 
-            {/* Modal for viewing certificate */}
+            {/* Modal */}
             <AnimatePresence>
                 {selectedCert !== null && (
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+                        className="fixed inset-0 bg-black/85 backdrop-blur-sm z-50 flex items-center justify-center p-4"
                         onClick={() => setSelectedCert(null)}
                     >
                         <motion.div
@@ -86,12 +100,12 @@ const Certifications = () => {
                             animate={{ scale: 1, opacity: 1 }}
                             exit={{ scale: 0.9, opacity: 0 }}
                             transition={{ type: "spring", damping: 25 }}
-                            className="relative max-w-4xl w-full bg-card rounded-2xl overflow-hidden"
+                            className="relative max-w-4xl w-full glass rounded-2xl overflow-hidden"
                             onClick={(e) => e.stopPropagation()}
                         >
                             <button
                                 onClick={() => setSelectedCert(null)}
-                                className="absolute top-4 right-4 z-10 p-2 bg-background/80 rounded-full hover:bg-background transition-colors"
+                                className="absolute top-4 right-4 z-10 p-2.5 bg-background/80 rounded-full hover:bg-background transition-colors"
                             >
                                 <X className="w-5 h-5" />
                             </button>
