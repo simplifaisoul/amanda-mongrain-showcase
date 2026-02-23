@@ -126,12 +126,12 @@ const CaseStudyCard = ({ study, index }: { study: CaseStudyProps; index: number 
             <motion.div
                 className="relative w-full h-full transition-transform duration-700 preserve-3d"
                 animate={{ rotateY: isFlipped ? 180 : 0 }}
-                style={{ transformStyle: "preserve-3d" }}
+                style={{ transformStyle: "preserve-3d", WebkitTransformStyle: "preserve-3d" }}
             >
                 {/* Front of Card */}
                 <div 
                     className="absolute inset-0 backface-hidden bg-card rounded-3xl overflow-hidden shadow-2xl"
-                    style={{ backfaceVisibility: "hidden" }}
+                    style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
                 >
                     {/* Image Carousel */}
                     {images.length > 0 && (
@@ -184,7 +184,7 @@ const CaseStudyCard = ({ study, index }: { study: CaseStudyProps; index: number 
                 {/* Back of Card */}
                 <div 
                     className="absolute inset-0 backface-hidden bg-card rounded-3xl overflow-hidden shadow-2xl"
-                    style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+                    style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
                 >
                     {/* Back Content - Flex layout with sticky CTA */}
                     <div className="p-5 md:p-6 h-full flex flex-col">
