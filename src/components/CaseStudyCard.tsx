@@ -173,15 +173,15 @@ const CaseStudyCard = ({ study, index }: { study: CaseStudyProps; index: number 
                     className="absolute inset-0 backface-hidden bg-card rounded-3xl overflow-hidden shadow-2xl"
                     style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
                 >
-                    {/* Back Content - Full height scrollable */}
-                    <div className="p-6 md:p-8 h-full overflow-y-auto">
+                    {/* Back Content - Flex layout with sticky CTA */}
+                    <div className="p-5 md:p-6 h-full flex flex-col">
                         {/* Header */}
-                        <div className="flex items-start justify-between mb-5">
+                        <div className="flex items-start justify-between mb-4 flex-shrink-0">
                             <div className="flex-1 pr-4">
-                                <span className="inline-block bg-primary/20 text-primary px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase mb-2">
+                                <span className="inline-block bg-primary/20 text-primary px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase mb-1">
                                     Case Study {study.id}
                                 </span>
-                                <h3 className="text-lg md:text-xl font-bold text-foreground leading-tight">
+                                <h3 className="text-base md:text-lg font-bold text-foreground leading-tight">
                                     {study.hook}
                                 </h3>
                             </div>
@@ -197,45 +197,45 @@ const CaseStudyCard = ({ study, index }: { study: CaseStudyProps; index: number 
                             </button>
                         </div>
 
-                        {/* All Content Sections - no collapse */}
-                        <div className="grid gap-3">
+                        {/* Scrollable Content Sections */}
+                        <div className="flex-1 overflow-y-auto min-h-0 grid gap-2.5 content-start">
                             {study.sections.map((section, i) => (
                                 <div
                                     key={i}
-                                    className="bg-background/50 rounded-xl p-4 border border-border/30"
+                                    className="bg-background/50 rounded-xl p-3 border border-border/30"
                                 >
-                                    <div className="flex items-center gap-2 mb-2">
-                                        <div className="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                                    <div className="flex items-center gap-2 mb-1.5">
+                                        <div className="w-6 h-6 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
                                             {section.icon}
                                         </div>
-                                        <h4 className="font-bold text-foreground text-sm uppercase tracking-wide">
+                                        <h4 className="font-bold text-foreground text-xs uppercase tracking-wide">
                                             {section.title}
                                         </h4>
                                     </div>
                                     {Array.isArray(section.content) ? (
-                                        <ul className="space-y-1.5">
+                                        <ul className="space-y-1">
                                             {section.content.map((item, j) => (
-                                                <li key={j} className="flex items-start gap-2 text-sm text-foreground/80 leading-relaxed">
-                                                    <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                                                <li key={j} className="flex items-start gap-2 text-xs text-foreground/80 leading-relaxed">
+                                                    <span className="w-1 h-1 rounded-full bg-primary mt-1.5 flex-shrink-0" />
                                                     {item}
                                                 </li>
                                             ))}
                                         </ul>
                                     ) : (
-                                        <p className="text-sm text-foreground/80 leading-relaxed">{section.content}</p>
+                                        <p className="text-xs text-foreground/80 leading-relaxed">{section.content}</p>
                                     )}
                                 </div>
                             ))}
                         </div>
 
-                        {/* CTA */}
-                        <div className="mt-4 pt-4 border-t border-border/30">
+                        {/* Pinned CTA */}
+                        <div className="mt-3 pt-3 border-t border-border/30 flex-shrink-0">
                             <a
                                 href={study.pdfLink}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 onClick={(e) => e.stopPropagation()}
-                                className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-xl font-semibold text-sm hover:bg-primary/90 transition-all hover:scale-105 shadow-lg"
+                                className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-xl font-semibold text-sm hover:bg-primary/90 transition-all shadow-lg"
                             >
                                 <ExternalLink className="w-4 h-4" />
                                 View Full Case Study
